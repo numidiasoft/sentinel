@@ -2,7 +2,7 @@
 
 Sentinel
 ([tigerlily/sentinel](https://github.com/tigerlily/sentinel)) is a web application 
-that aim to monitors all internals and externals used by your stack.
+that aims to monitors all internals and externals used by your stack.
 
 For example: Facebook, twitter..etc.
 
