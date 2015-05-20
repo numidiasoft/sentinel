@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+require 'pry'
+require 'bundler'
+root = File.expand_path '..', __dir__
+
+ENV['RBENV_DIR'] = root
+ENV['BUNDLE_GEMFILE'] = root + '/Gemfile'
+ENV['RACK_ENV'] = ARGV[0] || 'development'
+
+Bundler.setup
+require_relative '../config/application'
+
+def reload!
+  loaded_libs.each do |lib|
+    require lib
+  end
+end
+
+def loaded_libs
+  $".select do |lib|
+    lib.include?(root_path) && !lib.include?('.bundle')
+  end
+end
+
+def root_path
+  Sentinel::Application.root_path
+end
+
+Pry.start Sentinel

@@ -1,0 +1,28 @@
+source 'https://rubygems.org'
+
+gem 'rack'
+gem 'pry'
+gem 'activerecord'
+gem 'mongoid'
+gem 'puma'
+
+
+gem 'grape'
+gem 'roar'
+gem 'grape-roar'
+
+# http client
+gem "faraday"
+
+#logging
+gem 'grape_logging'
+
+group :development, :test do
+  gem "rspec"
+  gem 'factory_girl'
+  gem 'rake'
+  gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'rack-test'
+end
