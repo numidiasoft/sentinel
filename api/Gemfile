@@ -14,7 +14,10 @@ gem 'grape-roar'
 # http client
 gem "faraday"
 
-#logging
+# pagination
+gem 'kaminari'
+
+# logging
 gem 'grape_logging'
 
 group :development, :test do

@@ -24,11 +24,9 @@ module Sentinel
     end
 
     def initialize
-      require 'mongoid'
-      require 'roar/json'
-      require 'roar/json/hal'
-      require "grape"
-      require "grape-roar"
+      %w( mongoid roar/json roar/json/hal grape grape-roar kaminari kaminari/grape ).each do |lib|
+        require lib
+      end
       load_libs
     end
 

@@ -10,7 +10,7 @@ module Sentinel
     desc "return http health statuses for all registred sevices"
     resource :statuses do
       get do
-        http_status = Check.all
+        http_status = Check.page(params[:page] || 1).per(params[:per] || 30)
         present http_status, with: StatusesPresenter
       end
 
