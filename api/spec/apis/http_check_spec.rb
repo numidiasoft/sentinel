@@ -72,6 +72,16 @@ module Sentinel
         end
 
       end
+
+      context 'When status is not valid' do
+
+        it 'returns error' do
+          new_status = build(:check).attributes.tap { |hs| hs.delete('_id') }
+          post '/statuses', check: new_status.merge(name: '')
+          expect(last_response.status).to be(400)
+        end
+
+      end
     end
 
     context 'When status is not valid' do

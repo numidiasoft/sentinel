@@ -26,7 +26,7 @@ module Sentinel
 
       post do
         check  = Check.new(params.check.to_h)
-        error!("Check creation failed") unless check.save
+        error!("Check creation failed", 400) unless check.save
         status 200
       end
 
