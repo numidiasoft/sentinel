@@ -38,6 +38,7 @@ GEM
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
+    colorize (0.7.7)
     connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
@@ -156,6 +157,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  colorize
   database_cleaner
   factory_girl
   faraday

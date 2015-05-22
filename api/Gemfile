@@ -20,6 +20,8 @@ gem 'kaminari'
 # logging
 gem 'grape_logging'
 
+gem 'colorize'
+
 group :development, :test do
   gem "rspec"
   gem 'factory_girl'

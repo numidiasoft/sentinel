@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+root = File.expand_path '..', __dir__
+
+SCRIPT_NAME = ARGV.shift.freeze
+
+unless SCRIPT_NAME
+  puts <<-TEXT
+  Synopsis: run a script in the sentinel context.
+  Usage:
+  bundle exec script/runner script/path.rb [rack_env] [-- script_args]
+  Example:
+  bundle exec script/runner script/benchmarks/inbox.rb production -- cartier
+  TEXT
+  exit 1
+end
+
+ENV['RBENV_DIR'] = root
+ENV['BUNDLE_GEMFILE'] = root + '/Gemfile'
+ENV['RACK_ENV'] =
+  case (env = ARGV.shift)
+  when nil, '--'
+    'development'
+  else
+    ARGV.shift
+    env
+  end
+require_relative '../config/application'
+
+puts "== Loading #{SCRIPT_NAME}"
+load SCRIPT_NAME
