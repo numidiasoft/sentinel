@@ -24,7 +24,7 @@ module Sentinel
 
       post do
         check  = Check.new(params.check.to_h)
-        error!("Check creation failed", 400) unless check.save
+        error!("Check creation failed #{check.errors.first}", 400) unless check.save
         present check.reload, with: StatusPresenter
       end
 
@@ -44,7 +44,7 @@ module Sentinel
         check = Check.where(id: params[:check][:_id]).first
         status 404 and return if check.nil?
         updated = check.update_attributes(declared(params).check.to_h)
-        error!('Check update failed', 400) if updated == false
+        error!("Check update failed #{check.errors.first}", 400) if updated == false
         present check.reload, with: StatusPresenter
       end
 
