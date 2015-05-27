@@ -10,11 +10,17 @@ module Sentinel
     property :url
     property :type
     property :expected_response
+    property :description
+    property :updated_at
     property :protocol
     property :status
 
     link rel: :self, method: :GET do |opts|
-      "/status/#{represented.id}"
+      "/statuses/#{represented.id}"
+    end
+
+    link rel: :statuses, method: :PATCH, templated: true do
+      "/statuses{?page}"
     end
 
   end

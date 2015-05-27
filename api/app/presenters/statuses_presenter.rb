@@ -8,8 +8,8 @@ module Sentinel
 
     collection :entries, extend: StatusPresenter, as: :statuses
 
-    link rel: :self, method: :GET do |opts|
-      '/statuses'
+    link rel: :self, method: :GET, templated: true do |opts|
+      '/statuses{?page}'
     end
   end
 end
