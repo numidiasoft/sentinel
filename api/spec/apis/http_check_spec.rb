@@ -25,7 +25,7 @@ module Sentinel
       context 'When checks is not empty' do
 
         let(:expected_response) do
-          response = StatusesPresenter.new(Sentinel::Check.all).to_json
+          response = StatusesPresenter.new(Sentinel::Check.desc(:updated_at).page(1).per(15)).to_json
           JSON.parse(response)
         end
 
