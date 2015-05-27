@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :check, class: Sentinel::Check do
     name "google"
     url  "https://api.github.com/users/100"
-    type "GET"
+    type "auto"
     protocol :http
   end
 end

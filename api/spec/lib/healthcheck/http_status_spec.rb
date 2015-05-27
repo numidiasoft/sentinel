@@ -4,8 +4,8 @@ module Sentinel
   describe HttpStatus do
 
     let(:http_check_green) { create(:check) }
-    let(:http_check_yellow) { create(:check, expected_response: "ok") }
-    let(:http_check_red) { create(:check, url: "https://api.github.com/users/100/qdqs") }
+    let(:http_check_yellow) { create(:check, expected_response: "ok", status: :yellow) }
+    let(:http_check_red) { create(:check, url: "https://api.github.com/users/100/qdqs", status: :red) }
 
 
     context "When status is yellow" do

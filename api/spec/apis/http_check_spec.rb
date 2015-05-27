@@ -67,7 +67,7 @@ module Sentinel
         it 'creates a status' do
           new_status = build(:check).attributes.tap { |hs| hs.delete('_id') }
           post '/statuses', check: new_status
-          expect(last_response.status).to be(200)
+          expect(last_response.status).to be(201)
           expect(Check.all.size).to eql(1)
         end
 
