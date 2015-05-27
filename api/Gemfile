@@ -22,6 +22,8 @@ gem 'grape_logging'
 
 gem 'colorize'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 group :development, :test do
   gem "rspec"
   gem 'factory_girl'
