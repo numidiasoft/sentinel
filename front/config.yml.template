@@ -1,0 +1,9 @@
+development:
+  EnvironmentConfig:
+    api: 'http://localhost:9292'
+staging:
+  EnvironmentConfig:
+    api: 'http://sentinel.staging.sleekapp.io'
+production:
+  EnvironmentConfig:
+    api: 'https://sentinel.sleekapp.io'

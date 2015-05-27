@@ -1,0 +1,22 @@
+<div class="row" ng-controller="StatusesCtrl">
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="status in statuses | orderBy:'name'">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{status.title}} </h3>
+          <p>{{status.status}}</p>
+          <p>{{status.expected_response}}</p>
+          <p>{{status.description}}</p>
+          <p><a ui-sref="editStatus({id: status.id.$oid})">{{status.url}}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-default" ng-click='loadMore(currentPage)'>Load More</button>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
