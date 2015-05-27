@@ -1,16 +1,12 @@
 module Sentinel
   class StatusChecks < Grape::API
     format :json
-    helpers do
-      def logger
-       Sentinel.logger
-      end
-    end
 
     desc "return http health statuses for all registred sevices"
     resource :statuses do
+
       get do
-        http_status = Check.page(params[:page] || 1).per(params[:per] || 30)
+        http_status = Check.page(params[:page] || 1).per(params[:per] || 15)
         present http_status, with: StatusesPresenter
       end
 
@@ -19,15 +15,17 @@ module Sentinel
         requires :check, type: Hash do
           requires :name, type: String, desc: 'The name of status'
           requires :url, type: String, desc: 'The enpoint to check'
+          optional :description, type: String, desc: 'The description ofcheck'
+          optional :expected_response, type: String, desc: 'The expected response'
           requires :type, type: String, desc: 'The type of service to check'
-          requires :protocol, type: String, desc: 'The protocol to use', default: :http
+          requires :protocol, type: String, desc: 'The protocol to use', default: :auto
         end
       end
 
       post do
         check  = Check.new(params.check.to_h)
         error!("Check creation failed", 400) unless check.save
-        status 200
+        present check.reload, with: StatusPresenter
       end
 
       desc "Update a new health status"
@@ -36,6 +34,8 @@ module Sentinel
           requires :name, type: String, desc: 'The name of status'
           requires :url, type: String, desc: 'The enpoint to check'
           requires :type, type: String, desc: 'The type of service to check'
+          optional :description, type: String, desc: 'The description of check'
+          optional :expected_response, type: String, desc: 'The expected response'
           requires :protocol, type: String, desc: 'The protocol to use', default: :http
         end
       end
