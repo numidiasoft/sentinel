@@ -9,7 +9,6 @@ module Sentinel
     field :url, type: String
     field :type, type: String
     field :protocol, type: String
-    field :updated_at, default: Time.now
     field :expected_response, type: String, default: :none
     field :description, type: String
     field :status, type: String, default: 'green'
