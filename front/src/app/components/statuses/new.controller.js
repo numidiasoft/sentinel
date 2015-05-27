@@ -8,7 +8,7 @@ class NewStatusCtrl {
     $scope.status = {};
 
     $scope.save = function () {
-      var path = environmentConfig.api + 'tatuses';
+      var path = environmentConfig.api + '/statuses';
       statusResource
         .save($scope.status, path)
         .then(() => {

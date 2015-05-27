@@ -14,7 +14,7 @@ class StatusResource {
    }
 
    getStatus(id) {
-     var url = `http://localhost:9292/statuses/${id}`;
+     var url = this.environmentConfig.api + '/statuses/' + id;
      return this
        .resource
        .$get(url);
