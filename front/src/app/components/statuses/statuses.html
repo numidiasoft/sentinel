@@ -1,12 +1,14 @@
 <div class="row" ng-controller="StatusesCtrl">
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="status in statuses | orderBy:'name'">
+    <div class="col-sm-6 col-md-4" ng-repeat="status in statuses | orderBy:'-updated_at'">
       <div class="thumbnail">
         <div class="caption">
           <h3>{{status.title}} </h3>
+          <p>{{status.name}}</p>
           <p>{{status.status}}</p>
           <p>{{status.expected_response}}</p>
           <p>{{status.description}}</p>
+          <p>{{status.updated_at}}</p>
           <p><a ui-sref="editStatus({id: status.id.$oid})">{{status.url}}</a></p>
         </div>
       </div>

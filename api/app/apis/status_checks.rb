@@ -6,7 +6,7 @@ module Sentinel
     resource :statuses do
 
       get do
-        http_status = Check.page(params[:page] || 1).per(params[:per] || 15)
+        http_status = Check.desc(:updated_at).page(params[:page] || 1).per(params[:per] || 15)
         present http_status, with: StatusesPresenter
       end
 
