@@ -12,8 +12,7 @@
     <p class="bg-{{type}}" ng-if="stype!='success'">There was an error in the form</p>
   </div>
 
-  <form name="status">
-
+  <form>
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
       <input type="text" class="form-control"  placeholder="Enter Name" ng-model='status.name' ng-required=true>
@@ -29,9 +28,25 @@
       <input type="text" class="form-control" placeholder="Enter Protocol" ng-model='status.protocol' ng-required=true>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" >
       <label for="exampleInputPassword1">Type</label>
-      <input type="text" class="form-control" placeholder="Enter Type" ng-model='status.type' ng-required=true >
+      <select class="form-control input-lg" ng-model="status.type">
+         <option value="auto">Auto</option>
+         <option value="manual">Manuel</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Verb</label>
+      <select class="form-control input-lg" ng-model='status.verb'>
+         <option value="GET">GET</option>
+         <option value="POST">POST</option>
+      </select>
+    </div>
+
+    <div class="form-group" ng-show="status.verb != 'GET'">
+      <label for="exampleInputPassword1">Params</label>
+      <textarea class="form-control" rows="3" placeholder="Enter Params" ng-model='status.params'></textarea>
     </div>
 
     <div class="form-group">

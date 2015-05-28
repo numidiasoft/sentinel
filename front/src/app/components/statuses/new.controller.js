@@ -5,7 +5,7 @@ var statuses = angular.module('sentinel.components.statuses.new', []);
 class NewStatusCtrl {
   constructor($scope, $stateParams, $timeout, statusResource, environmentConfig) {
     var self = this;
-    $scope.status = {};
+    $scope.status = { verb: 'GET', type: 'auto'};
 
     $scope.save = function () {
       var path = environmentConfig.api + '/statuses';
