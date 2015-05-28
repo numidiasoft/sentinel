@@ -5,7 +5,7 @@ require 'grape_logging'
 use Rack::Cors do
   allow do
     origins '*'
-    resource '*', :headers => :any, :methods => [:get, :patch, :post]
+    resource '*', :headers => :any, :methods => [:get, :patch, :post, :delete]
   end
 end
 use GrapeLogging::Middleware::RequestLogger, { logger: Sentinel.logger }
