@@ -19,6 +19,8 @@ module Sentinel
           optional :expected_response, type: String, desc: 'The expected response'
           requires :type, type: String, desc: 'The type of service to check'
           requires :protocol, type: String, desc: 'The protocol to use', default: :auto
+          requires :verb, type: String, desc: 'The verb to use', default: :GET
+          optional :params, type: String, desc: 'params'
         end
       end
 
@@ -37,6 +39,8 @@ module Sentinel
           optional :description, type: String, desc: 'The description of check'
           optional :expected_response, type: String, desc: 'The expected response'
           requires :protocol, type: String, desc: 'The protocol to use', default: :http
+          requires :verb, type: String, desc: 'The verb to use', default: :GET
+          optional :params, type: String, desc: 'params'
         end
       end
 
@@ -46,6 +50,18 @@ module Sentinel
         updated = check.update_attributes(declared(params).check.to_h)
         error!("Check update failed #{check.errors.first}", 400) if updated == false
         present check.reload, with: StatusPresenter
+      end
+
+      desc "Delete a status."
+      params do
+        requires :id, type: String, desc: "Status ID."
+      end
+
+      delete ':id' do
+        check = Check.where(id: params[:id]).first
+        error!('Not found', 404) if check.nil?
+        error!('Failed to destroy', 400) unless check.destroy
+        status 200
       end
 
       desc "return a health status for a sepecific service"
