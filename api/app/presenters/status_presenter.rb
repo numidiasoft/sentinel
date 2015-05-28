@@ -14,6 +14,8 @@ module Sentinel
     property :updated_at
     property :protocol
     property :status
+    property :verb
+    property :params
 
     link rel: :self, method: :GET do |opts|
       "/statuses/#{represented.id}"
@@ -21,6 +23,10 @@ module Sentinel
 
     link rel: :statuses, method: :PATCH, templated: true do
       "/statuses{?page}"
+    end
+
+    link rel: 'statuses/delete', method: :DELETE do
+      "/statuses/#{represented.id}"
     end
 
   end
