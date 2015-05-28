@@ -1,0 +1,358 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 28 May 2015 10:32:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '55'
+      X-Ratelimit-Reset:
+      - '1432811393'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Sun, 15 Dec 2013 19:21:11 GMT
+      Etag:
+      - W/"c69df667ef47cd42cfc17fdf24e0d570"
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 52E65834:5A73:1337A2E:5566EEC3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 76d9828c7e4f1d910f7ba069e90ce976
+    body:
+      encoding: UTF-8
+      string: '{"login":"100","id":369826,"avatar_url":"https://avatars.githubusercontent.com/u/369826?v=3","gravatar_id":"","url":"https://api.github.com/users/100","html_url":"https://github.com/100","followers_url":"https://api.github.com/users/100/followers","following_url":"https://api.github.com/users/100/following{/other_user}","gists_url":"https://api.github.com/users/100/gists{/gist_id}","starred_url":"https://api.github.com/users/100/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/100/subscriptions","organizations_url":"https://api.github.com/users/100/orgs","repos_url":"https://api.github.com/users/100/repos","events_url":"https://api.github.com/users/100/events{/privacy}","received_events_url":"https://api.github.com/users/100/received_events","type":"User","site_admin":false,"public_repos":0,"public_gists":0,"followers":0,"following":0,"created_at":"2010-08-19T15:52:44Z","updated_at":"2013-12-15T19:21:11Z"}'
+    http_version: 
+  recorded_at: Thu, 28 May 2015 10:32:35 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 28 May 2015 10:32:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '54'
+      X-Ratelimit-Reset:
+      - '1432811393'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Sun, 15 Dec 2013 19:21:11 GMT
+      Etag:
+      - W/"c69df667ef47cd42cfc17fdf24e0d570"
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 52E65834:5A77:119AE3E:5566EEC3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - cee4c0729c8e9147e7abcb45b9d69689
+    body:
+      encoding: UTF-8
+      string: '{"login":"100","id":369826,"avatar_url":"https://avatars.githubusercontent.com/u/369826?v=3","gravatar_id":"","url":"https://api.github.com/users/100","html_url":"https://github.com/100","followers_url":"https://api.github.com/users/100/followers","following_url":"https://api.github.com/users/100/following{/other_user}","gists_url":"https://api.github.com/users/100/gists{/gist_id}","starred_url":"https://api.github.com/users/100/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/100/subscriptions","organizations_url":"https://api.github.com/users/100/orgs","repos_url":"https://api.github.com/users/100/repos","events_url":"https://api.github.com/users/100/events{/privacy}","received_events_url":"https://api.github.com/users/100/received_events","type":"User","site_admin":false,"public_repos":0,"public_gists":0,"followers":0,"following":0,"created_at":"2010-08-19T15:52:44Z","updated_at":"2013-12-15T19:21:11Z"}'
+    http_version: 
+  recorded_at: Thu, 28 May 2015 10:32:36 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 28 May 2015 10:32:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '53'
+      X-Ratelimit-Reset:
+      - '1432811393'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Sun, 15 Dec 2013 19:21:11 GMT
+      Etag:
+      - W/"c69df667ef47cd42cfc17fdf24e0d570"
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 52E65834:5A71:A917A1:5566EEC4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 065b43cd9674091fec48a221b420fbb3
+    body:
+      encoding: UTF-8
+      string: '{"login":"100","id":369826,"avatar_url":"https://avatars.githubusercontent.com/u/369826?v=3","gravatar_id":"","url":"https://api.github.com/users/100","html_url":"https://github.com/100","followers_url":"https://api.github.com/users/100/followers","following_url":"https://api.github.com/users/100/following{/other_user}","gists_url":"https://api.github.com/users/100/gists{/gist_id}","starred_url":"https://api.github.com/users/100/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/100/subscriptions","organizations_url":"https://api.github.com/users/100/orgs","repos_url":"https://api.github.com/users/100/repos","events_url":"https://api.github.com/users/100/events{/privacy}","received_events_url":"https://api.github.com/users/100/received_events","type":"User","site_admin":false,"public_repos":0,"public_gists":0,"followers":0,"following":0,"created_at":"2010-08-19T15:52:44Z","updated_at":"2013-12-15T19:21:11Z"}'
+    http_version: 
+  recorded_at: Thu, 28 May 2015 10:32:36 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 28 May 2015 10:32:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '52'
+      X-Ratelimit-Reset:
+      - '1432811393'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Sun, 15 Dec 2013 19:21:11 GMT
+      Etag:
+      - W/"c69df667ef47cd42cfc17fdf24e0d570"
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 52E65834:5A76:1A177D9:5566EEC4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 8dd185e423974a7e13abbbe6e060031e
+    body:
+      encoding: UTF-8
+      string: '{"login":"100","id":369826,"avatar_url":"https://avatars.githubusercontent.com/u/369826?v=3","gravatar_id":"","url":"https://api.github.com/users/100","html_url":"https://github.com/100","followers_url":"https://api.github.com/users/100/followers","following_url":"https://api.github.com/users/100/following{/other_user}","gists_url":"https://api.github.com/users/100/gists{/gist_id}","starred_url":"https://api.github.com/users/100/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/100/subscriptions","organizations_url":"https://api.github.com/users/100/orgs","repos_url":"https://api.github.com/users/100/repos","events_url":"https://api.github.com/users/100/events{/privacy}","received_events_url":"https://api.github.com/users/100/received_events","type":"User","site_admin":false,"public_repos":0,"public_gists":0,"followers":0,"following":0,"created_at":"2010-08-19T15:52:44Z","updated_at":"2013-12-15T19:21:11Z"}'
+    http_version: 
+  recorded_at: Thu, 28 May 2015 10:32:37 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 28 May 2015 10:32:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '51'
+      X-Ratelimit-Reset:
+      - '1432811393'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Sun, 15 Dec 2013 19:21:11 GMT
+      Etag:
+      - W/"c69df667ef47cd42cfc17fdf24e0d570"
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 52E65834:5A74:169FBA0:5566EEC5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - bd82876e9bf04990f289ba22f246ee9b
+    body:
+      encoding: UTF-8
+      string: '{"login":"100","id":369826,"avatar_url":"https://avatars.githubusercontent.com/u/369826?v=3","gravatar_id":"","url":"https://api.github.com/users/100","html_url":"https://github.com/100","followers_url":"https://api.github.com/users/100/followers","following_url":"https://api.github.com/users/100/following{/other_user}","gists_url":"https://api.github.com/users/100/gists{/gist_id}","starred_url":"https://api.github.com/users/100/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/100/subscriptions","organizations_url":"https://api.github.com/users/100/orgs","repos_url":"https://api.github.com/users/100/repos","events_url":"https://api.github.com/users/100/events{/privacy}","received_events_url":"https://api.github.com/users/100/received_events","type":"User","site_admin":false,"public_repos":0,"public_gists":0,"followers":0,"following":0,"created_at":"2010-08-19T15:52:44Z","updated_at":"2013-12-15T19:21:11Z"}'
+    http_version: 
+  recorded_at: Thu, 28 May 2015 10:32:37 GMT
+recorded_with: VCR 2.9.3

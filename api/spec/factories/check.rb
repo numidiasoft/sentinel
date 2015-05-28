@@ -5,5 +5,6 @@ FactoryGirl.define do
     url  "https://api.github.com/users/100"
     type "auto"
     protocol :http
+    verb :GET
   end
 end

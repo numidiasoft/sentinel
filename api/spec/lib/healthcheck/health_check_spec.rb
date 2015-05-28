@@ -60,7 +60,7 @@ module Sentinel
     describe ".check_all" do
 
       it "returns the checks status" do
-        VCR.use_cassette('http_check_green') do
+        VCR.use_cassette('health_check_green') do
           checks
           results = described_class.check_all
           expect(results.size).to eql(5)
