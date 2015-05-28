@@ -7,7 +7,7 @@ module Sentinel
       def check_all
         statuses = []
         (1..pages).each do |page|
-          Check.page(page).per(PER_PAGE).each do |check_entry|
+          Check.where(type: :auto).page(page).per(PER_PAGE).each do |check_entry|
             progress_bar.increment
             result = checker(check_entry.protocol)
             .check(check_entry)
