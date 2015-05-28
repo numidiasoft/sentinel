@@ -10,6 +10,7 @@
           <p>{{status.description}}</p>
           <p>{{status.updated_at}}</p>
           <p><a ui-sref="editStatus({id: status.id.$oid})">{{status.url}}</a></p>
+          <button type="submit" class="btn btn-default" ng-click='destroy(status)'>Destroy</button>
         </div>
       </div>
     </div>

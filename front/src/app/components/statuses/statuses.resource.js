@@ -29,7 +29,9 @@ class StatusResource {
          type: status.type,
          _id: status.id.$oid,
          description: status.description,
-         expected_response: status.expected_response
+         expected_response: status.expected_response,
+         verb: status.verb,
+         params: status.params
        }
      });
    }
@@ -42,7 +44,9 @@ class StatusResource {
          protocol: status.protocol,
          type: status.type,
          description: status.description,
-         expected_response: status.expected_response
+         expected_response: status.expected_response,
+         verb: status.verb,
+         params: status.params
        }
      });
    }
