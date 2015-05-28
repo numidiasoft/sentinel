@@ -11,6 +11,10 @@ module Sentinel
     link rel: :self, method: :GET, templated: true do |opts|
       '/statuses{?page}'
     end
+
+    link rel: 'statuses/delete', method: :DELETE, templated: true do
+      "/statuses/{id}"
+    end
   end
 end
 
