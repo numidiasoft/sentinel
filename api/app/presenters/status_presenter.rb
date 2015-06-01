@@ -21,8 +21,8 @@ module Sentinel
       "/statuses/#{represented.id}"
     end
 
-    link rel: :statuses, method: :PATCH, templated: true do
-      "/statuses{?page}"
+    link rel: :statuses, method: :PATCH do
+      "/statuses"
     end
 
     link rel: 'statuses/delete', method: :DELETE do
