@@ -1,0 +1,54 @@
+.bulk-actions {
+  float: left;
+  margin: 0 .5rem 0 0;
+  position: relative;
+
+  .rtl & {
+    margin: 0 0 0 .5rem;
+    float: right;
+  }
+
+  .transparent {
+    visibility: hidden;
+
+    button {
+      padding: .7rem;
+
+      .rtl & {
+        padding: .7rem;
+      }
+    }
+
+    input {
+      visibility: visible;
+    }
+  }
+
+  .btn-group > .dropdown-menu {
+    display: block;
+    left: -.7rem;
+    right: auto;
+
+    .rtl & {
+      left: auto;
+      right: -.7rem;
+    }
+  }
+
+  button {
+    padding: .7rem 3rem .7rem .7rem;
+    position: relative;
+    left: -.7rem;
+    height: 3.5rem;
+
+    .rtl & {
+      padding: .7rem .7rem .7rem 3rem;
+      left: auto;
+      right: -.7rem;
+    }
+  }
+
+  sk-drop-down {
+    margin-left: -.8rem;
+  }
+}

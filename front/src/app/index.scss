@@ -1,3 +1,5 @@
+@import 'sass/_variables.scss';
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -6,10 +8,86 @@
 }
 
 .thumbnail {
-  height: 200px;
+  min-height:40px;
 
-  img.pull-right {
-    width: 50px;
+  .caption {
+    padding-top: 0px;
+  }
+}
+
+html[ng-app="sentinel"] .navbar {
+  margin: 0  0 20px !important;
+}
+
+html[ng-app="sentinel"] body{
+  background-color: rgb(39,44,54);
+}
+
+.navbar {
+  position: absolute !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.navbar.navbar-inverse {
+  background-color: #272c36;
+  border-color: #272c36;
+  padding-bottom: 0px;
+
+  .navbar-brand {
+      color: #eff0f2;
+   }
+}
+
+.container-status {
+  background-color: #dddddd;
+  position: relative;
+  height: 100%;
+  padding: 8px 8px 0px;
+  top: 76px;
+  z-index: 1010;
+  border-radius: 6px;
+}
+
+div.footer{
+  background: #FFF;
+  width: calc(100% + 16px);
+  position: relative;
+  left: -8px;
+
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 8px;
+  bottom: -10px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.jumbotron {
+
+}
+
+.well {
+  background: #FDFDFD !important;
+}
+
+// Rows : row-content
+.row.row-content {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+.input-lg {
+  padding: 10px 16px !important;
+  line-height: 1.33333 !important;
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 100%;
+    max-width: 76% !important;
   }
 }
 

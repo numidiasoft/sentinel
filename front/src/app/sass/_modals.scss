@@ -1,0 +1,521 @@
+// Background used for the overlay
+.tg-modal-dark-background {
+  background-color: $background-dark;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: $background-dark;
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.modal-backdrop.in {
+  opacity: .9;
+  filter: alpha(opacity=90);
+}
+
+// Basic styles for modal block
+.modal {
+  display: block;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  font-size: 1.4rem;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+.modal-container {
+  margin: 5rem auto 10rem;
+  max-width: 60rem;
+}
+
+
+// Container for the modal
+.modal-dialog {
+  margin: auto;
+  position: relative;
+}
+
+// Fade in modal animations
+.modal.fade .modal-dialog {
+  transform: translate(0, -25%);
+  transition: transform .3s ease-out;
+}
+
+.modal.in .modal-dialog {
+  transform: translate(0, 0);
+}
+
+// Wrapper for the modal content
+.modal-content {
+  margin: auto;
+  padding: 0 2rem 2rem;
+  position: relative;
+  background: #fff;
+  border-radius: 3px;
+  transition: max-width .3s ease;
+
+
+  .modal-size-s & {
+    max-width: 50rem;
+  }
+
+  .modal-size-l & {
+    max-width: 70rem;
+  }
+}
+
+
+
+.modal-close {
+  padding: 0;
+  position: absolute;
+  top: -4.5rem;
+  right: 0;
+  color: lighten($text-body, 10%);
+  border: none;
+  background: none;
+  outline: none;
+  -webkit-appearance: none;
+
+  @include bp(900) {
+    top: 0;
+    right: -5rem;
+  }
+
+  span {
+    font-size: 2.4rem;
+  }
+
+  .rtl & {
+    right: auto;
+    left: 0;
+
+    @include bp(900) {
+      right: auto;
+      left: -5rem;
+    }
+  }
+}
+
+.modal-header {
+  padding: 3rem 3rem;
+  text-align: center;
+
+  h2 a {
+    color: inherit;
+  }
+}
+
+.modal-nav-left,
+.modal-nav-right {
+  width: 1.1rem;
+  height: 2rem;
+  position: absolute;
+  top: 3.5rem;
+  border: none;
+  background: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.modal-nav-left {
+  left: 2rem;
+  background-image: url(/images/icon-arrow-left-small.svg);
+  background-repeat: no-repeat;
+
+  .rtl & {
+    left: auto;
+    right: 2rem;
+    background-image: url(/images/icon-arrow-right-small.svg);
+  }
+}
+
+.modal-nav-right {
+  right: 2rem;
+  background-image: url(/images/icon-arrow-right-small.svg);
+  background-repeat: no-repeat;
+
+  .rtl & {
+    right: auto;
+    left: 2rem;
+    background-image: url(/images/icon-arrow-left-small.svg);
+  }
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.modal-subtitle {
+  margin: .5rem 0 0;
+  font-size: 1.4rem;
+}
+
+.modal-body {
+  label {
+    margin-bottom: .5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    .modal-downgrade &{
+      cursor: pointer;
+    }
+  }
+
+  textarea {
+    padding: .8rem 1.2rem;
+    width: 100%;
+    height: 14rem;
+    resize: none;
+  }
+
+  p img{
+    max-width: 100%;
+  }
+}
+
+.modal-footer {
+  padding: 3rem 0 0;
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.modal-outer-txt {
+  margin: 2rem auto 0;
+  max-width: 55rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: $text-body;
+
+  .modal-size-s & {
+    max-width: 50rem;
+  }
+
+  .modal-size-l & {
+    max-width: 70rem;
+  }
+  
+  p + p{
+    padding: 0;
+
+    margin-top: -10px;
+  }
+}
+
+// Conditions like IF, THEN...
+.modal-condition {
+  font-weight: 400;
+  color: $text-body-light;
+  text-transform: uppercase;
+
+  .modal-body & {
+    font-weight: 400;
+  }
+}
+
+.modal-footer-info{
+  padding: 25px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tg-info{
+  &.monthly{
+    color: #51C47D;
+    text-decoration: none;
+  }
+}
+
+// Modal used to display a list of channels
+.tg-modal-list-items {
+  margin: 0;
+  padding: 0;
+  max-height: 40rem;
+  overflow-y: auto;
+  list-style: none;
+
+  li {
+    padding: 1rem;
+    position: relative;
+    display: table;
+    width: 100%;
+    border-top: 1px solid $border;
+    cursor: pointer;
+    transition: background-color .2s ease-out;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:hover, &:focus {
+      background-color: $background-light;
+    }
+
+    &:after {
+      content: '\e60c';
+      margin-top: -1.7rem;
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: 2rem;
+      width: 34px;
+      height: 34px;
+      font-family: tg-icons;
+      font-size: 16px;
+      line-height: 3.2rem;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 50%;
+
+      .rtl & {
+        right: auto;
+        left: 2rem;
+      }
+    }
+  }
+
+  a {
+    color: $text-body;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .selected {
+    background-color: $flat-success;
+
+    &:hover, &:focus {
+      background-color: $flat-success;
+    }
+
+    &:after {
+      color: $flat-success;
+      display: block;
+    }
+
+    .tg-modal-list-items-txt {
+      color: #fff;
+    }
+  }
+
+  .connected {
+    background-color: darken($background-light, 5%);
+
+    &:hover, &:focus {
+      background-color: darken($background-light, 5%);
+    }
+
+    &:after {
+      display: block;
+      color: darken($background-light, 5%);
+    }
+
+    .tg-modal-list-items-txt {
+      color: $text-body-light;
+    }
+  }
+}
+
+// Avatar of the channel
+.tg-modal-list-items-img {
+  width: 5rem;
+  height: 5rem;
+  display: table-cell;
+  vertical-align: middle;
+
+  img {
+    width: 50px;
+    height: 50px;
+    display: block;
+  }
+}
+
+// Name of the channel
+.tg-modal-list-items-txt {
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 5.4rem;
+  display: table-cell;
+  width: auto;
+  vertical-align: middle;
+  font-size: 1.4rem;
+
+  .rtl & {
+    padding-left: 5.4rem;
+    padding-right: 2rem;
+  }
+}
+
+// Buttons used on channels connect
+.tg-modal-connect-btn {
+  border: none;
+  background: 0 0;
+  -webkit-appearance: none;
+  outline: 0;
+
+  &:hover, &:focus {
+    svg {
+      box-shadow: 0 0 0 5px #fff, 0 0 0 6px $border;
+    }
+  }
+
+  svg {
+    margin: .7rem auto 1.5rem;
+    width: 74px;
+    height: 74px;
+    display: block;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #fff, 0 0 0 6px #fff;
+    transition: box-shadow .2s ease-out;
+  }
+}
+
+.modal-tour {
+  margin: 4rem auto 0;
+  position: relative;
+  width: 60rem;
+  background: #fff;
+
+  figure {
+    margin: 0;
+    width: 600px;
+    height: 376px;
+  }
+
+  video {
+    background: #000 url(/images/loading/loading-video.svg) 50% 50% no-repeat;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.modal-tour-txt {
+  padding: 2rem;
+  min-height: 14rem;
+
+  h3 {
+    margin-top: 0;
+    font-size: 2.2rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.modal-tour-skip {
+  position: absolute;
+  bottom: -3rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  a {
+    color: lighten($text-body, 10%);
+  }
+}
+
+.modal-tour-next, .modal-tour-prev {
+  margin-top: -3rem;
+  position: absolute;
+  top: 50%;
+  width: 6rem;
+  height: 6rem;
+  line-height: 1;
+  font-size: 3rem;
+  color: $text-placeholder;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 50%;
+  outline: none;
+
+  &[disabled] {
+    display: none;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+  }
+}
+
+.modal-tour-next {
+  right: -8rem;
+
+  &:before {
+    background-image: url(/images/icon-arrow-right.svg);
+    background-position: 50% 50%;
+  }
+}
+
+.modal-tour-prev {
+  left: -8rem;
+
+  &:before {
+    background-image: url(/images/icon-arrow-left.svg);
+    background-position: 43% 50%;
+  }
+}
+
+
+// Subscribe --> Thank you 
+.modal-subscription-done,
+.modal-downgrade{
+
+  .modal-content .modal-body{
+
+    // Remove last paragraph extra margin
+    p:last-child{
+      padding: 0;
+      margin: 0;
+
+      img{
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Modal load 
+.modal-load .modal-content {
+  height: 140px;
+}
+
+// Downgrade
+.modal-downgrade{
+  p:first-child{
+    margin-top: 0;
+  }
+
+  input[type=checkbox]{
+    margin: 4px 4px -4px 0;
+  }
+}
+// SIZES

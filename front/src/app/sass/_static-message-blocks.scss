@@ -1,0 +1,794 @@
+// Column for the checkboxes
+.tg-column-checkboxes {
+  padding: 0;
+  width: 4rem;
+  position: static;
+  text-align: right;
+
+  .tg-checkbox {
+    margin-top: 2.2rem;
+  }
+}
+
+// Wrapper for the message block
+.tg-content-item-holder {
+  padding: 0 2rem;
+  width: calc(100% - 4rem);
+}
+
+// Content of the message block
+.tg-content-block.is-replied {
+  position: relative;
+}
+
+.tg-content-block {
+  position: relative;
+  padding: 2rem 0;
+
+  &:hover .tg-content-action-icons,
+  &:focus .tg-content-action-icons,
+  .visible.tg-content-action-icons {
+    opacity: 1;
+  }
+}
+.conversation {
+  .tg-content-block:not(.important) {
+    font-size: .8em;
+    opacity: .6;
+  }
+}
+
+.tg-content-author-avatar {
+  margin: 0 1rem 0 0;
+  vertical-align: middle;
+
+  .rtl & {
+    margin: 0 0 0 1rem;
+  }
+}
+
+.tg-content-author {
+  display: inline-block;
+  margin: 0 0 .5rem;
+  font-weight: 600;
+  color: $text-title;
+
+  a {
+    color: $text-title;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.tg-content-author-account {
+  margin-left: .5rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: $text-body;
+}
+
+.tg-content-actions {
+  text-align: right;
+
+  .rtl & {
+    text-align: left;
+  }
+}
+
+.message-labels {
+  margin: 0;
+  list-style: none;
+  font-size: 0;
+
+  li {
+    margin: 0 0 .5rem;
+    padding: .3rem .5rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    border-radius: 4px;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+
+    + li {
+      margin-left: .5rem;
+
+      .rtl & {
+        margin-left: 0;
+        margin-right: .5rem;
+      }
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+// Polarity
+.message-feeling {
+  margin: 0 1rem;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: $text-body-light;
+  cursor: pointer;
+}
+
+.message-feeling-positive {
+  background: $flat-success;
+}
+
+.message-feeling-negative {
+  background: $flat-error;
+}
+
+.feelings-pickr {
+  .dropdown-menu-group-content {
+    padding: 1rem;
+  }
+
+  .selected {
+    background: $text-body-light;
+  }
+
+  .positive {
+    color: $flat-success;
+
+    &.selected {
+      color: #fff;
+      background: $flat-success;
+    }
+  }
+
+  .negative {
+    color: $flat-error;
+
+    &.selected {
+      color: #fff;
+      background: $flat-error;
+    }
+  }
+}
+
+// Timestamp of the message
+.tg-message-timeago {
+  font-weight: 600;
+  font-size: 1.2rem;
+
+  a {
+    color: $text-body-light;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: none;
+  }
+}
+
+// 'Is replied' icon
+.tg-message-replied {
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+  display: none;
+  overflow: hidden;
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    width: 0;
+    height: 0;
+    border-width: 0 28px 28px 0;
+    border-style: solid;
+    border-color: transparent #4bc57a transparent transparent;
+    text-align: right;
+
+    .rtl & {
+      border-width: 0 0 28px 28px;
+      border-style: solid;
+      border-color: transparent transparent transparent #4bc57a;
+    }
+  }
+
+  .rtl & {
+    right: auto;
+    left: -1rem;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    z-index: 1;
+    color: #fff;
+    font-size: 16px;
+  }
+}
+
+.tg-content-block.is-replied .tg-message-replied {
+  display: block;
+}
+
+// Text of the message
+.tg-content-message {
+  padding-right: 7rem;
+  max-width: 120rem;
+  word-wrap: break-word;
+
+  p {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Assignee
+.message-assignee {
+  margin-top: -1.5rem;
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  .rtl & {
+    right: auto;
+    left: 0;
+  }
+
+  .dropdown-menu-group {
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+
+    .rtl & {
+      right: auto;
+      left: 0;
+    }
+  }
+}
+
+.message-assignee-avatar {
+  .tg-avatar {
+      display: block;
+      width: 30px;
+      height: 30px;
+      line-height: 3rem;
+      cursor: pointer;
+    }
+}
+
+// Info for the message
+.tg-content-message-infos {
+  position: relative;
+  top: .7rem;
+  color: $text-body-light;
+  font-weight: 600;
+  font-size: 1.2rem;
+
+  .icon {
+    margin-right: 1rem;
+    font-size: 16px;
+  }
+
+  .icon.tg-icon-task-danger,
+  .icon.icon-filled-alert-validate {
+    margin-top: -.4rem;
+    margin-right: 0;
+    margin-left: 1rem;
+
+    .rtl & {
+      margin-right: 1rem;
+      margin-left: 0;
+    }
+  }
+
+  .icon-filled-alert-validate {
+    padding: .3rem;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+    color: #fff;
+    background-color: $background-light;
+  }
+}
+
+.tg-message-info-service-name {
+  &:after {
+    margin: 0 .5rem 0 .7rem;
+    content: '\2022';
+
+    .rtl & {
+      margin: 0 .7rem 0 .5rem;
+    }
+  }
+}
+
+.tg-content-archived {
+  display: none;
+  margin: -.3rem .2rem 0 2rem;
+  padding: .2rem 1rem;
+  font-weight: 700;
+  color: $text-placeholder;
+  border: 1px solid $border;
+  border-radius: 2px;
+
+  .rtl & {
+    margin: -.3rem 2rem 0 .2rem;
+  }
+
+  .tg-content-block.is-archived & {
+    display: inline-block;
+  }
+}
+
+.tg-content-message-social-activity-number {
+  margin-right: .3rem;
+  font-weight: 600;
+
+  &:before {
+    content: '\2022';
+    margin: 0 .5rem;
+    vertical-align: middle;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+  }
+}
+
+// Actions on the message
+.tg-content-action-icons {
+  text-align: right;
+  transition: opacity .1s ease-out;
+
+  @include desktop {
+    opacity: 0;
+  }
+
+  .rtl & {
+    text-align: left;
+  }
+
+  .dropdown-menu {
+    min-width: 16rem;
+
+    .rtl & {
+      right: auto;
+      left: 2rem;
+    }
+  }
+
+  .btn {
+    padding: 0 1rem;
+    display: inline-block;
+    vertical-align: top;
+    height: 3rem;
+    color: $text-body-light;
+    border: none;
+    box-shadow: none;
+    transition: color .2s ease-out;
+
+    &:hover,
+    &:focus {
+      color: $text-body;
+      background: #fff;
+    }
+  }
+
+  .btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 40px;
+  }
+
+  .btn.tg-btn-flat.has-comments {
+    margin: 0 .5rem;
+    vertical-align: top;
+    font-size: 1.2rem;
+    background-color: $background-light;
+
+    .icon + span {
+      margin: .5rem;
+    }
+  }
+}
+
+// Details of the message
+.tg-details {
+  color: $text-body-light;
+  font-weight: 600;
+  font-size: 1.2rem;
+
+  .divider {
+    margin: 2rem 0 1rem;
+    padding-top: 1px;
+  }
+}
+
+// Tasks of the message
+.tg-task-message {
+  margin: 2rem 0 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+  background-color: $background-lighter;
+  border-radius: 3px;
+
+  .tg-icon-task-danger {
+    margin: 0 1rem 0 2rem;
+    vertical-align: middle;
+    color: #fff;
+    background-color: $flat-alert;
+
+    .rtl & {
+      margin: 0 2rem 0 1rem;
+    }
+  }
+
+  small {
+    margin: .5rem 0 0 2rem;
+    display: block;
+    overflow: hidden;
+    line-height: 1.6rem;
+
+    .rtl & {
+      margin: .5rem 2rem 0 0;
+    }
+
+    @include tablet {
+      margin: .5rem 0 0 5.7rem;
+
+      .rtl & {
+        margin: .5rem 5.7rem 0 0;
+      }
+    }
+  }
+}
+
+.tg-task-marker {
+  content: '';
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 6px;
+  height: 100%;
+  background-color: $flat-alert;
+  border-radius: 3px 0 0 3px;
+}
+
+.tg-content-block-task {
+  position: relative;
+  top: 2px;
+
+  span {
+    line-height: 2.2rem;
+  }
+}
+
+.tg-task-title {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  width: 6.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+
+  @include desktop {
+    overflow: auto;
+    width: auto;
+  }
+}
+
+.tg-task-assign {
+  margin: 0 0 0 3rem;
+  display: block;
+  position: relative;
+
+  .rtl & {
+    margin: 0 3rem 0 0;
+  }
+
+  @include desktop {
+    margin: 0 0 0 .4rem;
+    padding-right: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+
+    .rtl & {
+      margin: 0 .4rem 0 0;
+      padding-right: 0;
+      padding-left: 1rem;
+    }
+  }
+}
+
+.tg-task-avatar {
+  margin: .5rem 0 0 2rem;
+
+  .rtl & {
+    margin: .5rem 2rem 0 0;
+  }
+
+  @include desktop {
+    margin: 0 0 0 1rem;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 12rem;
+
+    .rtl & {
+      margin: 0 1rem 0 0;
+    }
+  }
+
+  .tg-avatar {
+    margin: 0 .5rem 0 0;
+
+    .rtl & {
+      margin: 0 0 0 .5rem;
+    }
+  }
+}
+
+.tg-task-counter {
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  background-color: $background;
+  box-shadow: inset 1px 1px 1px 0 rgba(0,0,0,.1);
+
+  .tg-btn-dropdown {
+    padding: 0;
+    position: relative;
+    top: -.2rem;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.tg-task-action {
+  padding-right: 0;
+
+  .rtl & {
+    padding-left: 0;
+  }
+
+  .tg-content-action-icons {
+    margin-top: 0;
+  }
+
+  .btn {
+    background: transparent;
+
+    &:hover, &:focus {
+      background: transparent;
+    }
+  }
+}
+
+// Feed of comments
+.tg-comment-feed-container {
+  padding-left: 4.7rem;
+
+  .rtl & {
+    padding-left: 0;
+    padding-right: 4.7rem;
+  }
+}
+
+.tg-comment-feed {
+  padding: 2rem 0;
+}
+
+.tg-comment-feed-list {
+  margin: 0;
+  position: relative;
+  padding: 0 0 1rem;
+  list-style: none;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    left: 3rem;
+    bottom: 0;
+    border-left: 2px solid $border;
+
+    .rtl & {
+      left: auto;
+      right: 3rem;
+    }
+  }
+
+  .tg-notification-user-name {
+    font-weight: 700;
+  }
+}
+
+.tg-task-item {
+  position: relative;
+}
+
+.tg-task-more-items {
+  .tg-task-item-content {
+    padding: 0 0 1rem;
+  }
+}
+
+.tg-comment-item-holder {
+  margin-left: 3rem;
+  width: calc(100% - 3rem);
+
+  .rtl & {
+    margin-left: 0;
+    margin-right: 3rem;
+  }
+}
+
+.tg-task-item-content {
+  margin-left: 3rem;
+  padding: 1rem 0;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(100% - 3rem);
+
+  &:hover, &:focus {
+    .tg-btn-delete-rounded {
+      opacity: 1;
+    }
+  }
+
+  .rtl & {
+    margin-left: 0;
+    margin-right: 3rem;
+  }
+
+  .icon-filled-more {
+    position: absolute;
+    top: .7rem;
+    left: -3.7rem;
+    z-index: 10;
+    background: #fff;
+    color: $border;
+
+    .rtl & {
+      left: auto;
+      right: -3.7rem;
+    }
+  }
+
+  .tg-btn-delete-rounded {
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+    opacity: 0;
+    transition: .2s opacity ease-out;
+    }
+}
+
+.tg-task-item-content-time {
+  color: $text-body-light;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.tg-task-item-content-message {
+  padding: 1.5rem 4rem 1.5rem 1.5rem;
+  background-color: $background-lighter;
+  border-radius: 3px;
+
+  .rtl & {
+    padding: 1.5rem 1.5rem 1.5rem 4rem;
+  }
+}
+
+.tg-comment-item {
+  position: relative;
+  width: calc(100% - 2rem);
+}
+
+.tg-comment-item-avatar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 4.2rem;
+  height: 4.2rem;
+  z-index: 10;
+  border: 2px solid #fff;
+
+  .rtl & {
+    left: auto;
+    right: .6rem;
+  }
+}
+
+.tg-task-item-content-data {
+  margin: 1rem 0 0;
+  font-size: 1.2rem;
+
+  .tg-task-item-content-name:after {
+    content: '\2022';
+    margin: 0 .5rem;
+    vertical-align: middle;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5rem;
+  }
+}
+
+.tg-task-item-content-name {
+  color: $text-body-light;
+}
+
+.tg-comment-publisher {
+  padding: 0 2rem;
+  clear: both;
+
+  .tg-content-author-avatar {
+    margin-left: -.8rem;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: -.8rem;
+    }
+  }
+}
+
+.tg-content-block-task-input-group {
+  display: table-cell;
+
+  .tg-task-input-group-holder {
+    margin-right: 2rem;
+    background-color: #fff;
+
+    .rtl & {
+      margin-right: 1rem;
+      margin-left: 2rem;
+    }
+  }
+}
+
+// Private messages
+.tg-entry-marker {
+  border-left: 5px solid $flat-secondary;
+}
+
+// FIXME: this is not an actual component
+.sk-tooltip-original-post-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border: none;
+  overflow: hidden;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+

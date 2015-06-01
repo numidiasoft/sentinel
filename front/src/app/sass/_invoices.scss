@@ -1,0 +1,23 @@
+.tg-invoices-history{
+  padding: 0;
+
+  .tg-invoice{
+    clear: both;
+    padding: 0;
+
+    > div{
+      padding: 0;
+      margin-top: .8em;
+    }
+
+
+    a[class*="icon"]{
+      color: #A9B5C5;
+      padding-right: 32px;
+    }
+
+    &:hover a[class*="icon"]{
+      color: $text-link;
+    }
+  }
+}

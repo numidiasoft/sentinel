@@ -3,15 +3,14 @@
 var statuses = angular.module('sentinel.components.statuses.edit', []);
 
 class EditStatusCtrl {
-  constructor($scope, $stateParams, $timeout, $state, statusResource) {
+  constructor($scope, $stateParams, $timeout, statusResource) {
     var self = this;
     statusResource.getStatus($stateParams.id).then( (response) => {
       $scope.status = angular.copy(response);
 
-      $scope.patch = function () {
-
+      $scope.update = function (status) {
         statusResource
-          .patch($scope.status, response.$href('statuses'))
+          .update(status, response.$href('statuses'))
           .then(() => {
             self.flash($scope, $timeout, 500);
           })
@@ -31,7 +30,7 @@ class EditStatusCtrl {
   }
 }
 
-EditStatusCtrl.$inject =  ['$scope','$stateParams', '$timeout', '$state', 'StatusResource'];
+EditStatusCtrl.$inject =  ['$scope','$stateParams', '$timeout', 'StatusResource'];
 
 statuses
   .controller('EditStatusCtrl', EditStatusCtrl);

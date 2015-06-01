@@ -1,0 +1,37 @@
+// Fonts
+
+$versions: 'regular','bold','light';
+$font-name: 'radikal';
+@each $version in $versions{
+  @include font( '../fonts/radikal/', $font-name + '_' + $version);
+}
+
+// Icons
+//
+// Main icons          - Tigerlily icons, filled
+// .icon-circle        - Utility class : give you a circled icon 
+// .icon-alert         - icons with plain background, used for message alerts
+
+// Icons font faces
+
+@font-face {
+  font-family: 'tg-icons';
+  src:url('../fonts/tg-icons.eot');
+  src:url('../fonts/tg-icons.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/tg-icons.woff') format('woff'),
+    url('../fonts/tg-icons.ttf') format('truetype'),
+    url('../fonts/tg-icons.svg#../fonts/tg-icons') format('svg');
+  font-weight: normal !important;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'tg-icons-outlines';
+  src:url('../fonts/tg-icons-outlines.eot');
+  src:url('../fonts/tg-icons-outlines.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/tg-icons-outlines.woff') format('woff'),
+    url('../fonts/tg-icons-outlines.ttf') format('truetype'),
+    url('../fonts/tg-icons-outlines.svg#../fonts/tg-icons-outlines') format('svg');
+  font-weight: normal !important;
+  font-style: normal;
+}

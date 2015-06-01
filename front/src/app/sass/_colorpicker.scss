@@ -1,0 +1,81 @@
+.tg-colorpicker {
+  max-width: 45rem;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding-bottom: 7.69%;
+    display: inline-block;
+    position: relative;
+    width: 7.69%;
+    height: 0;
+    list-style: none;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+    outline: none;
+
+    &:hover, &:focus {
+      z-index: 2;
+    }
+
+    &:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+    }
+  }
+
+  .tg-colorpicker-active, li:hover, li:focus {
+    z-index: 1;
+    position: relative;
+    transform: scale(1.4);
+  }
+
+  .icon-filled-alert-validate:before {
+    margin-top: -.6rem;
+    margin-left: -.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    color: #fff;
+    font-size: 1rem;
+
+    .rtl & {
+      padding: .8rem 1rem 0 0;
+    }
+  }
+}
+
+.tg-colorpicker-orange {
+  background-color: #EF572D;
+}
+
+.tg-colorpicker-orange-light {
+  background-color: #EC8857;
+}
+
+.tg-colorpicker-yellow {
+  background-color: #FEDE51;
+}
+
+.tg-colorpicker-green {
+  background-color: #5BC56B;
+}
+
+.tg-colorpicker-dark-green {
+  background-color: #478F95;
+}
+
+.tg-colorpicker-blue {
+  background-color: #5B96EA;
+}
+
+.tg-colorpicker-purple {
+  background-color: #6D50AB;
+}

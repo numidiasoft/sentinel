@@ -1,0 +1,224 @@
+// FIXME: remove everything related to Select 2 and use our own components
+.select2-container {
+  margin: 0;
+  position: relative;
+  display: inline-block;
+
+  .label-bullet {
+    margin-left: .5rem;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: .5rem;
+    }
+  }
+
+  .btn-full-width & {
+    width: 100%;
+  }
+}
+
+.select2-offscreen, .select2-offscreen:focus {
+  position: absolute!important;
+  top: 0!important;
+  left: 0!important;
+  display: none;
+  overflow: hidden!important;
+  clip: rect(0 0 0 0)!important;
+  margin: 0!important;
+  padding: 0!important;
+  width: 1px!important;
+  height: 1px!important;
+  outline: 0!important;
+  border: 0!important;
+}
+
+.select2-choice {
+  color: $text-body;
+  background-color: #fff;
+  display: inline-block;
+  overflow: hidden;
+  height: 4rem;
+  vertical-align: middle;
+  white-space: nowrap;
+  line-height: 3.6rem;
+  border: 1px solid $border;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+
+  .btn-full-width & {
+    width: 100%;
+  }
+
+  .rtl & {
+    padding-left: 5rem;
+    padding-right: 1rem;
+    text-align: right;
+
+    &:after {
+      right: auto;
+      left: 1rem;
+    }
+  }
+
+  .select2-arrow {
+    display: none;
+  }
+}
+
+.select2-drop-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  border: 0;
+  background-color: #fff;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.select2-container .select2-choice abbr, .select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice .select2-search-choice-close, .select2-container.select2-container-disabled .select2-choice abbr, .select2-display-none, .select2-results .select2-selected {
+  display: none;
+}
+
+.select2-drop {
+  position: absolute;
+  top: 100%;
+  z-index: 9999;
+  float: left;
+  min-width: 16rem;
+  border: 1px solid $border;
+  border-radius: 3px;
+}
+
+.select2-results {
+  margin: 0;
+  padding: .5rem 0;
+  max-height: 26rem;
+  overflow-y: auto;
+  list-style: none;
+  font-size: 1.2rem;
+  background: #fff;
+
+  li {
+    padding: 0;
+    list-style: none;
+    font-size: 1.3rem;
+  }
+
+  .select2-no-results {
+    padding: 0 .5rem;
+  }
+}
+
+.select2-result-label {
+  margin: 0 .5rem;
+  padding: .5rem;
+  display: block;
+  border-radius: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: .2s background-color ease-out;
+
+  &:hover, &:focus {
+    background-color: $background-light;
+  }
+
+  .label-bullet {
+    margin-left: .5rem;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: .5rem;
+    }
+  }
+}
+
+.select2-search {
+  padding: 1rem;
+  background: $background-lighter;
+  border-bottom: 1px solid $border;
+}
+
+.select2-search input {
+  margin: 0;
+  padding: .4rem .5rem;
+  width: 100%;
+  min-height: 3.5rem;
+  outline: 0;
+  border: 1px solid $border;
+  border-radius: 3px;
+  box-shadow: none;
+  font-size: 1.2rem;
+}
+
+.select2-hidden-accessible {
+  display: none;
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.select2-drop-active {
+}
+
+.tt-dropdown-menu {
+  margin-top: .5rem;
+  padding: 5rem 0 1.5rem;
+  width: 100%;
+  min-width: 16rem;
+  top: -.5rem !important;
+  left: 0;
+  z-index: 100;
+  float: left;
+  font-size: 1.2rem;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.05);
+  border: 1px solid $border;
+}
+
+.tt-suggestions {
+  max-height: 26rem;
+  overflow-y: auto;
+}
+
+.tt-suggestion {
+  margin: 0 .5rem;
+  height: 3rem;
+  line-height: 3rem;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color .2s ease-out;
+
+  &:hover, &:focus {
+    background: $background-light;
+  }
+}
+
+.tt-suggestion .tg-avatar {
+  margin: 0 1rem;
+}
+
+.tt-query {
+  z-index: 101;
+}

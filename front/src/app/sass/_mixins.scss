@@ -1,0 +1,54 @@
+// FONTS 
+@mixin font($url, $name){
+  @font-face {
+    font-family: #{$name};
+    src:url("#{$url}#{$name}.eot?") format("eot"),
+        url("#{$url}#{$name}.woff") format("woff"),
+        url("#{$url}#{$name}.svg##{$name}") format("svg"),
+        url("#{$url}#{$name}.ttf") format("truetype");
+  }
+}
+
+// Loader with 3 dots
+@mixin tg-loader($dot-width: 20) {
+  width: $dot-width * 4 + px;
+  height: $dot-width + px;
+  .duo {
+    width: $dot-width * 2 + $dot-width / 2 + px;
+    height: $dot-width + px;
+  }
+  .dot {
+    width: $dot-width + px;
+    height: $dot-width + px;
+  }
+  .duo2 {
+    left: $dot-width + $dot-width / 2 + px;
+  }
+}
+
+// Clearfix
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Media queries
+// Custom media query
+@mixin bp($point) {
+  @media screen and (min-width: $point / 16 + em) { @content; }
+}
+
+// Different sizes
+@mixin tablet {
+  @media screen and (min-width: 768 / 16 + em) { @content; }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 940 / 16 + em) { @content; }
+}

@@ -20,22 +20,27 @@ var app = angular.module('sentinel', ['externalDependencies', 'components']);
 app
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('home', {
-    url: '/',
+  .state('statuses', {
+    abstract: true,
+    url: '/statuses',
     templateUrl: 'app/main/main.html',
-    controller: 'MainCtrl'
+    controller: "MainCtrl"
   })
-  .state('editStatus', {
-    url: '/statuses/:id',
+  .state( "statuses.list", {
+    url: '/list',
+    templateUrl: 'app/components/statuses/statuses.html',
+    controller: "StatusesCtrl"
+  })
+  .state('statuses.edit', {
+    url: '/edit/:id',
     templateUrl: 'app/components/statuses/edit.html',
     controller: 'EditStatusCtrl'
   })
-  .state('newStatus', {
-    url: '/statuses',
+  .state('statuses.create', {
+    url: '/create',
     templateUrl: 'app/components/statuses/new.html',
     controller: 'NewStatusCtrl'
   });
 
-
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('statuses/list');
 });

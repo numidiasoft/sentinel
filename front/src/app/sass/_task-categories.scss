@@ -1,0 +1,62 @@
+.task-categories, .account-rules {
+
+  .tools {
+    margin-top: -1.5rem;
+    padding-right: 0;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    opacity: 0;
+    text-align: right;
+
+    .rtl & {
+      right: auto;
+      left: 0;
+    }
+
+    .touch & {
+      opacity: 1;
+    }
+
+    a {
+      color: $text-body-light;
+    }
+  }
+
+  .tg-entry-item:hover .tools {
+    opacity: 1;
+  }
+
+  .icon-filled-alert-close,
+  .icon-filled-big-edit {
+    position: relative;
+    top: .5rem;
+  }
+
+  .icon {
+    border: none;
+    background: none;
+    outline: none;
+
+    span {
+      display: none;
+    }
+
+    &.icon-filled-big-edit {
+      color: $text-link;
+    }
+
+    &.icon-filled-alert-close {
+      color: $flat-error;
+    }
+  }
+
+  span + .btn {
+    margin-left: 2rem;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: 2rem;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.tg-content-item-single {
+  .tg-content-item-holder {
+    width: 100%;
+  }
+
+  .message-replies-container {
+  width: 100%;
+  }
+
+  .tg-content-block-reply {
+    margin: 0 0 2rem 4rem;
+    padding: 2rem;
+    max-width: calc(100% - 4rem);
+
+    .rtl & {
+      margin: 0 4rem 2rem 0;
+    }
+  }
+}
+
+.tg-content-block {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.tg-content-block-reply {
+  margin: 2.5rem 0 2rem 4rem;
+  width: 100%;
+  border-left: 5px solid $border;
+
+  .rtl & {
+    margin: 2.5rem 4rem 2rem 0;
+    border-left: none;
+    border-right: 5px solid $border;
+  }
+}
+
+// Deleted message info
+.tg-content-trash-message {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: $text-body-light;
+
+  .rtl & {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  .icon {
+    margin-right: .5rem;
+    font-size: 14px;
+    color: $text-placeholder;
+
+    .rtl & {
+      margin-right: 0;
+      margin-left: .5rem;
+    }
+  }
+}

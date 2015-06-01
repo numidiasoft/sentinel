@@ -1,0 +1,262 @@
+// LAYOUT UTILS
+
+// Inline block
+.tg-inline-block {
+  display: inline-block;
+}
+
+.tg-inline-block-valign {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tg-table {
+  display: table;
+  width: 100%;
+}
+
+.tg-table-cell {
+  display: table-cell;
+}
+
+.tg-table-cell-valign {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// Vertical align class, it works with unknown heights and IE9+
+.valign {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// RTL Support
+.rtl {
+  direction: rtl;
+}
+
+// Hidden elements
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+// Clearfix
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+// Floats
+.pull-origin {
+  float: left;
+
+  .rtl & {
+    float: right;
+  }
+}
+
+.pull-right {
+  float: right;
+}
+
+.push-direction {
+  float: right;
+
+  .rtl & {
+    float: left;
+  }
+}
+
+// Rotates
+.rotate-right {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+
+.rotate-left {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+// Type
+.uppercase {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.no-bold {
+  font-weight: normal;
+}
+
+// Unstyled list
+// Keep this above padding utils so that they don't get erased when used together
+.tg-unstyled-list {
+  list-style: none;
+  padding: 0;
+}
+
+// Margin
+.no-margin {
+  margin: 0;
+}
+
+.tg-margin-y-large{
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+.tg-margin-y{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+// Paddings
+.tg-padding {
+  padding: 2rem;
+}
+
+.tg-padding-top {
+  padding-top: 2rem;
+}
+
+.tg-padding-right {
+  padding-right: 2rem;
+}
+
+.tg-padding-bottom {
+  padding-bottom: 2rem;
+}
+
+.tg-padding-left {
+  padding-left: 2rem;
+}
+
+.tg-padding-light {
+  padding: 1rem;
+}
+
+.tg-padding-top-light {
+  padding-top: 1rem;
+}
+
+.tg-padding-right-light {
+  padding-right: 1rem;
+}
+
+.tg-padding-bottom-light {
+  padding-bottom: 1rem;
+}
+
+.tg-padding-left-light {
+  padding-left: 1rem;
+}
+
+.tg-padding-large {
+  padding: 4rem;
+}
+
+.tg-padding-top-large {
+  padding-top: 4rem;
+}
+
+.tg-padding-right-large {
+  padding-right: 4rem;
+}
+
+.tg-padding-bottom-large {
+  padding-bottom: 4rem;
+}
+
+.tg-padding-left-large {
+  padding-left: 4rem;
+}
+
+// FIXME: this class isn't self-describing enough
+.attached-bottom {
+  bottom: 2rem;
+}
+
+// FORMATTING UTILS
+
+// Links
+.tg-link-text-body-color {
+  color: $text-body;
+  &:hover, &:focus {
+    color: $text-body;
+    cursor: pointer;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+
+  .rtl & {
+    text-align: right;
+  }
+}
+
+.text-right {
+  text-align: right;
+
+  .rtl & {
+    text-align: left;
+  }
+}
+
+// Positions
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.right {
+  right: 0;
+}
+
+// Colors
+.bg-background-light {
+  background-color: $background-light;
+}
+
+// Blocks containers
+.well{
+  background: $background-light;
+
+  &--main-info{
+    padding: 12px;
+    text-align: center;
+
+    p{
+      line-height: 0;
+    }
+  }
+
+
+  &--main-info .bold{
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: $text-body;
+  }
+  &--main-info p{
+    font-size: 14px;
+    color: $text-info;
+  }
+}
+
+// Force body to scroll
+.scrollable{
+  overflow: auto;
+}

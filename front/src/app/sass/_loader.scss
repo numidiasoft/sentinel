@@ -1,0 +1,170 @@
+.tg-loader {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  .icon {
+    margin-right: 1rem;
+  }
+
+  .duo {
+    position: absolute;
+    opacity: .8;
+  }
+
+  .dot {
+    position: absolute;
+    background: url("/images/loading/loading.svg") 0 0 no-repeat;
+    background-size: 100%;
+  }
+
+  .duo1 {
+    left: 0;
+  }
+}
+
+.dot-a {
+  left: 0px;
+}
+
+.dot-b {
+  right: 0px;
+}
+
+.duo, .dot {
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.duo1 {
+  animation-name: spin;
+}
+
+.duo2 {
+  animation-name: spin;
+  animation-direction: reverse;
+}
+
+.duo2 .dot-b {
+  animation-name: onOff;
+}
+
+.duo1 .dot-a {
+  opacity: 0;
+  animation-name: onOff;
+  animation-direction: reverse;
+}
+
+// different size Loader
+.tg-loader-md {
+  @include tg-loader();
+}
+
+.tg-loader-sm {
+  @include tg-loader(10);
+}
+
+.tg-loader-xs {
+  @include tg-loader(6);
+}
+
+// Dark theme
+
+.tg-dark-theme {
+  .tg-loader {
+    .dot {
+      background: url("/images/loading/loading-darktheme.svg") 0 0 no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+
+// Empty loader
+.tg-container-wrapper {
+  > .tg-loader {
+    display: none;
+  }
+}
+
+.tg-main-loader {
+  background-color: $background-dark;
+  .duo {
+    opacity: 1;
+  }
+
+  &:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: $background-dark;
+    content: "";
+  }
+
+  &:after {
+    position: fixed;
+    top: calc(50% - 100px);
+    left: calc(50% - 40px);
+    z-index: 1;
+    display: block;
+    content: "";
+    height: 90px;
+    width: 90px;
+    background: url("/images/loading/loading-logo-sleek.svg") 0 0 no-repeat;
+    transform: scale(0.7);
+  }
+
+  > .tg-loader {
+    position: fixed;
+    top: 52%;
+    left: calc(50% - 16px);
+    z-index: 1;
+    display: block;
+  }
+}
+
+.is-loading-more {
+  .duo {
+    opacity: 1;
+  }
+}
+
+
+// Into modal 
+// On load 
+.modal-load .tg-state{
+  .tg-state-container{
+    top: 0;
+
+    .tg-loader{
+      margin: 0;
+    }
+  }
+
+  max-width: 40px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: inherit;
+  transform: translateY(-50%);
+  margin: auto;
+  display: block;
+  float: none;
+}
+
+// Animations
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(180deg); }
+}
+
+@keyframes onOff {
+  0% { opacity: 0; }
+  49% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}

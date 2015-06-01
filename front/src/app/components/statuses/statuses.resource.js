@@ -20,7 +20,7 @@ class StatusResource {
        .$get(url);
    }
 
-   patch(status, path) {
+   update(status, path) {
      return this.resource.$patch(path, null,  {
        check: {
          url: status.url,

@@ -1,0 +1,199 @@
+// Wrapper for the team section
+.tg-team-section {
+  height: 100%;
+  background-color: $background-lighter;
+}
+
+// List of users
+.tg-user-block-team {
+  background-color: #fff;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 2em;
+    height: 35rem;
+    list-style: none;
+
+    &:first-child {
+      padding: 2em 0 .8rem;
+    }
+
+    figure:hover {
+      cursor: pointer;
+    }
+  }
+
+  p {
+    padding: 0;
+    margin: 2rem 0;
+    height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    font-size: 1.2rem;
+    color: $text-body-light;
+  }
+
+  .btn-danger {
+    margin: 0 0 0 1rem;
+
+    .rtl & {
+      margin: 0 1rem 0 0;
+    }
+  }
+}
+
+// Possible actions on users
+.tg-user-card-action {
+  visibility: hidden;
+  opacity: 0;
+
+  .touch & {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  a {
+    color: $text-body-light;
+  }
+}
+
+.tg-user-card {
+  padding: 2rem 0 0;
+
+  &:hover, &:focus {
+    .tg-user-card-action {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .touch & {
+    .tg-user-card-action {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.tg-user-card-add {
+  figure {
+    background: $background;
+  }
+}
+
+// Labels for the user, eg: admin
+.badge-text {
+  padding: .2rem 1rem;
+  height: 2rem;
+  border-radius: 40px;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #fff;
+}
+
+.label-default {
+  background-color: $background;
+}
+
+.tg-link-you {
+  background: $text-link;
+}
+
+// Pending team members
+.tg-user-bloc-pending {
+  margin: auto;
+  width: 50%;
+  max-width: 50rem;
+}
+
+.tg-user-bloc-pending-actions {
+  width: 12rem;
+  min-width: 12rem;
+  text-align: right;
+
+  .rtl & {
+    text-align: left;
+  }
+}
+
+.tg-user-bloc-delete, .tg-user-bloc-edit {
+  button {
+    border: none;
+    background: none;
+    outline: none;
+
+    span {
+      display: none;
+    }
+  }
+}
+
+.tg-user-bloc-edit {
+  padding: 0 1rem;
+
+  .icon-filled-big-edit,.icon-mail {
+    cursor: pointer;
+    color: $text-link;
+  }
+}
+
+.tg-user-bloc-delete {
+  padding: 0 1rem;
+  border-left: 1px solid $border;
+
+  .rtl & {
+    border-left: none;
+    border-right: 1px solid $border;
+  }
+
+  .icon-filled-alert-close {
+    cursor: pointer;
+    color: $flat-error;
+  }
+}
+
+.tg-user-card-name {
+  margin-bottom: 0;
+  color: $text-body;
+}
+
+.tg-user-card-jobs {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: $text-body-light;
+}
+
+.tg-user-block-pending {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  padding: 6rem 0;
+
+  h4 {
+    padding: 0 0 4rem;
+  }
+
+  .tg-pending-edit {
+    display: inline-block;
+  }
+}
+
+.tg-user-card-add {
+  figure {
+    cursor: pointer;
+  }
+}

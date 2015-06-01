@@ -1,0 +1,30 @@
+.task-label {
+  padding: 0 1rem 0 3.5rem;
+  display: inline-block;
+  line-height: 4rem;
+  font-size: 1.3rem;
+  position: relative;
+  border: 1px solid $border;
+  border-radius: 3px;
+
+  &:before {
+    content: '\2022';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    font-size: 4rem;
+    font-family: Arial, Sans-serif;
+  }
+
+  span {
+    color: $text-body;
+  }
+
+  .icon {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    line-height: 4rem;
+    color: $text-placeholder;
+    cursor: pointer;
+  }
+}

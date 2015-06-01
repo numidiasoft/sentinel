@@ -1,0 +1,35 @@
+.tg-assign-to {
+  display: inline-block;
+
+  .tg-content-author-avatar {
+    margin: 0 .5rem 0 0;
+
+    .rtl & {
+      margin: 0 0 0 .5rem;
+    }
+  }
+
+  .tg-assign-to-counter {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: $background-dark;
+    background-image: none;
+
+    //FIXME: need to remove this class from the DOM. A dropdown makes no sense here.
+    .tg-btn-dropdown {
+      padding: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

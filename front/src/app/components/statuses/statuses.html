@@ -1,25 +1,36 @@
-<div class="row" ng-controller="StatusesCtrl">
-  <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="status in statuses | orderBy:'-updated_at'">
-      <div class="thumbnail">
-        <div class="caption">
-          <h3>{{status.title}} </h3>
-          <p>{{status.name}}</p>
-          <p>{{status.status}}</p>
-          <p>{{status.expected_response}}</p>
-          <p>{{status.description}}</p>
-          <p>{{status.updated_at}}</p>
-          <p><a ui-sref="editStatus({id: status.id.$oid})">{{status.url}}</a></p>
-          <button type="submit" class="btn btn-default" ng-click='destroy(status)'>Destroy</button>
-        </div>
+<div ng-controller="StatusesCtrl">
+
+    <div class="jumbotron text-center">
+      <h1>Statuses list </h1>
+      <a ui-sref='statuses.create'>
+       <button class="btn btn-lg btn-info"> Add a new Status </button>
+      </a>
+    </div>
+
+    <div class="col-lg-24" ng-repeat="status in statuses | orderBy:'-updated_at'">
+
+      <div class="status-{{status.status}}">
+        <div class="thumbnail">
+          <div class="caption">
+            <header>
+              <h2>
+                <a ui-sref="statuses.edit({id: status.id.$oid})"> {{status.name}}</a>
+              </h2>
+            </header>
+
+              <div class="well" ng-if="status.description">
+                <p>{{status.description}}</p>
+              </div>
+            <div class="row tg-padding-right">
+              <button type="submit" class="btn btn-success pull-right" ng-click='destroy(status)'>Destroy</button>
+            </div>
+          </div>
+       </div>
       </div>
     </div>
+
+  <div class="col-lg-24">
+    <button type="submit" class="btn btn-full-width btn-info" ng-click='loadMore(currentPage)'>Load More</button>
   </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <button type="submit" class="btn btn-default" ng-click='loadMore(currentPage)'>Load More</button>
-    </div>
-    <div class="col-md-4"></div>
-  </div>
+
 </div>

@@ -1,0 +1,74 @@
+// Global font-size. 1 rem = 10px
+html {
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+.tg-body {
+  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: $text-body;
+  background-color: $background-dark;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Border-box
+* {
+  box-sizing: border-box;
+}
+
+// Titles
+h1, h2, h3, h4, h5, h6 {
+  color: $text-title;
+}
+
+// Links default style
+a {
+  color: $text-link;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+// Links with arrow before them
+.a-arrow-before:after {
+  content: '\2192';
+  margin-left: .5rem;
+  display: inline-block;
+  position: relative;
+  top: -1px;
+
+  .rtl & {
+    content: '\2190';
+    margin-left: 0;
+    margin-right: .5rem;
+  }
+}
+
+// Error message
+.has-error-text {
+  margin: 0;
+  color: $flat-error;
+
+  small {
+    font-size: 1.2rem;
+    color: $flat-error;
+  }
+}
+
+// Label styles
+label {
+  display: inline-block;
+  font-weight: 700;
+}

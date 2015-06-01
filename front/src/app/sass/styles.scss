@@ -1,0 +1,79 @@
+// #legend: 
+// @toSanitize : make reusable and maintainable components with minimal
+// code recursion 
+
+// Variables & Mixins
+@import "variables";
+@import "mixins";
+
+// Normalize + global styles
+@import "normalize";
+@import "global";
+@import "type";
+
+// Animations
+@import "animations";
+@import "component-animations";
+
+// Grid system
+@import "bootstrap-grid";
+
+// Icons
+@import "fonts";
+@import "icons";
+
+// Layout Components
+@import "navbar";
+@import "sidebar";
+@import "container";
+@import "overlay-mobile";
+@import "states";
+@import "task-categories";
+
+// Other components
+@import "content-header";
+@import "buttons";
+@import "buttons-groups";
+@import "loader";
+@import "avatar";
+@import "assign-to";
+@import "alerts";
+@import "inputs";
+@import "dropdowns";
+@import "switches";
+@import "appended-elements";
+@import "colorpicker";
+@import "tooltip";
+@import "task-labels";
+@import "bulk";
+@import "pickr";
+@import "label-bullet";
+@import "progress";
+@import "info-badge";
+@import "credit-card-billing";
+@import "status";
+
+// Groups of components
+@import "modals";
+@import "popovers";
+@import "attachments";
+@import "personal-settings";
+@import "advanced-search-box";
+@import "static-message-blocks";
+@import "context-message-blocks";
+@import "menu-support";
+@import "list-items";
+@import "users-blocks";
+@import "email-inputs";
+@import "pricing-block";
+
+// Select 2
+@import "select2";
+
+// Auth pages
+@import "signup";
+@import "invoices";
+
+// Gobal utilities
+// These utils need to ALWAYS be at the very end of this file since they overcharge other styles
+@import "utils";

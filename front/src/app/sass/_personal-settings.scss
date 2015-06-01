@@ -1,0 +1,39 @@
+// Layout with 2 colums used in personal settings
+.tg-personal-settings {
+  margin: auto;
+  padding: 0 8rem;
+
+   @include tablet {
+    padding: 10rem 8rem;
+   }
+
+   @include bp(940) {
+    max-width: 120rem;
+   }
+
+   > div:last-child {
+    margin-top: 4rem;
+
+    @include bp(940) {
+      margin-top: 0;
+      padding-left: 6rem;
+      border-left: 1px solid $border;
+
+      .rtl & {
+        padding-left: 0;
+        padding-right: 6rem;
+        border-left: none;
+        border-right: 1px solid $border;
+      }
+    }
+   }
+
+   .icon {
+    color: $text-placeholder;
+   }
+
+   .dropdown-menu {
+    width: 100%;
+   }
+}
+

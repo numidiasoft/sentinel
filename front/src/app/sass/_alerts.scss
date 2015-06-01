@@ -1,0 +1,88 @@
+// Default alert
+.alert {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 1;
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    margin-right: 1rem;
+
+    .rtl & {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  h4 {
+    color: #fff;
+  }
+
+  strong + span:before {
+    margin: 0 .5rem;
+    content: '—';
+  }
+}
+
+// Alert variations
+.alert-success, .alert-info, .alert-warning, .alert-danger {
+  color: #fff;
+}
+
+.alert-success {
+  background-color: $flat-success;
+}
+
+.alert-info {
+  background-color: $flat-info;
+}
+
+.alert-warning {
+  background-color: $flat-warning;
+}
+
+.alert-danger {
+  background-color: $flat-error;
+}
+
+// Alert full width
+.alert-block {
+  display: block;
+  border-radius: 0;
+}
+
+// Alerts placed at the bottom {
+.alerts-bottom {
+  width: 60%;
+  position: fixed;
+  right: 20%;
+  left: 20%;
+  bottom: 2rem;
+  z-index: 1051 !important; // To enforce the z-index value of the alert block
+  text-align: center;
+}
+
+.alert-row {
+  margin-top: 2rem;
+}
+
+// Alerts placed at the top
+.alerts-top, .full-width .alerts-top {
+  position: relative;
+  z-index: 990;
+  cursor: pointer;
+}
+
+.alert-text {
+  margin: .5rem 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  text-align: left;
+}

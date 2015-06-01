@@ -1,0 +1,99 @@
+.pricing-block{
+  border: 1px solid $border;
+  text-align: center;
+  border-radius: 8px;
+  padding-top: 0;
+  cursor: pointer;
+
+  header{
+    border-bottom: 1px solid $border;
+    width: 100%;
+    font-family: radikal_regular;
+
+    h2{
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  .pricing-block-content{
+    .pricing-block-price{
+      font-family: radikal_regular;
+      margin-top: 20px;
+      sup{
+        font-weight: bold;
+        top: -30px;
+        font-size: 18px;
+      }
+      span{
+        font-size: 4em;
+        font-weight: bold;
+        font-family: radikal_bold;
+        color: $background-dark;
+        font-size: 55px;
+      }
+      small{
+        color: $background-dark;
+        font-size: 14px;
+      }
+    }
+    
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+    ul li{
+      width: 100%;
+      float: left;
+      display: block;
+
+      small{
+        font-size: 13px;
+        color: $text-body;
+      }
+    }
+  }
+
+  footer{
+
+    padding: 20px;
+    padding-top: 0;
+    margin-top: 20px; 
+
+    .btn{
+      margin-top: 30px;
+    }
+  }
+
+  //hover
+  &:hover{
+    &:not(.no-hover-block){
+      border-color: $text-link;
+      header{
+        border-color: $text-link;
+      }
+    }
+  }
+}
+
+// Sizes 
+.pricing-block{
+  margin: auto;
+  &.size-1{
+    max-width: 300px;
+  }
+}
+
+// This is a modal part
+// Herited by the pricing-block component
+.subscribe-features{
+}
+
+.modal-footer-info .monthly,
+.upgrade-plan .monthly{
+  color: $flat-success;
+  border: 1px solid currentColor;
+  padding: 8px 14px;
+  border-radius: 8px;
+}

@@ -1,0 +1,197 @@
+// Wrapper for the header (title + search bar)
+.tg-content-header {
+  position: relative;
+  z-index: 1000;
+  height: 6rem;
+  background: #fff;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid $border;
+
+
+  .tg-wrap-searchbox {
+    position: absolute;
+    top: 1.2rem;
+    right: 0;
+    width: 30%;
+    &.is-expanded {
+      width: 100%;
+    }
+
+    .rtl & {
+      right: auto;
+      left: 0;
+    }
+
+    @include tablet {
+      padding: 0 2rem;
+    }
+  }
+
+  .tg-input-dropdown-group {
+    padding: 0 1rem;
+    width: 73%;
+
+    @include tablet {
+      margin: 0;
+      padding: 0;
+      width: 240px;
+    }
+  }
+
+  .tg-long-search {
+    margin: 0;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .tg-searchbox-dropdown {
+    position: absolute;
+    top: 3.5rem;
+    width: calc(100% - 7.8rem);
+  }
+}
+
+.tg-content-header-inner {
+  padding: 1.2rem 2rem;
+  min-height: 6rem;
+  border-top-right-radius: 5px;
+
+  > div > .btn.pull-right, > div > .push-direction.btn {
+    position: relative;
+    top: -2px;
+  }
+}
+
+// Left checkbox
+.tg-content-header-checkboxs-set {
+  margin: 0 2rem 0 0;
+  position: relative;
+  z-index: 1;
+
+  .rtl & {
+    margin: 0 0 0 2rem;
+  }
+
+  input[type=checkbox] {
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    top: -.4rem;
+  }
+
+  input[checked=checked] {
+    top: .8rem;
+    left: .8rem;
+
+    .rtl & {
+      left: auto;
+      right: .8rem;
+    }
+
+    + .tg-btn-dropdown {
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  .btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 3px;
+  }
+
+  .btn {
+    height: 3.5rem;
+  }
+
+  .dropdown-toggle {
+    padding: 0 4rem 0 0;
+    opacity: 0;
+
+    .rtl & {
+      padding: 0 0 0 4rem;
+    }
+  }
+
+  .tg-btn-checkbox {
+    padding: 0 1rem;
+    border-color: $border;
+    box-shadow: none;
+
+    .rtl & {
+      padding: 0 1rem;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .btn-group .dropdown-menu {
+    left: 0;
+    right: auto;
+
+    .rtl & {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+// Title of the page
+.tg-page-title {
+  margin: 0;
+  display: inline-block;
+  float: left;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 3.5rem;
+
+  .info-badge {
+    margin-left: 1rem;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: 1rem;
+    }
+  }
+
+  .rtl & {
+    float: right;
+  }
+}
+
+// Back action
+.tg-back-action {
+  margin: 0 2rem 0 0;
+  font-style: bold;
+
+  &:before {
+    content: "\2190";
+  }
+
+  .rtl & {
+    margin: 0 0 0 2rem;
+  }
+}
+
+// Search
+.tg-content-header-searchbar {
+  margin: 0;
+  float: right;
+  transition: width .25s ease-in-out;
+}
+
+// Advanced search dialog
+.tg-searchbox-dialog {
+  margin: 1rem 2rem 0;
+
+  @include tablet {
+    margin:  -1px 0 0;
+  }
+}
+
+// CTA container
+.tg-content-header-cta {
+  position: relative;
+  top: -2px;
+}

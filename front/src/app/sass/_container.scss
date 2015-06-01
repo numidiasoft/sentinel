@@ -1,0 +1,88 @@
+.tg-container {
+  position: absolute;
+  top: 6rem;
+  left: 8rem;
+  right: 2rem;
+  bottom: 0;
+  background: #fff;
+  border-radius: 0 5px 0 0;
+
+  @include desktop {
+    left: 26rem;
+  }
+
+  .rtl & {
+    left: 2rem;
+    right: 8rem;
+    border-right: 1px solid $border;
+    border-left: none;
+    border-radius: 5px 0 0 0;
+
+    @include desktop {
+      left: 2rem;
+      right: 26rem;
+    }
+  }
+}
+
+.tg-container-full {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  right: 2rem;
+  bottom: 0;
+
+  .tg-inner-container {
+    top: 5rem;
+  }
+
+  .tg-content-section {
+    position: absolute;
+    max-width: 100%;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+  }
+}
+
+.tg-inner-container {
+  margin: 0;
+  position: absolute;
+  top: 5.9rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tg-message-item-container {
+  border-top: 1px solid $border;
+}
+
+.tg-entry-item-container {
+  padding: 0 2rem;
+  border-bottom: 1px solid $border;
+}
+
+.tg-entry-item {
+  small {
+    font-size: 1.2rem;
+  }
+
+ .tg-entry-subtitle {
+    margin: 0 0 1rem;
+  }
+}
+
+// Load more messages button
+.tg-message-loadmore {
+  margin: 2rem;
+  border: none;
+
+  .tg-message-item-container {
+    border: none;
+  }
+}

@@ -1,0 +1,115 @@
+// On/off like switch
+.tg-switch-rounded {
+
+  .tg-switch-label {
+    margin-top: .5rem;
+  }
+
+  input[type=checkbox].tg-switch-checkbox {
+    display: none;
+
+    &:not(:checked)+.tg-switch-display {
+      background-color: $grey-inactive;
+
+      &:after {
+        left: 2.9rem; 
+
+        .rtl & {
+          left: auto;
+          right: 3rem;
+        }
+      }
+    } 
+  }
+
+  .tg-switch-display {
+    position: relative;
+    display: inline-block;
+    margin: 0 .5rem;
+    padding: .2rem;
+    width: 5.4rem;
+    height: 2.8rem;
+    border-radius: 40px;
+    background-color: $flat-success;
+    cursor: pointer;
+    transition: background-color .25s ease-in-out;
+    vertical-align: middle;
+    outline: 0;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: .349rem;
+      left: .349rem;
+      display: inline-block;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background-color: #fff;
+      transition: all .1s ease-out;
+
+      .rtl & {
+        right: auto;
+        left: .4rem;
+      }
+    }
+  }
+}
+
+.tg-switch-label {
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: 0;
+}
+
+// List switch
+.switch-list {
+  font-size: 0;
+
+  & a:first-child {
+    border-radius: 3px 0 0 3px;
+  }
+
+  & a:last-child {
+    border-radius: 0 3px 3px 0;
+  }
+
+  a {
+    padding: .8rem 2rem;
+    display: inline-block;
+    position: relative;
+    min-width: 18rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: $text-body;
+    border: 1px solid $text-placeholder;
+    transition: color .2s ease-out, background-color .2s ease-out, border .2s ease-out;
+
+    + a {
+      border-left: none;
+    }
+  }
+
+  .has-special-info:after {
+    content: attr(data-special-info);
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.1rem;
+    color: #fff;
+    background: $blue-sleek-light;
+    border-radius: 50%;
+  }
+
+  .selected {
+    color: #fff;
+    background: $text-body;
+    border: 1px solid $text-body;
+  }
+}

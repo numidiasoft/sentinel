@@ -1,0 +1,524 @@
+// Dropdown
+.tg-btn-dropdown, .dropdown-toggle, .select2-choice {
+  padding-left: 1rem;
+  padding-right: 5rem;
+  position: relative;
+  text-align: left;
+
+  // FIXME: need to remove this from the DOM
+  i, .icon {
+    display: none;
+  }
+
+  &:after {
+    content: '';
+    margin-top: -.8rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    // Dropdown icon is inlined, saves a request
+    background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOHB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCA4IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zODkuMDAwMDAwLCAtODA0OS4wMDAwMDApIiBmaWxsPSIjQTlCNUM3Ij48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNzczNS4wMDAwMDApIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzIuMDAwMDAwLCAxOTUuMDAwMDAwKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDEwMi4wMDAwMDApIj48cGF0aCBkPSJNMjI4LjczNjc1LDI1LjY1MzA3NjkgQzIyOC45MTIyNSwyNS40NzIzMDc3IDIyOSwyNS4yMzYxNTM4IDIyOSwyNSBDMjI5LDI0Ljc2Mzg0NjIgMjI4LjkxMjI1LDI0LjUyNzY5MjMgMjI4LjczNjc1LDI0LjM0NjkyMzEgTDIyNS43MzY3NSwyMS4yNyBDMjI1LjU2MDUsMjEuMDkgMjI1LjMzMDI1LDIxIDIyNS4xLDIxIEMyMjQuODY5NzUsMjEgMjI0LjYzOTUsMjEuMDkgMjI0LjQ2MzI1LDIxLjI3IEMyMjQuMjg3NzUsMjEuNDUwNzY5MiAyMjQuMiwyMS42ODY5MjMxIDIyNC4yLDIxLjkyMzA3NjkgQzIyNC4yLDIyLjE1OTIzMDggMjI0LjI4Nzc1LDIyLjM5NTM4NDYgMjI0LjQ2MzI1LDIyLjU3NjE1MzggTDIyNi44MjcyNSwyNSBMMjI0LjQ2MzI1LDI3LjQyMzg0NjIgQzIyNC4yODc3NSwyNy42MDQ2MTU0IDIyNC4yLDI3Ljg0MDc2OTIgMjI0LjIsMjguMDc2OTIzMSBDMjI0LjIsMjguMzEzMDc2OSAyMjQuMjg3NzUsMjguNTQ5MjMwOCAyMjQuNDYzMjUsMjguNzMgQzIyNC42Mzk1LDI4LjkxIDIyNC44Njk3NSwyOSAyMjUuMSwyOSBDMjI1LjMzMDI1LDI5IDIyNS41NjA1LDI4LjkxIDIyNS43MzY3NSwyOC43MyBMMjI4LjczNjc1LDI1LjY1MzA3NjkgWiBNMjEzLjI2MzI1LDI1LjY1MzA3NjkgQzIxMy4wODc3NSwyNS40NzIzMDc3IDIxMywyNS4yMzYxNTM4IDIxMywyNSBDMjEzLDI0Ljc2Mzg0NjIgMjEzLjA4Nzc1LDI0LjUyNzY5MjMgMjEzLjI2MzI1LDI0LjM0NjkyMzEgTDIxNi4yNjMyNSwyMS4yNyBDMjE2LjQzOTUsMjEuMDkgMjE2LjY2OTc1LDIxIDIxNi45LDIxIEMyMTcuMTMwMjUsMjEgMjE3LjM2MDUsMjEuMDkgMjE3LjUzNjc1LDIxLjI3IEMyMTcuNzEyMjUsMjEuNDUwNzY5MiAyMTcuOCwyMS42ODY5MjMxIDIxNy44LDIxLjkyMzA3NjkgQzIxNy44LDIyLjE1OTIzMDggMjE3LjcxMjI1LDIyLjM5NTM4NDYgMjE3LjUzNjc1LDIyLjU3NjE1MzggTDIxNS4xNzI3NSwyNSBMMjE3LjUzNjc1LDI3LjQyMzg0NjIgQzIxNy43MTIyNSwyNy42MDQ2MTU0IDIxNy44LDI3Ljg0MDc2OTIgMjE3LjgsMjguMDc2OTIzMSBDMjE3LjgsMjguMzEzMDc2OSAyMTcuNzEyMjUsMjguNTQ5MjMwOCAyMTcuNTM2NzUsMjguNzMgQzIxNy4zNjA1LDI4LjkxIDIxNy4xMzAyNSwyOSAyMTYuOSwyOSBDMjE2LjY2OTc1LDI5IDIxNi40Mzk1LDI4LjkxIDIxNi4yNjMyNSwyOC43MyBMMjEzLjI2MzI1LDI1LjY1MzA3NjkgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIxLjAwMDAwMCwgMjUuMDAwMDAwKSByb3RhdGUoLTkwLjAwMDAwMCkgdHJhbnNsYXRlKC0yMjEuMDAwMDAwLCAtMjUuMDAwMDAwKSAiPjwvcGF0aD48L2c+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==) 0 0 no-repeat;
+  }
+
+  .rtl & {
+    padding-left: 5rem;
+    padding-right: 1rem;
+    text-align: right;
+
+    &:after {
+      right: auto;
+      left: 1rem;
+    }
+  }
+}
+
+// Dropdown list, Positioned below dropdown
+.dropdown-menu {
+  margin: 0;
+  padding: .5rem;
+  max-height: 30.2rem;
+  position: absolute;
+  clear: both;
+  z-index: 2;
+  overflow-y: auto;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  display: none;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid $border;
+  border-radius: 3px;
+
+  .active {
+    background-color: $background-light;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.3rem;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+
+    + li {
+      margin-top: .5rem;
+    }
+
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .selected, .semi-selected {
+    padding-right: 3rem;
+    color: #fff;
+    background-color: $text-link;
+
+    &:after {
+      content: '\e60c';
+      position: absolute;
+      right: 1rem;
+      top: .5rem;
+      font-family: tg-icons;
+
+      .rtl & {
+        right: auto;
+        left: 1rem;
+      }
+    }
+
+    &:hover, &:focus {
+      background-color: $text-link;
+    }
+
+    a, a:hover, a:focus {
+      color: #fff;
+    }
+
+    i {
+      color: #fff;
+    }
+
+    .rtl & {
+      padding-right: 1rem;
+      padding-left: 3rem;
+    }
+  }
+
+  .semi-selected {
+    &:after {
+      content: '\e605';
+      color: #fff;
+    }
+  }
+
+  li {
+    padding: .5rem 1rem;
+    display: block;
+    border-radius: 3px;
+    transition: .2s background-color ease-out;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+
+    &:hover, &:focus {
+      background-color: $background-light;
+    }
+
+    a {
+      display: block;
+    }
+
+    a, a:hover, a:focus {
+      color: $text-body;
+      text-decoration: none;
+    }
+  }
+
+  .tg-avatar {
+    margin-right: 1rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    position: relative;
+    top: -.1rem;
+    line-height: 1.8rem;
+    font-size: .8rem;
+
+    .rtl & {
+      margin-left: 1rem;
+      margin-right: 0;
+    }
+  }
+
+  i {
+    margin-right: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    font-size: 15px;
+    font-style: normal;
+    color: $text-placeholder;
+
+    .rtl & {
+      margin-left: 1.5rem;
+      margin-right: 0;
+    }
+  }
+
+  .icon-filled-facebook, .icon-filled-twitter {
+    margin-left: 1.5rem;
+    position: relative;
+    top: 1px;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: 1.5rem;
+      text-align: right;
+    }
+  }
+}
+
+
+// This class is used for dropdowns which have a title and/or a search field
+.dropdown-menu-group {
+  width: 250px;
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 3px;
+  text-align: left;
+
+  .dropdown-menu {
+    padding: 0;
+    max-height: 100%;
+    border: none;
+  }
+}
+
+.dropdown-menu-search {
+  border: 10px solid #fff;
+
+  input {
+    width: 100%;
+  }
+
+  + .dropdown-menu-group-content > *:first-child {
+    padding-top: 0;
+  }
+}
+
+.dropdown-menu-group-content {
+  padding: 0 1rem 1rem;
+  max-height: 30rem;
+  overflow: auto;
+}
+
+.dropdown-menu-title {
+  margin: 0;
+  padding: 1rem;
+  position: relative;
+  font-size: 1.3rem;
+  background: $background-light;
+}
+
+.dropdown-menu-subtitle {
+  margin: 1rem;
+  padding-right: 1rem;
+  display: inline-block;
+  position: relative;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: $text-body-light;
+  background: #fff;
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    width: 210px;
+    height: 1px;
+    background: $border;
+
+    .rtl & {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .rtl & {
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+}
+
+.open > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu.push-direction,
+.tg-autocomplete-dropdown-list.push-direction {
+  right: 0;
+  left: auto;
+}
+
+// Dropdown used with labels
+.dropdown-menu-labels {
+  position: relative;
+  display: block;
+
+  li {
+    padding-left: 3.5rem;
+
+    .rtl & {
+      padding-left: 0;
+      padding-right: 3.5rem;
+    }
+
+    &:before {
+      content: '\2022';
+      position: absolute;
+      top: -1.5rem;
+      left: 1rem;
+      font-size: 4rem;
+      font-family: Arial,Sans-serif;
+
+      .rtl & {
+        left: auto;
+        right: 1rem;
+      }
+    }
+
+    span {
+      color: $text-body;
+    }
+  }
+
+  .selected, .semi-selected {
+    span {
+      color: #fff;
+    }
+
+    .rtl & {
+      padding-right: 3.5rem;
+    }
+  }
+
+  .dropdown-menu-add:before {
+    content: '\e606';
+    top: .3rem;
+    font-family: tg-icons;
+    font-size: 15px;
+    color: $text-body-light;
+  }
+
+  .dropdown-menu-no-result {
+    padding-left: 1rem;
+
+    &:hover, &:focus {
+      cursor: auto;
+      background: none;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    .rtl & {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+  }
+}
+
+// Apply button for bulk actions
+.dropdown-menu-apply {
+  padding: 1rem;
+
+  .btn {
+    position: static;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: $background;
+    border: none;
+    border-radius: 3px;
+    transition: background-color .2s ease-out;
+
+    &:hover, &:focus {
+      background-color: darken($background, 10%);
+    }
+  }
+}
+
+// Used to avoid dodgy behavior with float items in the menu list
+//  FIXME: this class may have the wrong name: it's only used in one specific scenario and shouldn't require a size
+.tg-dropdown-xs {
+
+  a {
+    white-space: normal;
+  }
+
+  .tg-dropdown-label {
+  }
+}
+
+.tg-dropdown-active {
+  background: $background-light;
+}
+
+// Autocomplete dropdown
+.tg-autocomplete {
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+
+  .dropdown-toggle {
+    padding: 0;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+// Autocomplete dropdown with avatar and social icons
+.tg-autocomplete-dropdown-list {
+  a {
+    white-space: normal;
+  }
+
+  .rtl & {
+    text-align: right;
+  }
+}
+
+// Dropdown wrapper
+.tg-content-dropdown-wrap {
+  margin: .5rem 0 0;
+  padding: 2rem;
+
+  .tg-autocomplete-dropdown {
+    left: 0;
+    width: 100%;
+
+    li {
+      position: relative;
+      border-radius: none;
+    }
+
+    a {
+      padding-left: 3rem;
+      border-radius: none;
+
+      &:hover, &:focus {
+        border-radius: none;
+      }
+
+      .rtl & {
+        padding-left: 1rem;
+        padding-right: 3rem;
+      }
+    }
+
+    .tg-avatar {
+      position: absolute;
+      margin-top: -.8rem;
+      left: 1rem;
+      top: 50%;
+
+      .rtl & {
+        left: auto;
+        right: 1rem;
+      }
+    }
+  }
+}
+
+// Dropdown autocomplete + button
+// FIXME: This doesn't seem future or language (locale) proof.
+.tg-content-dropdown-wrap {
+  .tg-autocomplete {
+    width: calc(100% - 4rem - 5rem);
+    position: relative;
+  }
+}
+
+// Checkbox dropdown
+.tg-checkbox-dropdown-set input[type=checkbox] {
+  margin: .8rem 0 0 1rem;
+  position: absolute;
+  z-index: 1;
+
+  .rtl & {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+
+// Checkbox btn
+
+.tg-checkbox-dropdown-set {
+  .btn-group .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 3px 3px 0 0;
+  }
+
+  .dropdown-menu {
+    right: auto;
+    left: 0;
+
+    .rtl & {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .tg-btn-checkbox {
+    padding: 0;
+
+    .rtl & {
+      padding: 0;
+    }
+
+    .btn {
+      width: 6.5rem;
+      position: relative;
+      opacity: 0;
+    }
+  }
+}
+
+.tg-category-text {
+  margin-left: 1rem;
+
+  .rtl & {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+
+.sk-dropdown {
+  &.open .dropdown-menu {
+    display: block;
+  }
+}

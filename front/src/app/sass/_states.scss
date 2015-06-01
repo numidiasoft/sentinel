@@ -1,0 +1,170 @@
+.tg-state {
+  text-align: center;
+}
+
+.tg-state-title {
+  margin-top: 1rem;
+  color: $text-placeholder;
+
+  @include tablet {
+    margin-top: 4rem;
+  }
+}
+
+.tg-state-subtitle {
+  color: $text-placeholder;
+}
+
+// No channels connected
+.tg-state-no-channels-connected {
+  left: 175px;
+  margin: 0 auto;
+  width: 489px;
+  height: 260px;
+  background: url("/images/states/states-no-channels-connected.svg") top center no-repeat;
+}
+
+// Search no result
+.tg-state-no-search-result {
+  margin: 0 auto;
+  height: 160px;
+  background: url("/images/states/states-no-search-results.svg") top center no-repeat;
+}
+
+// Search progress
+.tg-state-search-progress {
+  margin: 0 auto;
+  height: 142px;
+  background: url("/images/states/sates-search-in-progress.svg") top center no-repeat;
+}
+
+// Archive empty
+.tg-state-archived-empty {
+  height: 88px;
+  background: url("/images/states/states-archived-empty.svg") top center no-repeat;
+}
+
+// Task empty
+.tg-state-task-empty {
+  margin: 0 auto;
+  height: 87px;
+  background: url("/images/states/states-task-empty.svg") top center no-repeat;
+}
+
+// Inbox empty
+.tg-state-inbox-empty {
+  margin: 0 auto;
+  height: 77px;
+  background: url("/images/states/states-inbox-empty.svg") top center no-repeat;
+}
+
+// Trash empty
+.tg-state-trash-empty {
+  margin: 0 auto;
+  height: 128px;
+  background: url("/images/states/states-trash-empty.svg") top center no-repeat;
+}
+
+// Module Position
+.tg-state {
+  position: fixed;
+  top: 14.5rem;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+
+  @include tablet {
+    top: 12rem;
+    left: 8rem;
+    width: calc(100% - 10rem);
+    height: calc(100% - 12rem);
+
+    .rtl & {
+      left: auto;
+      right: 8rem;
+    }
+  }
+
+  @include desktop {
+    left: 24rem;
+    width: calc(100% - 28rem);
+
+    .rtl & {
+      left: auto;
+      right: 24rem;
+    }
+  }
+
+  // Negative margin value is for vertical alignment, we have an issue IE9 with display table-cell, so we decided to do it by absolute way
+  .tg-state-container {
+    position: relative;
+    top: 50%;
+    display: block;
+    text-align: center;
+
+    .tg-loader {
+      margin-top: -26rem;
+    }
+
+    .tg-state-inbox-empty {
+      margin-top: -7.7rem;
+    }
+
+    .tg-state-search-progress {
+      margin-top: -14.2rem;
+    }
+
+    .tg-state-task-empty {
+      margin-top: -8.7rem;
+    }
+
+    .tg-state-no-channels-connected {
+      margin-top: -17.5rem;
+    }
+
+    .tg-state-no-search-result {
+      margin-top: -16rem;
+    }
+
+    .tg-animation-message-no-results, .tg-animation-message-no-archived {
+      margin-top: -14rem;
+    }
+
+    .tg-state-archived-empty {
+      margin-top: -8.8rem;
+    }
+
+    .tg-state-trash-empty {
+      margin-top: -12.8rem;
+    }
+
+    .tg-animation-message-empty {
+      margin-top: 4.4rem; // Half of object height
+    }
+
+    .tg-animation-message-no-alerts {
+      margin-top: 10rem; // Half of object height
+    }
+  }
+}
+
+// FIXME: Include this in the concerned component
+@include tablet {
+  .has-nav-expended {
+    &.has-empty-states {
+      .tg-state {
+        top: 12rem;
+        left: 26rem;
+        width: calc(100% - 28rem);
+
+        .rtl & {
+          left: auto;
+          right: 26rem;
+        }
+      }
+    }
+  }
+}

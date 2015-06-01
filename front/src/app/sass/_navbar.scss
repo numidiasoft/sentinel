@@ -1,0 +1,95 @@
+.navbar {
+  margin: 0 2rem;
+  position: relative;
+  z-index: 1010;
+  height: 6rem;
+  line-height: 6rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+.tg-logo-title {
+  margin: .5rem 0 0 1.5rem;
+
+  .rtl & {
+    margin: .5rem 1.5rem 0 0;
+  }
+}
+
+.tg-nav-user-nav-block {
+  position: relative;
+
+  .dropdown-toggle {
+    padding: 0;
+
+    &:after {
+      display: none;
+    }
+
+    .icon {
+      display: inline-block;
+    }
+  }
+
+  .menu-support {
+    position: absolute;
+    top: 5.7rem;
+    right: -1.6rem;
+    z-index: 3;
+  }
+
+  .tg-avatar {
+    margin: 0 1rem 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    top: -1px;
+
+    .rtl &  {
+      margin: 0 0 0 1rem;
+    }
+  }
+
+  .icon-filled-arrow-dropdown {
+    margin: 1rem 0 0 1rem;
+
+    .rtl & {
+      margin: 0 1rem 0 0;
+    }
+  }
+}
+
+.tg-support-menu {
+  vertical-align: middle;
+}
+
+.tg-picto {
+  margin: 0 0 0 2rem;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+
+  .rtl & {
+    margin: 0 2rem 0 0;
+  }
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.tg-user-name {
+  display: inline-block;
+  font-weight: 400;
+}
+
+.navbar-info {
+  line-height: 1;
+
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 400;
+    color: lighten($text-body, 10%);
+  }
+}

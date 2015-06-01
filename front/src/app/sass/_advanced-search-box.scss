@@ -1,0 +1,260 @@
+// Styles for the search group
+.tg-input-dropdown-group {
+  width: 100%;
+  position: relative;
+}
+
+.input-group {
+  display: table;
+  border-collapse: separate;
+
+  .form-control {
+    padding-right: 2.5rem;
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+
+    .rtl & {
+      padding-right: 1.2rem;
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.event-search {
+  border-radius: 3px 0 0 0;
+
+  .rtl & {
+    border-radius: 0 3px 0 0;
+  }
+}
+
+.input-group-addon, .input-group-btn {
+  width: 1%;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.input-group-btn:last-child > .btn {
+  margin-left: -1px;
+}
+
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: table-cell;
+
+  .dropdown-toggle {
+    padding: 0 2rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    width: 17rem;
+  }
+
+  .btn-success {
+    border-radius: 0 3px 3px 0;
+
+    .rtl & {
+      border-radius: 3px 0 0 3px;
+    }
+  }
+
+  .btn {
+    box-shadow: none;
+  }
+}
+
+.input-group-btn {
+  position: relative;
+  font-size: 0;
+}
+
+.input-group-sm {
+  > .form-control,
+  >.input-group-addon,
+  > .input-group-btn > .btn {
+    padding: .8rem 1.2rem;
+    vertical-align: middle;
+    min-height: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+}
+
+.input-group .form-control {
+  padding-right: 2.5rem;
+  line-height: 1.5;
+}
+
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn-group:not(:last-child)>.btn, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+// Styles for the searchbox dropdown
+.tg-searchbox-dropdown {
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  width: calc(100% - 3.9rem);
+  border-radius: 0 0 3px 3px;
+  background-color: #fff;
+}
+
+.tg-searchbox-dialog {
+  margin: 1rem 2rem 0;
+
+  @include tablet {
+    margin: 0;
+  }
+}
+
+.tg-searchbox-filter-container {
+  display: inline-block;
+  margin-left: 2rem;
+
+  .rtl & {
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+}
+
+.tg-searchbox-list-filter {
+  margin: 0;
+  padding: 0;
+  max-height: 50rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  border-radius: 0;
+
+  .tg-btn-delete-rounded {
+    margin: .5rem 0 0 2rem;
+    padding: 0;
+
+    .rtl & {
+      margin: .5rem 2rem 0 0;
+    }
+
+    .tg-searchbox-action-hover {
+      position: static;
+    }
+  }
+
+  li {
+    position: relative;
+    padding: 2rem;
+    border-right: 1px solid $border;
+    border-left: 1px solid $border;
+    border-bottom: 1px solid $border;
+
+    &:hover .tg-searchbox-action-hover,
+    &:focus .tg-searchbox-action-hover {
+      opacity: 1;
+    }
+  }
+}
+
+.tg-searchbox-list-text {
+  margin: 0 2rem;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: $text-body-light;
+
+  &:first-child {
+    margin: 0 2rem 0 0;
+
+    .rtl & {
+      margin: 0 0 0 2rem;
+    }
+  }
+}
+
+.tg-searchbox-action-hover {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity .2s ease-out;
+
+  .rtl & {
+    right: auto;
+    left: 2rem;
+  }
+
+  .touch & {
+    opacity: 1;
+  }
+}
+
+.tg-searchbox-text-full-width {
+  text-align: center;
+  text-transform: uppercase;
+  color: $text-body-light;
+
+  .btn {
+    top: 1.55rem;
+  }
+}
+
+.has-footer li:last-child {
+  border-radius: 0 0 3px 3px;
+}
+
+// Footer for the searchbox
+.tg-searchbox-footer {
+  padding: 2rem;
+  border-bottom: 0;
+  border-radius: 0 0 3px 3px;
+  background: $background-dark;
+
+  .btn-set .btn {
+    margin-left: 2rem;
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: 2rem;
+    }
+  }
+}
+
+.tg-searchbox-dark-theme-text {
+  display: inline-block;
+  margin: .8rem 0 0;
+  color: #fff;
+  font-weight: 600;
+
+  .btn {
+    margin-right: 1rem;
+    position: relative;
+    top: -2px;
+    color: $background-dark;
+    background: #fff;
+
+    &:hover, &:focus {
+      background: #ddd;
+    }
+
+    .rtl & {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+}
+
+// Advanced search results
+
+.tg-searchbox-result {
+  padding: 2rem;
+  border-bottom: 1px solid $border;
+
+  a {
+    margin: 0 .4rem;
+  }
+}

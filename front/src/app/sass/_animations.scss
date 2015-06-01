@@ -1,0 +1,247 @@
+// Keyframes
+.slide {
+  transition: all .15s linear;
+  opacity: 0;
+  transform: translateY(100%);
+
+  &.up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownAndFade {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 70%;
+    opacity: 0;
+  }
+}
+
+@keyframes dropupAndFade {
+  0% {
+    bottom: 45%;
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    bottom: 70%;
+    opacity: 0;
+  }
+}
+
+@keyframes fallingGodet {
+ 0% {
+  top: 0;
+ }
+
+ 100% {
+  top: 185px;
+ }
+}
+
+@keyframes slideHorizontalMagnify {
+ 0% {
+  left: 0;
+ }
+
+ 50% {
+  left: 200px;
+ }
+
+ 100% {
+  left: 0;
+ }
+}
+
+@keyframes slideBgHorizontal {
+ 0% {
+  background-position: -1313px -241px;
+ }
+
+ 100% {
+  background-position: -1704px -241px;
+ }
+}
+
+@keyframes slideDetailedMessagesHorizontal {
+ 0% {
+  background-position: -1243px -336px;
+ }
+
+ 100% {
+  background-position: -1783px -336px;
+ }
+}
+
+@keyframes magnifyInboxEmpty {
+ 0% {
+  background-position: -698px -274px;
+ }
+
+ 50% {
+  background-position: -1006px -274px;
+ }
+
+ 100% {
+  background-position: -698px -274px;
+ }
+}
+
+
+// New animations
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-120px);
+  }
+}
+
+@keyframes slideleft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+}
+
+@keyframes slideright {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+}
+
+@keyframes rotateinfiniteright {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scalezoom {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Animations
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+
+  &.tg-fade-in {
+    animation-name: fadein;
+  }
+
+  &.tg-fade-out {
+    animation-name: fadeout;
+  }
+
+  &.tg-slide-down {
+    animation-name: slidedown;
+  }
+
+  &.tg-slide-up {
+    animation-name: slideup;
+  }
+
+  &.tg-slide-right {
+    animation-name: slideright;
+  }
+
+  &.tg-slide-left {
+    animation-name: slideleft;
+  }
+
+  &.tg-rotate-right {
+    animation-name: rotateinfiniteright;
+    animation-duration: 4000ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  &.tg-scale-zoom {
+    animation-name: scalezoom;
+    animation-duration: 1000ms;
+  }
+}

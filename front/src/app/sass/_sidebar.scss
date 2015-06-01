@@ -1,0 +1,427 @@
+// Wrapper for the left navigation
+.tg-main-navigation {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  bottom: 0;
+  width: 6rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fff;
+  border-right: 1px solid $border;
+  border-radius: 5px 0 0 0;
+
+  @include desktop {
+    width: 24rem;
+  }
+
+  .rtl & {
+    left: auto;
+    right: 2rem;
+    border-radius: 0 5px 0 0;
+  }
+}
+
+.tg-sidebar {
+  margin: 0;
+  padding: 1.1rem 0;
+  min-height: 100%;
+}
+
+// Important notice, eg. end of free trial
+.tg-sidebar-notice {
+  display: none;
+
+  @include desktop {
+    margin: 1rem 2rem 2rem;
+    padding: .6rem;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: $flat-info;
+    border-radius: 15px;
+  }
+}
+
+// Hero img
+.tg-sidebar-hero-img {
+  display: none;
+
+  @include desktop {
+    margin: 0 auto;
+    padding: 0 1rem 1rem;
+    width: 240px;
+    height: 237px;
+    display: block;
+  }
+}
+
+// UL styles
+.tg-sidenav {
+  top: 6rem;
+  margin: 0;
+  padding: 0;
+
+  ~ .tg-sidenav {
+  margin: 3rem 0 0;
+  }
+
+  .tg-navbar-item {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .tg-navbar-item-label {
+
+    a {
+      padding-left: 4.5rem;
+
+      .rtl & {
+        padding-left: 2rem;
+        padding-right: 5.5rem;
+      }
+    }
+
+    .color {
+      position: absolute;
+      top: .1rem;
+      left: 1.6rem;
+      font-size: 4rem;
+      line-height: 1;
+      font-family: Arial,Sans-serif;
+
+      .rtl & {
+        left: auto;
+        right: 1.6rem;
+      }
+    }
+  }
+
+  .tg-navbar-link.selected {
+    background: lighten($flat-info, 30%);
+    border-color: $flat-info;
+  }
+
+  .tg-navbar-link.selected .icon,
+  a.selected,
+  a.selected .icon {
+    color: $flat-info;
+  }
+}
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+    }
+  }
+}
+
+.tg-navbar-item.has-panel a:after {
+
+  @include desktop {
+    content: "\e62e";
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 2rem);
+    right: 2rem;
+    font-family: tg-icons;
+    font-size: 15px;
+    color: $text-body;
+    transform: rotate(-90deg);
+
+    .rtl & {
+      right: auto;
+      left: 2rem;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+// Styles of the navbar links
+.tg-navbar-link {
+  padding: 0 2rem 0 1.5rem;
+  position: relative;
+  display: block;
+  height: 4rem;
+  line-height: 4rem;
+  text-decoration: none;
+  font-weight: 400;
+  color: $text-body;
+  cursor: pointer;
+  border-left: 5px solid transparent;
+  transition: background .2s ease-out, border-color .2s ease-out;
+
+  @include desktop {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: lighten($flat-info, 30%);
+    border-color: $flat-info;
+
+    .tg-nav-label, .icon {
+      color: $flat-info;
+    }
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  .rtl & {
+    padding: 0 1.5rem 0 2rem;
+    border-left: none;
+    border-right: 5px solid transparent;
+
+    &:hover, &:focus {
+      border-color: $flat-info;
+    }
+  }
+
+  .icon {
+    margin-right: 1rem;
+    color: $text-placeholder;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    font-size: 16px;
+    transition: .2s color ease-out;
+
+    .rtl & {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  .badge {
+    @include desktop {
+      padding: 0 .5rem;
+      width: auto;
+      min-width: 3rem;
+      height: 2rem;
+      right: 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 2rem;
+      border-radius: 3px;
+
+      .rtl & {
+        right: auto;
+        left: 2rem;
+      }
+    }
+  }
+}
+
+.danger-badge .badge {
+  background-color: $flat-error;
+}
+
+.tg-nav-label {
+  display: none;
+  font-weight: 400;
+  width: 16rem;
+
+  @include desktop {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color .2s ease-out;
+  }
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
+
+  .icon-filled-arrow-dropdown {
+    margin-top: -1.7rem;
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    padding: 1rem;
+    transform: rotate(-90deg);
+    line-height: 1;
+
+    &.opened {
+      transform: rotate(0deg);
+    }
+
+    .rtl & {
+      margin-left: 0;
+      margin-right: .5rem;
+      float: left;
+    }
+  }
+}
+
+// Submenu networks
+.tg-nav-networks {
+  .tg-nav-label {
+    margin-left: 3.2rem;
+    width: 16.8rem;
+  }
+}
+
+// Badge
+.badge {
+  display: inline-block;
+  min-width: .8rem;
+  width: .8rem;
+  height: .8rem;
+  position: absolute;
+  top: 1rem;
+  right: 1.4rem;
+  font-size: 0;
+  line-height: 0;
+  color: #fff;
+  background-color: $flat-info;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 50%;
+
+  .rtl & {
+    right: auto;
+    left: 1.4rem;
+  }
+}
+
+// Navigation panel
+.tg-sidebar-panel {
+  position: fixed;
+  top: 6rem;
+  left: 2rem;
+  height: calc(100% - 6rem);
+  z-index: 1;
+  width: 24rem;
+  border-right: 1px solid $border;
+  border-radius: 5px 0 0;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .rtl & {
+    left: auto;
+    right: 2rem;
+    border-radius: 0 5px 0 0;
+    border-right: none;
+  }
+}
+
+.tg-sidebar-header {
+  height: 6rem;
+  line-height: 6rem;
+
+  > .icon {
+    display: inline-block;
+    margin: 0 1rem 0 2rem;
+    color: $text-placeholder;
+
+    .rtl & {
+      margin: 0 2rem 0 1rem;
+    }
+  }
+
+  .tg-btn-delete-rounded {
+    margin: 2.1rem 2rem 0 0;
+
+    .rtl & {
+      margin: 2.1rem 0 0 2rem;
+    }
+  }
+}
+
+.tg-sidebar-header-title {
+  font-size: 1.8rem;
+}
+
+.tg-sidebar-panel-list {
+  margin: 0;
+  padding: 0;
+}
+
+.tg-sidebar-panel-item {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  border-left: 5px solid transparent;
+  transition: .2s border-color ease-out;
+
+  .tg-avatar {
+    margin-right: 1rem;
+
+    .rtl & {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  &:first-child label {
+    font-weight: 700;
+  }
+
+  &:hover, &:focus {
+    border-color: $flat-info;
+
+    label {
+      color: $flat-info;
+    }
+  }
+
+  .rtl & {
+    border-left: none;
+    border-right: 5px solid transparent;
+
+    &:hover, &:focus {
+      border-color: $flat-info;
+    }
+  }
+}
+
+.tg-sidebar-panel-item.is-selected .tg-sidebar-panel-list-item-name {
+  border-radius: 3px;
+  background-color: $flat-info;
+  color: #fff;
+}
+
+.tg-sidebar-panel-list-item-name {
+  padding: .5rem;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  font-weight: 400;
+  line-height: 2.4rem;
+  cursor: pointer;
+  transition: .2s color ease-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .tg-avatar {
+    margin-right: 1rem;
+  }
+
+  .rtl & {
+    margin: 0 1.5rem 0 2rem;
+  }
+}
+

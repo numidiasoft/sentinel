@@ -1,0 +1,213 @@
+// Form control styles
+.form-control {
+  display: block;
+  width: 100%;
+  height: 4rem;
+  padding: .8rem .12rem;
+  font-size: 1.4rem;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid $border;
+  border-radius: 3px;
+}
+
+// Basic styles
+select, textarea, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=search], input[type=tel], input[type=color], .tg-input-like {
+  display: block;
+  padding: 0 1.2rem;
+  min-height: 4rem;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $text-body;
+  background-color: #fff;
+  border: 1px solid $border;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  height: 4rem;
+
+  &::-webkit-input-placeholder {
+    color: $text-placeholder;
+    font-weight: 400;
+  }
+
+  &:-moz-placeholder {
+    color: $text-placeholder;
+    opacity: 1;
+    font-weight: 400;
+  }
+
+  &::-moz-placeholder {
+    color: $text-placeholder;
+    opacity: 1;
+    font-weight: 400;
+  }
+
+  &:-ms-input-placeholder {
+    color: $text-placeholder;
+    font-weight: 400;
+  }
+
+  &[disabled] {
+    background-color: $background-lighter;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $flat-info;
+    box-shadow: inset 0 0 0 1px $flat-info;
+  }
+}
+
+// Checkbox inputs
+
+input[type=checkbox], .tg-checkbox {
+  margin: 0;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  line-height: normal;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid $border;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  &:checked {
+    &:before {
+      content: "\e607";
+      display: inline-block;
+      width: 2rem;
+      height: 1.6rem;
+      position: absolute;
+      top: .1rem;
+      left: 0;
+      line-height: 1;
+      font-family: tg-icons;
+      font-size: 1.6rem;
+      text-align: center;
+      color: #52575e;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Default form with full width
+.form-control {
+  width: 100%;
+}
+
+// Error input
+.has-error {
+  .form-control, input, textarea, .select2-choice {
+    border-color: lighten($flat-error, 20%);
+    box-shadow: inset 0 0 0 1px lighten($flat-error, 20%);
+
+    &:focus {
+      border-color: $flat-error;
+      box-shadow: inset 0 0 0 1px $flat-error;
+    }
+  }
+}
+
+// Textarea
+.textarea-autocomplete {
+  padding: 1rem 1.6rem;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  min-height: 4rem;
+  height: 4rem;
+  line-height: 1.5;
+  width: 100%;
+  resize: none;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+// Autocomplete field
+.tg-autocomplete {
+  display: inline-block;
+  padding: 0;
+  width: 100%;
+}
+
+.textarea-autocomplete,
+.tg-mention-overlay {
+  font-size: 1.4rem;
+}
+
+.tg-mention-overlay {
+  margin: .1rem;
+  padding: 1rem 1.6rem;
+  min-height: 4rem;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: transparent;
+
+  .tg-name-tag {
+    color: transparent;
+    background: $background-light;
+    border-radius: 3px;
+  }
+}
+
+.user-autocomplete {
+  position: relative;
+
+  .dropdown-menu {
+    display: block;
+    top: 100%;
+  }
+}
+
+// Locked input wrapper
+.tg-input-locked {
+  position: relative;
+
+  .tg-btn-locked {
+    position: absolute;
+    top: calc(50% - .8rem);
+    right: 1.3rem;
+    line-height: 1.6rem;
+    color: $text-placeholder;
+  }
+}
+
+// Inputs for credit card and security number
+input[type=text].input-credit-cards {
+  padding-right: 13rem;
+  background-image: url(/images/icon-credit-cards.jpg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) 50%;
+
+  .rtl & {
+    padding-right: 1.2rem;
+    padding-left: 13rem;
+    background-position: 1rem 50%;
+  }
+}
+
+input[type=text].input-security-number {
+  padding-right: 5rem;
+  background-image: url(/images/icon-security-number.jpg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) 50%;
+
+  .rtl & {
+    padding-right: 1.2rem;
+    padding-left: 5rem;
+    background-position: 1rem 50%;
+  }
+}

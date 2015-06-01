@@ -1,0 +1,87 @@
+// Default attachment style
+.tg-content-attachment {
+  margin: 2rem 0 0;
+  padding: .5rem;
+  display: table;
+  table-layout: fixed;
+  background-color: #fff;
+  border: 1px solid $border;
+  border-radius: 3px;
+
+  img {
+    display: block;
+  }
+}
+
+// Attachment with description
+.tg-content-attachment.has-description {
+  max-width: 100rem;
+}
+
+
+// Thumbnails - might be used elsewhere, edit carefully
+.tg-content-thumbnail {
+  display: table-cell;
+  padding: 0;
+  border: 0;
+  vertical-align: middle;
+  border-radius: 0;
+
+  + .tg-content-attachment-description {
+  padding: 0 2rem;
+  }
+}
+
+.tg-content-thumbnail-video, .tg-content-thumbnail-low-quality {
+  width: 10rem;
+  height: 10rem;
+  background-color: $background-light;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tg-content-thumbnail-video {
+  position: relative;
+
+  .icon-videoplay:after {
+    content: '▶';
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 18px);
+    left: calc(50% - 18px);
+    font-size: 36px;
+    color: #fff;
+    opacity: .8;
+  }
+}
+
+// Attachment desc
+.tg-content-attachment-description {
+  padding: 1rem 1.5rem;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.tg-content-attachment-title {
+  font-size: 1.6rem;
+}
+
+.tg-content-attachment-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.tg-content-attachment-text {
+  margin-top: 1rem;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.thumbnail a > img, .thumbnail > img {
+  display: block;
+  max-width: 180px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}

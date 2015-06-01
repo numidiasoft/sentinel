@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 var gulpNgConfig = require('gulp-ng-config');
-var ngConstant = require('gulp-ng-constant');
 var util = require('gulp-util');
 var NODE_ENV = process.env.NODE_ENV || 'development';
 

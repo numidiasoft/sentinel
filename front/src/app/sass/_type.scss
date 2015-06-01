@@ -1,0 +1,53 @@
+h1, h2, h3, h4, h5, h6 {
+  margin: 1rem 0;
+  line-height: 1.3;
+  color: $text-title;
+}
+
+h1 {
+  font-size: 5.6rem;
+  font-weight: lighter;
+}
+
+h2 {
+  font-size: 3.8rem;
+  font-weight: lighter;
+}
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: lighter;
+}
+
+h4 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+h5 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+small {
+  color: $text-body-light;
+}
+
+label {
+  font-weight: 700;
+}
+
+.tg-highlight {
+  background: $background-highlight;
+  padding: 0 2px;
+  margin: 0 -4px;
+}
+
+.tg-info {
+  color: $text-info; 
+}

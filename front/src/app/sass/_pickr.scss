@@ -1,0 +1,37 @@
+// FIXME: this is not coming from the styleguide, modify with caution
+.labels-pickr,
+.users-pickr,
+.feelings-pickr {
+  &.bulk {
+    .dropdown-menu-title {
+      cursor: w-resize;
+    }
+    margin: -.5rem;
+    padding: 0;
+    border: none;
+  }
+}
+
+.labels-menu {
+  .dropdown-menu {
+    padding: 0;
+    max-height: none;
+  }
+}
+
+.attached-bottom {
+  bottom: 3rem;
+}
+
+.bulk-actions {
+  .dropdown-menu {
+    max-height: none;
+  }
+}
+
+.users-pickr {
+  .dropdown-menu {
+    position: relative;
+    display: block;
+  }
+}

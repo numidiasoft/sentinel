@@ -1,0 +1,15 @@
+/* Styling for the ngProgress itself */
+#ngProgress {
+  height: .2rem !important;
+  opacity: 0;
+  background-color: $flat-info !important;
+  transition: all .5s ease-in-out;
+}
+
+/* Styling for the ngProgress-container */
+#ngProgress-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
