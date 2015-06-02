@@ -11,15 +11,15 @@ class StatusesCtrl {
     statusResource.getStatuses().then( (response) => {
       self.resource = response;
       $scope.statuses = response.statuses;
-      $scope.loadMorePath = response.$href('self');
-      $scope.currentPage = 2;
+      $scope.hasNext = response.$has("next")
     });
 
     $scope.loadMore = function(page)  {
       self.resource
-        .$get('self', { 'page': page }).then((response) => {
-          $scope.currentPage += 1;
+        .$get('next').then((response) => {
           $scope.statuses = $scope.statuses.concat(response.statuses);
+          $scope.hasNext = response.$has("next")
+          self.resource = response;
         });
     };
 
