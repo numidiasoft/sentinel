@@ -22,7 +22,7 @@
                 <p>{{status.description}}</p>
               </div>
             <div class="row tg-padding-right">
-              <button type="submit" class="btn btn-success pull-right" ng-click='destroy(status)'>Destroy</button>
+              <button type="submit" class="btn btn-danger pull-right" ng-click='destroy(status)'>Destroy</button>
             </div>
           </div>
        </div>
@@ -30,7 +30,7 @@
     </div>
 
   <div class="col-lg-24" ng-if="hasNext">
-    <button type="submit" class="btn btn-full-width btn-info" ng-click='loadMore(currentPage)'>Load More</button>
+    <button type="submit" class="btn btn-full-width btn-info" ng-click='loadMore()'>Load More</button>
   </div>
 
 </div>

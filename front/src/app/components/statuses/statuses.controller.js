@@ -11,14 +11,14 @@ class StatusesCtrl {
     statusResource.getStatuses().then( (response) => {
       self.resource = response;
       $scope.statuses = response.statuses;
-      $scope.hasNext = response.$has("next")
+      $scope.hasNext = response.$has('next');
     });
 
-    $scope.loadMore = function(page)  {
+    $scope.loadMore = function()  {
       self.resource
         .$get('next').then((response) => {
           $scope.statuses = $scope.statuses.concat(response.statuses);
-          $scope.hasNext = response.$has("next")
+          $scope.hasNext = response.$has('next');
           self.resource = response;
         });
     };
