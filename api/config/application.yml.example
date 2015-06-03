@@ -4,9 +4,12 @@ development:
       database: sentinel_dev
       hosts:
         - localhost:27017
+  session_secret_key: change_me
+
 test:
   sessions:
     default:
       database: sentinel_test
       hosts:
         - localhost:27017
+  session_secret_key: changeme

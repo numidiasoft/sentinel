@@ -33,6 +33,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    bcrypt (3.1.10)
     bson (2.3.0)
     builder (3.2.2)
     coderay (1.1.0)
@@ -158,6 +159,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  bcrypt
   colorize
   database_cleaner
   factory_girl
@@ -165,6 +167,7 @@ DEPENDENCIES
   grape
   grape-roar
   grape_logging
+  hashie
   kaminari
   mongoid
   pry

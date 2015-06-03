@@ -2,8 +2,17 @@ module Sentinel
   class StatusChecks < Grape::API
     format :json
 
+    helpers do
+      def current_user
+        @user ||= User.where(id: session[:user_id]).first
+      end
+    end
+
     desc "return http health statuses for all registred sevices"
     resource :statuses do
+      before do
+        error!('Unauthorized', 401) unless current_user
+      end
 
       get do
         http_status = Check.desc(:updated_at).page(params[:page] || 1).per(params[:per] || 15)

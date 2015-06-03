@@ -36,6 +36,10 @@ VCR.configure do |c|
 end
 
 def app
-  Sentinel::StatusChecks.new
+  Sentinel::Api.new
+end
+
+def login(user)
+  env 'rack.session', {user_id: user.id.to_s }
 end
 

@@ -8,5 +8,12 @@ use Rack::Cors do
     resource '*', :headers => :any, :methods => [:get, :patch, :post, :delete]
   end
 end
+
+Sentinel.logger.error(Sentinel::Config.application.inspect)
+use Rack::Session::Cookie, :key => 'rack.session',
+    :expire_after => 2592000,
+    :secret => Sentinel::Config.application.session_secret_key,
+    :old_secret => Sentinel::Config.application.session_secret_key
+
 use GrapeLogging::Middleware::RequestLogger, { logger: Sentinel.logger }
 run Sentinel::Api.new

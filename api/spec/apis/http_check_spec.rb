@@ -10,6 +10,14 @@ module Sentinel
       create :check
     end
 
+    let(:current_user) do
+      create :user
+    end
+
+    before(:each) do
+      login(current_user)
+    end
+
     describe 'GET /statuses'do
       context 'When checks is empty' do
 

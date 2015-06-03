@@ -46,7 +46,7 @@ module Sentinel
 
   module Configuration
     def self.init
-      ::Mongoid.load!("config/mongoid.yml", ENV['RACK_ENV'])
+      ::Mongoid.load!("config/application.yml", ENV['RACK_ENV'])
     end
   end
 end
