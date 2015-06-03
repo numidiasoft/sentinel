@@ -1,0 +1,29 @@
+<div class="su">
+  <div class="su-logo" ng-include="'app/components/navbar/navbar.html'"></div>
+  <div ng-controler="UserCtrl" class="su-form">
+    <h1 class="su-title tg-padding-bottom">Login to Sentinel</h1>
+    <div class="bs-example bs-example-bg-classes" ng-if='updated && type' >
+      <div class="alert alert-{{type}} alert-block"  ng-if="type!='success'">
+        <span class="alert-text">
+          <strong>There was an error in the form</strong>
+        </span>
+      </div>
+    </div>
+
+    <form>
+
+      <label class="su-label tg-padding-top">Email address</label>
+      <div class="loginForm">
+        <input type="email" class="form-control" placeholder="Enter Email" ng-model='user.email'>
+      </div>
+
+      <label class="su-label tg-padding-top">Login</label>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="enter Password"  ng-model='user.password'>
+      </div>
+
+      <input type="submit" class="btn-full-width btn btn-lg btn-success margin-top" ng-click='signin(user)' value="Login" >
+    </form>
+    <hr>
+  </div>
+</div>

@@ -7,6 +7,9 @@ let components =  ['sentinel.components.navbar',
   'sentinel.components.statuses',
   'sentinel.components.statuses.edit',
   'sentinel.components.statuses.new',
+  'sentinel.components.auth',
+  'sentinel.components.authResource',
+  'sentinel.components.auth.interceptor',
   'sentinel.components.statusResource',
   'sentinel.components.main'
   ];
@@ -18,18 +21,19 @@ angular.module('components', components);
 var app = angular.module('sentinel', ['externalDependencies', 'components']);
 
 app
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+  $httpProvider.interceptors.push('AuthInterceptor');
   $stateProvider
   .state('statuses', {
     abstract: true,
     url: '/statuses',
     templateUrl: 'app/main/main.html',
-    controller: "MainCtrl"
+    controller: 'MainCtrl'
   })
-  .state( "statuses.list", {
+  .state( 'statuses.list', {
     url: '/list',
     templateUrl: 'app/components/statuses/statuses.html',
-    controller: "StatusesCtrl"
+    controller: 'StatusesCtrl'
   })
   .state('statuses.edit', {
     url: '/edit/:id',
@@ -40,6 +44,11 @@ app
     url: '/create',
     templateUrl: 'app/components/statuses/new.html',
     controller: 'NewStatusCtrl'
+  })
+  .state('signin', {
+    url: '/signin',
+    templateUrl: 'app/components/auth/login.html',
+    controller: 'AuthCtrl'
   });
 
   $urlRouterProvider.otherwise('statuses/list');
