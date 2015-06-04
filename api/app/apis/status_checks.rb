@@ -15,7 +15,10 @@ module Sentinel
       end
 
       get do
-        http_status = Check.desc(:updated_at).page(params[:page] || 1).per(params[:per] || 15)
+        http_status = Check.where(user: current_user)
+          .desc(:updated_at)
+          .page(params[:page] || 1)
+          .per(params[:per] || 15)
         present http_status, with: StatusesPresenter
       end
 
@@ -34,7 +37,7 @@ module Sentinel
       end
 
       post do
-        check  = Check.new(params.check.to_h)
+        check  = Check.new(params.check.to_h.merge(user_id: current_user.id))
         error!("Check creation failed #{check.errors.first}", 400) unless check.save
         present check.reload, with: StatusPresenter
       end

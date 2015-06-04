@@ -23,5 +23,6 @@ module Sentinel
     validates :type, inclusion: { in: ['auto', 'manual'] }
     validates :verb, inclusion: { in: ['GET', 'POST', 'PATCH'] }
 
+    belongs_to :user
   end
 end

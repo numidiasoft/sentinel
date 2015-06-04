@@ -3,7 +3,7 @@ module Sentinel
   describe StatusChecks do
 
     let(:create_statuses) do
-      2.times { create :check }
+      2.times { create :check, user: current_user }
     end
 
     let(:create_status) do
