@@ -17,7 +17,6 @@ module Sentinel
       end
 
       delete do
-        logger.error(session.inspect)
         session.destroy
         status 200
       end
