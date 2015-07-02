@@ -1,13 +1,13 @@
 <nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" ui-sref="statuses.list">
+      <a class="navbar-brand" ui-sref="admin.statusList">
         <span class="glyphicon glyphicon-home"></span> Sentinel
       </a>
     </div>
 
     <ul class="nav navbar-nav navbar-right" ng-controller="AuthCtrl">
-      <li><a href ng-click="signout()" >Signout</a></li>
+      <li ng-if="userService.connected"><a href ng-click="signout()" >Signout</a></li>
     </ul>
   </div>
 </nav>

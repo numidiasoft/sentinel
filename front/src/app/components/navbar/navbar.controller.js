@@ -3,12 +3,12 @@
 var navbar = angular.module('sentinel.components.navbar', []);
 
 class NavbarCtrl {
-  constructor ($scope) {
-    $scope.date = new Date();
+  constructor ($scope, userService) {
+    $scope.userService = userService;
   }
 }
 
-NavbarCtrl.$inject = ['$scope'];
+NavbarCtrl.$inject = ['$scope', 'UserService'];
 
 
 navbar
