@@ -23,8 +23,10 @@ module Sentinel
       { status: "Welcome to the sentinel API" }
     end
 
-    mount Authentication
-    mount StatusChecks
+    mount AuthenticationApi
+    mount StatusChecksApi
+    mount StatusesApi
+    mount UserApi
   end
 end
 

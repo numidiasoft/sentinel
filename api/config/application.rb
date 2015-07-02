@@ -33,6 +33,7 @@ module Sentinel
     def load_libs
       Sentinel.autoload_dir File.expand_path File.join("app")
       Sentinel.autoload_dir File.expand_path File.join("app", "apis")
+      Sentinel.autoload_dir File.expand_path File.join("app", "apis", "admin")
       Sentinel.autoload_dir File.expand_path File.join("app", "models")
       Sentinel.autoload_dir File.expand_path File.join("app", "presenters")
       Sentinel.autoload_dir File.expand_path File.join("lib")
