@@ -11,6 +11,7 @@ module Sentinel
     field :first_name, type: String
     field :last_name, type: String
     field :password_digest, :type => String
+    field :domain, type: String
 
     has_secure_password validations: true
 
