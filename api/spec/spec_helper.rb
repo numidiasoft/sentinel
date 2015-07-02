@@ -40,6 +40,6 @@ def app
 end
 
 def login(user)
-  env 'rack.session', {user_id: user.id.to_s }
+  env 'rack.session', { user_id: user.id.to_s }
 end
 

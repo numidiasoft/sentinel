@@ -11,7 +11,7 @@ module Sentinel
     desc "return http health statuses for all registred sevices"
     resource :me do
       before do
-        error!('Unauthorized', 401) unless current_user
+        error!('Unauthorized', 403) unless current_user
       end
 
       get do
