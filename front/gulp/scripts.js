@@ -40,6 +40,7 @@ module.exports = function(options) {
     var sentinelLibs = [ options.src + '/app/**/*.controller.js',
       options.src + '/app/**/*.interceptor.js',
       options.src + '/app/**/*.directive.js',
+      options.src + '/app/**/*/*.service.js',
       options.src + '/app/**/*.resource.js',
       options.src + '/app/index.js',
       options.src +"/*.js",
