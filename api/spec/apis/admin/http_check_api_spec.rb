@@ -1,6 +1,6 @@
 require 'spec_helper'
 module Sentinel
-  describe StatusChecks do
+  describe StatusChecksApi do
 
     let(:create_statuses) do
       2.times { create :check, user: current_user }

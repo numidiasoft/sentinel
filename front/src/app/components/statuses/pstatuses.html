@@ -1,0 +1,33 @@
+<div ng-controller="PublicStatusesCtrl">
+
+    <div class="jumbotron text-center">
+      <h1>Statuses list </h1>
+    </div>
+
+    <div class="col-lg-24" ng-repeat="status in statuses | orderBy:'-updated_at'">
+
+      <div class="status-{{status.status}}">
+        <div class="thumbnail">
+          <div class="caption">
+            <header>
+              <h2>
+                {{status.name}}
+              </h2>
+            </header>
+
+              <div class="well" ng-if="status.description">
+                <p>{{status.description}}</p>
+              </div>
+            <div class="row tg-padding-right">
+              <button type="submit" class="btn btn-success pull-right" ng-click='destroy(status)'>Detail</button>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+
+  <div class="col-lg-24" ng-if="hasNext">
+    <button type="submit" class="btn btn-full-width btn-info" ng-click='loadMore()'>Load More</button>
+  </div>
+
+</div>

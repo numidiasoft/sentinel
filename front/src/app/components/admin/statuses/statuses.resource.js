@@ -8,9 +8,14 @@ class StatusResource {
      this.environmentConfig = environmentConfig;
    }
 
-   getStatuses () {
+   getStatuses() {
      return this.resource
        .$get(this.environmentConfig.api + '/statuses');
+   }
+
+   getPublicStatuses(domain) {
+     return this.resource
+       .$get(`${this.environmentConfig.api}/public_statuses/${domain}`);
    }
 
    getStatus(id) {

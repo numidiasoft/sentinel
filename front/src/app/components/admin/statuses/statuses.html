@@ -1,8 +1,14 @@
 <div ng-controller="StatusesCtrl">
 
     <div class="jumbotron text-center">
-      <h1>Statuses list </h1>
-      <a ui-sref='statuses.create'>
+      <h1>Statuses list
+      </h1>
+      <div class="row" >
+        <a ui-sref="statuses.list({id: userService.domain})">
+          Switch to the public list
+        </a>
+      </div>
+      <a ui-sref='admin.statusCreate'>
        <button class="btn btn-lg btn-info"> Add a new Status </button>
       </a>
     </div>
@@ -14,7 +20,7 @@
           <div class="caption">
             <header>
               <h2>
-                <a ui-sref="statuses.edit({id: status.id.$oid})"> {{status.name}}</a>
+                <a ui-sref="admin.statusEdit({id: status.id.$oid})"> {{status.name}}</a>
               </h2>
             </header>
 

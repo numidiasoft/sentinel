@@ -1,5 +1,5 @@
 module Sentinel
-  class Authentication <  Grape::API
+  class AuthenticationApi <  Grape::API
 
     desc "Authenticate the user"
     resource :authentication do

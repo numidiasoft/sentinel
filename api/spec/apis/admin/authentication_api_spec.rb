@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 module Sentinel
-  describe Authentication do
+  describe AuthenticationApi do
 
     let(:user) do
       create :user

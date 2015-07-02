@@ -3,13 +3,14 @@
 var auth = angular.module('sentinel.components.auth', []);
 
 class AuthCtrl {
-  constructor($scope, $state, $timeout, AuthResource) {
+  constructor($scope, $state, $timeout, AuthResource, UserService) {
     $scope.user = {};
     var self = this;
 
     $scope.signin = function(user) {
-      AuthResource.signIn(user).then(() => {
-        $state.transitionTo('statuses.list');
+      AuthResource.signIn(user).then((response) => {
+        UserService.setUser(user);
+        $state.transitionTo('admin.statusList');
       }).catch(function() {
         self.flash($scope, $timeout, 500);
       });
@@ -17,6 +18,7 @@ class AuthCtrl {
 
     $scope.signout = function() {
       AuthResource.signOut();
+      UserService.unsetUser()
     };
   }
 
@@ -30,7 +32,7 @@ class AuthCtrl {
   }
 }
 
-AuthCtrl.$inject =  ['$scope', '$state', '$timeout', 'AuthResource'];
+AuthCtrl.$inject =  ['$scope', '$state', '$timeout', 'AuthResource', 'UserService'];
 
 auth
   .controller('AuthCtrl', AuthCtrl);

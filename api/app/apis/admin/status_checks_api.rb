@@ -1,5 +1,5 @@
 module Sentinel
-  class StatusChecks < Grape::API
+  class StatusChecksApi < Grape::API
     format :json
 
     helpers do
