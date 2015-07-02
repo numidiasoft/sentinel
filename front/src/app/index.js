@@ -5,10 +5,12 @@ let externalDependencies = ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router',
 let components =  ['sentinel.components.navbar',
   'sentinel.config',
   'sentinel.components.statuses',
+  'sentinel.components.pstatuses',
   'sentinel.components.statuses.edit',
   'sentinel.components.statuses.new',
   'sentinel.components.auth',
   'sentinel.components.authResource',
+  'sentinel.components.userService',
   'sentinel.components.auth.interceptor',
   'sentinel.components.statusResource',
   'sentinel.components.main'
@@ -24,6 +26,35 @@ app
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
   $stateProvider
+  .state('admin', {
+    abstract: true,
+    url: '/admin',
+    templateUrl: 'app/main/main.html',
+    controller: ($scope, UserService) => {
+      UserService.setUserFromApi();
+      $scope.userService = UserService;
+    }
+  })
+  .state( 'admin.statusList', {
+    url: '/statuses/list',
+    templateUrl: 'app/components/admin/statuses/statuses.html',
+    controller: 'StatusesCtrl'
+  })
+  .state('admin.statusEdit', {
+    url: '/edit/:id',
+    templateUrl: 'app/components/admin/statuses/edit.html',
+    controller: 'EditStatusCtrl'
+  })
+  .state('admin.statusCreate', {
+    url: '/create',
+    templateUrl: 'app/components/admin/statuses/new.html',
+    controller: 'NewStatusCtrl'
+  })
+  .state('signin', {
+    url: '/signin',
+    templateUrl: 'app/components/admin/auth/login.html',
+    controller: 'AuthCtrl'
+  })
   .state('statuses', {
     abstract: true,
     url: '/statuses',
@@ -31,25 +62,10 @@ app
     controller: 'MainCtrl'
   })
   .state( 'statuses.list', {
-    url: '/list',
-    templateUrl: 'app/components/statuses/statuses.html',
-    controller: 'StatusesCtrl'
-  })
-  .state('statuses.edit', {
-    url: '/edit/:id',
-    templateUrl: 'app/components/statuses/edit.html',
-    controller: 'EditStatusCtrl'
-  })
-  .state('statuses.create', {
-    url: '/create',
-    templateUrl: 'app/components/statuses/new.html',
-    controller: 'NewStatusCtrl'
-  })
-  .state('signin', {
-    url: '/signin',
-    templateUrl: 'app/components/auth/login.html',
-    controller: 'AuthCtrl'
+    url: '/list/:id',
+    templateUrl: 'app/components/statuses/pstatuses.html',
+    controller: 'PublicStatusesCtrl'
   });
 
-  $urlRouterProvider.otherwise('statuses/list');
+  $urlRouterProvider.otherwise('/admin/statuses/list');
 });
