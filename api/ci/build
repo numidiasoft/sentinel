@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bundle install --path=/.bundle -j 4
+bundle exec spec

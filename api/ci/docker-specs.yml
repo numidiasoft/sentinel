@@ -1,0 +1,10 @@
+mongodb:
+  image: mongo:3.0
+  command: "--smallfiles"
+api:
+  image: numidiasoft/sentinel-api
+  volumes:
+    - .:/app
+  links:
+    - mongodb
+  command: sh build
