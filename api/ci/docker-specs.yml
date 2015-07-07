@@ -4,7 +4,7 @@ mongodb:
 api:
   image: numidiasoft/sentinel-api
   volumes:
-    - .:/app
+    - ../:/app
   links:
     - mongodb
   command: sh build
