@@ -7,4 +7,4 @@ api:
     - ../:/app
   links:
     - mongodb
-  command: sh build
+  command: ./ci/build
