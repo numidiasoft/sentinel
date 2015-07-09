@@ -9,7 +9,6 @@ use Rack::Cors do
   end
 end
 
-Sentinel.logger.error(Sentinel::Config.application.inspect)
 use Rack::Session::Cookie, :key => 'rack.session',
     :expire_after => 2592000,
     :secret => Sentinel::Config.application.session_secret_key,
