@@ -1,0 +1,1 @@
+docker run --rm -ti --name cron -v  /home/core/share/sentinel/api/:/app -v /srv/.sentinel-api:/.bundle  --link mongodb:mongodb numidiasoft/sentinel-api:cron /cron

@@ -13,6 +13,6 @@ module Sentinel
 
   groups.each do |group|
     puts "\n"
-    puts "You have #{grouped_by_statuses[group].size} service(s) in #{group} state".send(group.to_sym)
+    puts "[#{Time.now}] -- You have #{grouped_by_statuses[group].size} service(s) in #{group} state".send(group.to_sym)
   end
 end
