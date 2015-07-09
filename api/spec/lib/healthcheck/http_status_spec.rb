@@ -95,6 +95,8 @@ module Sentinel
           it "returns green state" do
             VCR.use_cassette(:http_post_check_green) do
               check_entry = HttpStatus.check(http_post_check_green)
+              expect(check_entry.metrics.size).to be(1)
+              expect(check_entry.metrics.first.values.size).to be(1)
               expect(check_entry.status.to_sym).to be(:green)
             end
           end

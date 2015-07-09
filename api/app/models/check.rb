@@ -26,5 +26,6 @@ module Sentinel
     validates :visibililty, inclusion: { in: ['private', 'public'] }
 
     belongs_to :user
+    has_many :metrics
   end
 end

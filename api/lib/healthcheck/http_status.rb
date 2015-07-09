@@ -39,6 +39,7 @@ module Sentinel
                       else
                         check_entry.expected_response == response.body
                       end
+        status_metric(check_entry.id, response.status)
         Level::Http.service_state(response.status, body_status)
       end
 
@@ -52,6 +53,17 @@ module Sentinel
 
       def try_json(params)
         JSON.parse(params) rescue params
+      end
+
+      def status_metric check_id, status
+        timestamp_hour = Time.now
+        value = Value.new(key: timestamp_hour.min, value: status)
+        Metric.find_or_update(
+          check_id: check_id,
+          type: "status",
+          timestamp_hour: timestamp_hour,
+          value: value
+        )
       end
     end
   end
