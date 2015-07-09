@@ -2,7 +2,6 @@ require "spec_helper"
 
 module Sentinel
   RSpec.describe Metric do
-    let(:value) { create :value }
     let(:check) { Sentinel::Check.new(name: "socialinbox") }
     let(:metric) { create :metric, check: check}
 
@@ -19,7 +18,8 @@ module Sentinel
 
       it "loads an existing metric" do
         metric
-        new_metric = Metric.find_or_update(check_id: check.id, type: 'response_time', timestamp_hour: timestamp_hour, value: value)
+        value = Value.new(key: metric.timestamp_hour.sec, value: 325)
+        new_metric = Metric.find_or_update(check_id: check.id, type: 'response_time', timestamp_hour: metric.timestamp_hour, value: value)
         expect(new_metric.valid?).to eql(true)
         expect(metric.id).to eql(new_metric.id)
       end
