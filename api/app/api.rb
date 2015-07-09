@@ -27,6 +27,7 @@ module Sentinel
     mount StatusChecksApi
     mount StatusesApi
     mount UserApi
+    mount MetricApi
   end
 end
 
