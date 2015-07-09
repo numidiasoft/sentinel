@@ -1,0 +1,11 @@
+[Unit]
+Description="Sentinel api cron"
+
+[Service]
+ExecStartPre=-/usr/bin/docker kill cron-%i
+ExecStartPre=-/usr/bin/docker rm cron-%i
+ExecStartPre=-/bin/bash -c "mkdir -p /srv/.sentinel-api"
+ExecStartPre=-/usr/bin/docker pull numidiasoft/sentinel-api
+ExecStart=/usr/bin/docker run --rm --name cron-%i -v  /home/core/share/sentinel/api/:/app -v /srv/.sentinel-api:/.bundle --link mongodb:mongodb numidiasoft/sentinel-api /cron
+ExecStop=/usr/bin/docker stop cron-%i
+
