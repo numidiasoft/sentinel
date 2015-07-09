@@ -1,0 +1,7 @@
+#!/bin/bash
+
+touch /app/cron.log
+cd /app/ && bundle install --path=/.bundle
+cd /app/ && bundle exec whenever --update-crontab
+rsyslogd && cron
+tail -f /app/cron.log

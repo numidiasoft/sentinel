@@ -22,9 +22,12 @@ gem 'grape_logging'
 
 gem 'colorize'
 
+# crontab
+gem 'whenever', :require => false
+
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'bcrypt', '3.1.10', :require => 'bcrypt'
+gem 'bcrypt', '3.1.9', require: 'bcrypt'
 gem 'hashie'
 
 group :development, :test do
