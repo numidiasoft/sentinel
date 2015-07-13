@@ -5,12 +5,12 @@ http_interactions:
     uri: http://fixedbikesshop.sandbox.sleekapp.io/api/login
     body:
       encoding: UTF-8
-      string: email=tarik.ihadjadene%40tigerlilyapps.com&password=aaaaaa
+      string: '{"email":"tarik.ihadjadene@tigerlilyapps.com","password":"aaaaaa"}'
     headers:
       User-Agent:
       - Faraday v0.9.1
       Content-Type:
-      - application/x-www-form-urlencoded
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 28 May 2015 09:52:18 GMT
+      - Fri, 10 Jul 2015 13:36:02 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -33,8 +33,9 @@ http_interactions:
       Status:
       - 200 OK
       Set-Cookie:
-      - rack.session=2fc7b17da55af4e1d6afa5203274da613c7d02abcfaa636d67d6f3c711db4a8e;
-        path=/; expires=Thu, 28 May 2015 17:52:18 -0000; HttpOnly
+      - rack.session=c52456bf3b46a8c7580190cd029f2b03b0ff8c2d9da79edd951df7a33c01cf77;
+        domain=.sandbox.sleekapp.io; path=/; expires=Fri, 10 Jul 2015 21:36:02 -0000;
+        HttpOnly
       Etag:
       - '"99914b932bd37a50b983c5e7c90ae93b"'
       Cache-Control:
@@ -51,5 +52,5 @@ http_interactions:
       encoding: UTF-8
       string: "{}"
     http_version: 
-  recorded_at: Thu, 28 May 2015 09:52:18 GMT
+  recorded_at: Fri, 10 Jul 2015 13:36:02 GMT
 recorded_with: VCR 2.9.3
