@@ -1,4 +1,5 @@
 require "faraday"
+require_relative "../middleware/faraday_response_time"
 
 module Sentinel
   module HttpStatus
@@ -18,13 +19,16 @@ module Sentinel
 
       def check_with_get check_entry
         safly do
-          response = Faraday.get(check_entry.url.to_s)
+          response = http_client.get(check_entry.url.to_s)
           check_body(response, check_entry)
         end
       end
 
       def check_with_post check_entry
-        response = Faraday.post(check_entry.url, try_json(check_entry.params))
+        response = http_client.post check_entry.url.to_s do |req|
+          req.headers[:content_type] = 'application/json'
+          req.body = JSON.parse(check_entry.params).to_json
+        end
         check_body(response, check_entry)
       end
 
@@ -40,6 +44,7 @@ module Sentinel
                         check_entry.expected_response == response.body
                       end
         status_metric(check_entry.id, response.status)
+        response_time_metric(check_entry.id, response.env[:duration])
         Level::Http.service_state(response.status, body_status)
       end
 
@@ -55,15 +60,35 @@ module Sentinel
         JSON.parse(params) rescue params
       end
 
-      def status_metric check_id, status
-        timestamp_hour = Time.now
-        value = Value.new(key: timestamp_hour.min, value: status)
+      def status_metric(check_id, status)
+        value = Value.new(key: Time.now.min, value: status)
         Metric.find_or_update(
           check_id: check_id,
           type: "status",
           timestamp_hour: timestamp_hour,
           value: value
         )
+      end
+
+      def response_time_metric(check_id, response_time)
+        value = Value.new(key: Time.now.min, value: response_time)
+        Metric.find_or_update(
+          check_id: check_id,
+          type: "response_time",
+          timestamp_hour: timestamp_hour,
+          value: value
+        )
+      end
+
+      def http_client
+       ::Faraday::Connection.new do |builder|
+          builder.request :response_time
+          builder.adapter Faraday.default_adapter
+        end
+      end
+
+      def timestamp_hour
+        Time.now.strftime("%Y-%m-%dT%H:00:00")
       end
     end
   end
