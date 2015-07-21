@@ -12,7 +12,7 @@ module Sentinel
     resource :metrics do
       route_param :id do
         get do
-          check = Check.find_by(params[:id])
+          check = Check.where(id: params[:id]).first
           error!('Not found', 404) if check.nil?
           agregation = params[:agregation] || 'minutes'
           type = params[:type] || 'status'

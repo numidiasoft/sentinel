@@ -11,7 +11,7 @@ module Sentinel
       end
 
       def agregate_by_hour(check, type, since)
-        check.metrics.where(:created_at.gte => since, type: type).map do |metric|
+        check.metrics.where(:created_at.gte => since, type: type).order_by(:created_at.asc).map do |metric|
           {
             :date  => to_iso_8601(metric.created_at),
             type =>  metric.total_samples
@@ -21,7 +21,7 @@ module Sentinel
 
       def agregate_by_minute(check, type, since)
         metrics = []
-        check.metrics.where(:created_at.gte => since, type: type).each do |metric|
+        check.metrics.where(:created_at.gte => since, type: type).order_by(:created_at.asc).each do |metric|
           metrics << minute_metric_values(metric)
         end
         metrics.flatten
@@ -41,7 +41,7 @@ module Sentinel
       def calculate_since(period)
         accepted_periods =  %w(hour day week month)
         if accepted_periods.include?(period)
-          return 1.send(period).ago
+          return 1.send(period).ago.strftime("%Y-%m-%dT%H:00:00").to_time
         end
         return 1.day.ago
       end
