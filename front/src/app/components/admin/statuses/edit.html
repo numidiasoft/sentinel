@@ -56,6 +56,14 @@
       </div>
 
       <div class="form-group">
+        <label for="exampleInputPassword1">Visibility</label>
+        <select class="form-control input-lg" ng-model='status.visibility'>
+           <option value="public">Public</option>
+           <option value="private">Private</option>
+        </select>
+      </div>
+
+      <div class="form-group">
         <label for="exampleInputPassword1">Description</label>
         <textarea class="form-control" rows="3" placeholder="Enter Description" ng-model='status.description'></textarea>
       </div>

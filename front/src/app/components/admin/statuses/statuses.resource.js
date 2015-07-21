@@ -36,6 +36,7 @@ class StatusResource {
          description: status.description,
          expected_response: status.expected_response,
          verb: status.verb,
+         visibility: status.visibility,
          params: status.params
        }
      });

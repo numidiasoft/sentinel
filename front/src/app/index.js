@@ -40,8 +40,7 @@ app
   })
   .state( 'admin.statusList', {
     url: '/statuses/list',
-    templateUrl: 'app/components/admin/statuses/statuses.html',
-    controller: 'StatusesCtrl'
+    templateUrl: 'app/components/admin/statuses/statuses.html'
   })
   .state('admin.statusEdit', {
     url: '/edit/:id',
@@ -66,13 +65,11 @@ app
   })
   .state( 'statuses.list', {
     url: '/list/:id',
-    templateUrl: 'app/components/statuses/pstatuses.html',
-    controller: 'PublicStatusesCtrl'
+    templateUrl: 'app/components/statuses/pstatuses.html'
   })
   .state( 'statuses.detail', {
     url: '/status/:id',
-    templateUrl: 'app/components/statuses/pstatus.detail.html',
-    controller: 'PublicStatusDetailCtrl'
+    templateUrl: 'app/components/statuses/pstatus.detail.html'
   });
 
   $urlRouterProvider.otherwise('/admin/statuses/list');
