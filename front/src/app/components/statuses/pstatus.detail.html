@@ -1,0 +1,37 @@
+<div ng-controller="PublicStatusDetailCtrl">
+    <div class="jumbotron text-center">
+      <h1>Statuses detail </h1>
+    </div>
+
+    <div class="col-lg-24" >
+
+      <div class="status-{{status.status}}">
+        <div class="thumbnail">
+          <div class="caption">
+            <header>
+              <h2>
+                <a ui-sref="admin.statusEdit({id: status.id.$oid})"> {{status.name}}</a>
+              </h2>
+            </header>
+
+              <div class="well" ng-if="status.description">
+                <p>{{status.description}}</p>
+              </div>
+          </div>
+
+          <sentinel-metric
+             type="response_time"
+             title="Reponse times"
+             description="Give the reponse time history for a given endpoint" >
+          </sentinel-metric>
+
+          <sentinel-metric
+             type="status"
+             title="Api Uptime"
+             description="Uptime" >
+          </sentinel-metric>
+
+       </div>
+      </div>
+    </div>
+</div>

@@ -13,7 +13,10 @@ let components =  ['sentinel.components.navbar',
   'sentinel.components.userService',
   'sentinel.components.auth.interceptor',
   'sentinel.components.statusResource',
-  'sentinel.components.main'
+  'sentinel.components.main',
+  'sentinel.components.pstatuses.detail',
+  'sentinel.components.metric.resource',
+  'sentinel.components.metric.directive'
   ];
 
 
@@ -65,6 +68,11 @@ app
     url: '/list/:id',
     templateUrl: 'app/components/statuses/pstatuses.html',
     controller: 'PublicStatusesCtrl'
+  })
+  .state( 'statuses.detail', {
+    url: '/status/:id',
+    templateUrl: 'app/components/statuses/pstatus.detail.html',
+    controller: 'PublicStatusDetailCtrl'
   });
 
   $urlRouterProvider.otherwise('/admin/statuses/list');
