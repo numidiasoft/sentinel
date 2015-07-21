@@ -1,3 +1,5 @@
 .vagrant
 user-data
 cron.log
+front/.bundle
+api/.bundle
