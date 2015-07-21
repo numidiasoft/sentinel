@@ -14,7 +14,7 @@ module Sentinel
     field :verb, type: String
     field :params, type: String
     field :status, type: String, default: 'green'
-    field :visibililty, type: String, default: 'private'
+    field :visibility, type: String, default: 'private'
     validates :name, presence: true
     validates :url, presence: true
     validates :type, presence: true
@@ -23,9 +23,11 @@ module Sentinel
     validates :status, inclusion: { in: ['red', 'green', 'yellow'] }
     validates :type, inclusion: { in: ['auto', 'manual'] }
     validates :verb, inclusion: { in: ['GET', 'POST', 'PATCH'] }
-    validates :visibililty, inclusion: { in: ['private', 'public'] }
+    validates :visibility, inclusion: { in: ['private', 'public'] }
 
     belongs_to :user
     has_many :metrics
+
+    index({ user_id: 1, visibility: 1, updated_at: 1 }, { unique: false, name: "composite_index" })
   end
 end

@@ -16,6 +16,7 @@ module Sentinel
     property :status
     property :verb
     property :params
+    property :visibility
 
     link rel: :self, method: :GET do |opts|
       "/statuses/#{represented.id}"

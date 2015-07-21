@@ -52,6 +52,7 @@ module Sentinel
           optional :expected_response, type: String, desc: 'The expected response'
           requires :protocol, type: String, desc: 'The protocol to use', default: :http
           requires :verb, type: String, desc: 'The verb to use', default: :GET
+          requires :visibility, type: String, desc: 'The visibility of the status', default: :private
           optional :params, type: String, desc: 'params'
         end
       end

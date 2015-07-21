@@ -15,7 +15,11 @@ module Sentinel
     validates :timestamp_hour, presence: true
     validates :values, presence: true
     embeds_many :values
-    belongs_to :check
+    belongs_to :check, index: true
+
+    index({ type: 1 }, { unique: false, name: "type_index" })
+    index({ timestamp_hour: 1 }, { name: "timestamp_hour_index" })
+    index({ created_at: 1 }, { name: "created_at_index" })
 
     def self.find_or_update(check_id:, type:, timestamp_hour:, value:)
       metric = find_or_initialize_by(check_id: check_id, type: type, timestamp_hour: timestamp_hour)
