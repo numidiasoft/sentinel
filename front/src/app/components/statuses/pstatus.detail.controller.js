@@ -5,8 +5,7 @@ var statusDetail = angular.module('sentinel.components.pstatuses.detail', []);
 class PublicStatusDetailCtrl {
   constructor($scope, $stateParams, $rootScope,  StatusResource) {
     var self = this
-    StatusResource.getStatus($stateParams.id).then( (status) => {
-      console.log($rootScope.loaded);
+    StatusResource.getPublicStatus($stateParams.id).then( (status) => {
       $rootScope.loaded = true;
       $scope.status = status;
     });

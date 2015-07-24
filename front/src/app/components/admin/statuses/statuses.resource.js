@@ -25,6 +25,13 @@ class StatusResource {
        .$get(url);
    }
 
+   getPublicStatus(id) {
+     var url = this.environmentConfig.api + '/public_status/' + id;
+     return this
+       .resource
+       .$get(url);
+   }
+
    update(status, path) {
      return this.resource.$patch(path, null,  {
        check: {

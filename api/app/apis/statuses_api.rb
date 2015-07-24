@@ -14,7 +14,17 @@ module Sentinel
           present http_status, with: StatusesPresenter
         end
       end
+    end
 
+    desc "return a public health status"
+    resource :public_status do
+      route_param :id do
+        get do
+          check = Check.where(id: params[:id], visibility: 'public').first
+          status 404 and return if check.nil?
+          present check, with: StatusPresenter
+        end
+      end
     end
   end
 end
