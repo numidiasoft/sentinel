@@ -33,8 +33,9 @@ app
     abstract: true,
     url: '/admin',
     templateUrl: 'app/main/main.html',
-    controller: ($scope, UserService) => {
+    controller: ($scope, $rootScope, UserService) => {
       UserService.setUserFromApi();
+      $rootScope.loaded = false;
       $scope.userService = UserService;
     }
   })
@@ -61,7 +62,9 @@ app
     abstract: true,
     url: '/statuses',
     templateUrl: 'app/main/main.html',
-    controller: 'MainCtrl'
+    controller: ($rootScope) => {
+      $rootScope.loaded = false;
+    }
   })
   .state( 'statuses.list', {
     url: '/list/:id',

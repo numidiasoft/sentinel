@@ -20,7 +20,7 @@
           <div class="caption">
             <header>
               <h2>
-                <a ui-sref="admin.statusEdit({id: status.id.$oid})"> {{status.name}}</a>
+                <a ui-sref="admin.statusEdit({id: status.id.$oid})" ui-sref-opts="{reload: true}" > {{status.name}}</a>
               </h2>
             </header>
 

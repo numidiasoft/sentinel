@@ -4,12 +4,14 @@ var statuses = angular.module('sentinel.components.pstatuses', []);
 
 class PublicStatusesCtrl {
 
-  constructor($scope, $stateParams, statusResource, userService) {
+  constructor($scope, $stateParams, $rootScope, statusResource, userService) {
     var self = this;
     self.statusResource = statusResource;
+
     statusResource.getPublicStatuses($stateParams.id).then( (response) => {
       self.resource = response;
       $scope.statuses = response.statuses;
+      $rootScope.loaded = true;
       $scope.hasNext = response.$has('next');
     });
 
@@ -32,7 +34,7 @@ class PublicStatusesCtrl {
   }
 }
 
-PublicStatusesCtrl.$inject =  ['$scope', '$stateParams', 'StatusResource', 'UserService'];
+PublicStatusesCtrl.$inject =  ['$scope', '$stateParams', '$rootScope', 'StatusResource', 'UserService'];
 
 statuses
   .controller('PublicStatusesCtrl', PublicStatusesCtrl);

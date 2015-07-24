@@ -21,6 +21,8 @@ class AuthInterceptor {
   responseError(rejection) {
     if (rejection.status === 401 || rejection.status === 403) {
       var state = self.injector.get('$state');
+      var rootScope = self.injector.get('$rootScope');
+      rootScope.loaded = true;
       state.transitionTo('signin');
     }
     return self.q.reject(rejection);

@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/png" href="http://sleekapp.io/assets/images/favicons/favicon-16x16.png" sizes="16x16">
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <link rel="stylesheet" href="app/vendor.css">
@@ -26,7 +27,16 @@
     <![endif]-->
 
     <div class="container">
-      <div ui-view></div>
+
+      <div class="container-loader" ng-hide="loaded">
+          <div class="row row-content-loader">
+            <div class="jumbotron-loader text-center">
+              <img src="/assets/images/load.gif"><img>
+            </div>
+          </div>
+      </div>
+
+      <div ng-show="loaded" ui-view></div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

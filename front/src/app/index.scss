@@ -50,6 +50,15 @@ html[ng-app="sentinel"] body{
   border-radius: 6px;
 }
 
+.container-loader {
+  background-color: #ffffff;
+  position: relative;
+  height: 100%;
+  padding: 8px 8px 0px;
+  top: 76px;
+  z-index: 1010;
+  border-radius: 6px;
+}
 div.footer{
   background: #FFF;
   width: calc(100% + 16px);
@@ -63,8 +72,14 @@ div.footer{
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
-.jumbotron {
-
+.jumbotron-loader {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: inherit;
+  background-color: #ffffff;
 }
 
 .well {

@@ -19,7 +19,7 @@
                 <p>{{status.description}}</p>
               </div>
             <div class="row tg-padding-right">
-              <button type="submit" class="btn btn-success pull-right" ui-sref="statuses.detail({id: status.id.$oid})">Detail</button>
+              <button type="submit" class="btn btn-success pull-right" ui-sref="statuses.detail({id: status.id.$oid})" ui-sref-opts="{reload: true}">Detail</button>
             </div>
           </div>
        </div>

@@ -5,7 +5,6 @@ var main =  angular.module('sentinel.components.main', []);
 class MainCtrl {
   constructor ($scope) {
     $scope.date = new Date();
-
   }
 }
 
