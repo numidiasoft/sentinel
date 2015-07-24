@@ -62,15 +62,18 @@ app
     abstract: true,
     url: '/statuses',
     templateUrl: 'app/main/main.html',
-    controller: ($rootScope) => {
+    controller: ($rootScope, $state) => {
+      if ($state.current.name && $state.current.url == "/list/:id") {
+        $rootScope.domain = $state.params.id;
+      }
       $rootScope.loaded = false;
     }
   })
-  .state( 'statuses.list', {
+  .state('statuses.list', {
     url: '/list/:id',
     templateUrl: 'app/components/statuses/pstatuses.html'
   })
-  .state( 'statuses.detail', {
+  .state('statuses.detail', {
     url: '/status/:id',
     templateUrl: 'app/components/statuses/pstatus.detail.html'
   });
