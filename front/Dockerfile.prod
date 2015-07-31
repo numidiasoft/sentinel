@@ -43,6 +43,7 @@ RUN \
 # Define mountable directories.
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx"]
 COPY sentinel-nginx.conf /etc/nginx/sites-enabled/sentinel-nginx
+RUN rm -f /etc/nginx/sites-enabled/default
 
 # Install chef client and init configuration
 RUN apt-get update \
