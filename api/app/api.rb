@@ -3,8 +3,8 @@ module Sentinel
   class Api < Grape::API
     use Rack::Session::Cookie, :key => 'rack.session',
       :expire_after => 2592000,
-      :secret => 'change_me',
-      :old_secret => 'also_change_me'
+      :secret => Sentinel::Config.application.session_secret_key,
+      :old_secret => Sentinel::Config.application.session_secret_key
 
     format :json
     formatter :json, Grape::Formatter::Roar
