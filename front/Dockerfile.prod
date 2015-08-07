@@ -20,6 +20,7 @@ ADD ./dist /var/www/html
 
 
 # Install oftware-properties-common Package
+VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx"]
 RUN  apt-get -y install software-properties-common python-software-properties
 
 # Install Nginx.
@@ -32,9 +33,7 @@ RUN \
   chown -R www-data:www-data /var/lib/nginx
 
 # Define mountable directories.
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx"]
-COPY sentinel-nginx.conf /etc/nginx/sites-enabled/sentinel-nginx
-RUN rm -f /etc/nginx/sites-enabled/default
+COPY sentinel-nginx.conf /etc/nginx/sites-enabled/default
 
 # Define working directory.
 WORKDIR /etc/nginx

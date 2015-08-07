@@ -1,0 +1,46 @@
+M numidiasoft/node
+MAINTAINER Tarik Ihadjadene
+
+RUN rm -r /var/lib/apt/lists/* \
+    && apt-get update \
+        && apt-get upgrade -y \
+            && apt-get install -y ruby1.9.1 ruby1.9.1-dev
+
+            RUN locale-gen en_US.UTF-8
+            RUN dpkg-reconfigure locales
+
+            RUN echo 'export LC_CTYPE=en_US.UTF-8' >> /etc/bash.bashrc
+            RUN echo 'export LANG=en_US.UTF-8' >> /etc/bash.bashrc
+            RUN echo 'export unset LC_ALL' >> /etc/bash.bashrc
+
+# Setup the front side of sentinel
+WORKDIR /var/www/html
+
+ADD ./dist /var/www/html
+
+
+# Install oftware-properties-common Package
+RUN  apt-get -y install software-properties-common python-software-properties
+
+# Install Nginx.
+RUN \
+  add-apt-repository -y ppa:nginx/stable && \
+    apt-get update && \
+      apt-get install -y nginx && \
+        rm -rf /var/lib/apt/lists/* && \
+          echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
+            chown -R www-data:www-data /var/lib/nginx
+
+# Define mountable directories.
+VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx"]
+COPY sentinel-nginx.conf /etc/nginx/sites-enabled/default
+
+# Define working directory.
+WORKDIR /etc/nginx
+
+# Define default command.
+CMD ["nginx"]
+
+# Expose ports.
+EXPOSE 80
+
