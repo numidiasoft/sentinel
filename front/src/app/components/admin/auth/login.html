@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <form autocomplete="on">
+    <form autocomplete="on" ng-click='signin(user)'>
 
       <label class="su-label tg-padding-top">Email address</label>
       <div class="loginForm">
@@ -22,7 +22,7 @@
         <input type="password" class="form-control" placeholder="enter Password"  ng-model='user.password'>
       </div>
 
-      <input type="submit" class="btn-full-width btn btn-lg btn-success margin-top" ng-click='signin(user)' value="Login" >
+      <input type="submit" class="btn-full-width btn btn-lg btn-success margin-top"  value="Login" >
     </form>
     <hr>
   </div>

@@ -1,5 +1,7 @@
 require "active_support/inflector"
 require "active_support"
+require "sneakers"
+
 module Sentinel
   ENV["RACK_ENV"] ||= "development"
   api_env = ENV["RACK_ENV"]
@@ -28,6 +30,16 @@ module Sentinel
         require lib
       end
       load_libs
+      configuration = Sentinel::Configuration.load
+      Sneakers.configure  :heartbeat => 2,
+        :amqp => configuration.rabbitmq_url,
+        :vhost => configuration.rabbitmq_url.split("/").last,
+        :exchange_type => :topic,
+        :prefetch => 10,
+        :ack => true,
+        :durable => true,
+        :workers => 1,
+        :share_threads => true
     end
 
     def load_libs
@@ -40,15 +52,19 @@ module Sentinel
       Sentinel.autoload_dir File.expand_path File.join("lib", "healthcheck")
       Sentinel.autoload_dir File.expand_path File.join("lib", "logger")
       Sentinel.autoload_dir File.expand_path File.join("lib", "middleware")
+      Sentinel.autoload_dir File.expand_path File.join("lib", "middleware")
       Sentinel::Configuration.init
     end
 
   end
 
-
   module Configuration
     def self.init
       ::Mongoid.load!("config/application.yml", ENV['RACK_ENV'])
+    end
+
+    def self.load
+      Hashie::Mash.load("config/application.yml")[ENV["RACK_ENV"]]
     end
   end
 end

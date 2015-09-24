@@ -1,0 +1,24 @@
+ #!/usr/bin/env ruby
+ # encoding: utf-8
+
+
+require "sneakers"
+require "sneakers/runner"
+require 'pry'
+Bundler.setup
+require_relative '../../config/application'
+
+configuration = Sentinel::Configuration.load
+
+
+Sneakers.configure  :heartbeat => 2,
+                    :exchange => "aggregation",
+                    :exchange_type => :topic,
+                    :prefetch => 10,
+                    :ack => true,
+                    :durable => true
+
+Sneakers.logger.level = Logger::INFO
+
+Sneakers::Runner.new([ Sentinel::Jobs::Aggregator ]).run
+

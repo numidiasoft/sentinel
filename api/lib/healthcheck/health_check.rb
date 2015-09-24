@@ -4,17 +4,20 @@ module Sentinel
 
     class << self
 
-      def check_all
+      def check_all(async: false)
         statuses = []
         (1..pages).each do |page|
           Check.where(type: :auto).page(page).per(PER_PAGE).each do |check_entry|
             progress_bar.increment
-            result = checker(check_entry.protocol)
-            .check(check_entry)
-            statuses << check_entry.attributes
+            checker = checker(check_entry.protocol)
+            if async
+              Jobs::Aggregator.enqueue(check_entry.id.to_s)
+            else
+              checker.check(check_entry)
+              statuses << check_entry.attributes
+            end
           end
         end
-        statuses
       end
 
       def check(check_entry)

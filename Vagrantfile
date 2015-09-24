@@ -18,7 +18,7 @@ $vm_gui = false
 $vm_memory = 1024
 $vm_cpus = 1
 $shared_folders = {}
-$forwarded_ports = { 9292 => 9292, 3001 => 3001, 3000 => 3000 }
+$forwarded_ports = { 9292 => 9292, 3001 => 3001, 3000 => 3000, 8080 => 15672 }
 
 # Attempt to apply the deprecated environment variable NUM_INSTANCES to
 # $num_instances while allowing config.rb to override it

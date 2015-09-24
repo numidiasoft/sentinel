@@ -18,7 +18,7 @@ module Sentinel
       end
 
       def check_with_get check_entry
-        safly do
+        safely do
           response = http_client.get(check_entry.url.to_s)
           check_body(response, check_entry)
         end
@@ -48,7 +48,7 @@ module Sentinel
         Level::Http.service_state(response.status, body_status)
       end
 
-      def safly
+      def safely
         begin
           yield
         rescue Exception => e
