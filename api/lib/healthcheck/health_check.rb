@@ -5,22 +5,28 @@ module Sentinel
     class << self
 
       def check_all(async: false)
-        statuses = []
-        (1..pages).each do |page|
-          Check.where(type: :auto).page(page).per(PER_PAGE).each do |check_entry|
-            progress_bar.increment
-            checker = checker(check_entry.protocol)
-            if async
-              Jobs::Aggregator.enqueue(check_entry.id.to_s)
-            else
-              checker.check(check_entry)
-              statuses << check_entry.attributes
+        [].tap do |statuses|
+          (1..pages).each do |page|
+            Check.where(type: :auto).page(page).per(PER_PAGE).each do |check_entry|
+              progress_bar.increment
+              timestamp_hour = Time.now.strftime("%Y-%m-%dT%H:00:00")
+              statuses << process(check_entry, timestamp_hour, async: async)
             end
           end
         end
       end
 
-      def check(check_entry)
+      def process(check_entry, timestamp_hour, async:)
+        if async
+          Jobs::Aggregator.enqueue(check_entry.id.to_s, timestamp_hour)
+        else
+          checker = checker(check_entry.protocol)
+          checker.check(check_entry, timestamp_hour)
+          check_entry.attributes
+        end
+      end
+
+      def check(check_entry, timestamp_hour)
         Sentinel.logger
           .error("uninitialized constant Sentinel::#{check_entry.protocol.capitalize}Status")
       end
@@ -54,6 +60,5 @@ module Sentinel
       end
 
     end
-
   end
 end

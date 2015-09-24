@@ -35,13 +35,15 @@ module Sentinel
     let(:http_check_yellow) { create(:check, expected_response: "ok", status: :yellow) }
     let(:http_check_red) { create(:check, url: "https://api.github.com/users/100/qdqs", status: :red) }
 
+    let!(:timestamp_hour) { Time.now.strftime("%Y-%m-%dT%H:00:00") }
+
 
     context "When status is yellow" do
       describe "#check_with_get" do
 
         it "should return a status" do
           VCR.use_cassette('http_check_yellow') do
-            status = HttpStatus.check_with_get(http_check_yellow)
+            status = HttpStatus.check_with_get(http_check_yellow, timestamp_hour)
             expect(status).to be(:yellow)
           end
         end
@@ -55,14 +57,14 @@ module Sentinel
 
           it "returns green state for expected response with none value" do
             VCR.use_cassette('http_check_green') do
-              check_entry = HttpStatus.check(http_check_green)
+              check_entry = HttpStatus.check(http_check_green, timestamp_hour)
               expect(check_entry.status.to_sym).to be(:green)
             end
           end
 
           it "returns green state for expected response with equality" do
             VCR.use_cassette('http_check_green') do
-              check_entry = HttpStatus.check(http_check_green)
+              check_entry = HttpStatus.check(http_check_green, timestamp_hour)
               expect(check_entry.status.to_sym).to be(:green)
             end
           end
@@ -73,7 +75,7 @@ module Sentinel
 
           it "returns yellow status" do
             VCR.use_cassette('http_check_yellow') do
-              check_entry = HttpStatus.check(http_check_yellow)
+              check_entry = HttpStatus.check(http_check_yellow, timestamp_hour)
               expect(check_entry.status.to_sym).to be(:yellow)
             end
           end
@@ -94,7 +96,7 @@ module Sentinel
 
           it "returns green state" do
             VCR.use_cassette(:http_post_check_green) do
-              check_entry = HttpStatus.check(http_post_check_green)
+              check_entry = HttpStatus.check(http_post_check_green, timestamp_hour)
               expect(check_entry.metrics.size).to be(2)
               expect(check_entry.metrics.first.values.size).to be(1)
               expect(check_entry.status.to_sym).to be(:green)
@@ -108,7 +110,7 @@ module Sentinel
 
         it "returns red status" do
           VCR.use_cassette('http_check_red') do
-            check_entry = HttpStatus.check(http_check_red)
+            check_entry = HttpStatus.check(http_check_red, timestamp_hour)
             expect(check_entry.status.to_sym).to be(:red)
           end
         end

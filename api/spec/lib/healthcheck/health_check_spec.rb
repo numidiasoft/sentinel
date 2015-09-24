@@ -52,7 +52,7 @@ module Sentinel
       it "logs an error" do
         check_entry = create(:check)
         expect(Sentinel.logger).to receive(:error).with('uninitialized constant Sentinel::HttpStatus')
-        described_class.check(check_entry)
+        described_class.check(check_entry, async: false)
       end
 
     end
@@ -62,7 +62,7 @@ module Sentinel
       it "returns the checks status" do
         VCR.use_cassette('health_check_green') do
           checks
-          results = described_class.check_all
+          results = described_class.check_all(async: false)
           expect(results.size).to eql(5)
           results.each do |result|
             expect(result[:status].to_sym).to be(:green)

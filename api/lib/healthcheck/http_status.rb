@@ -5,31 +5,34 @@ module Sentinel
   module HttpStatus
 
     class << self
-      def check(check_entry)
+
+      def check(check_entry, timestamp_hour)
         case check_entry.verb
         when "GET"
-          check_entry.update_attribute(:status, check_with_get(check_entry))
+          result = check_with_get(check_entry, timestamp_hour)
+          check_entry.update_attribute(:status, result)
         when "POST"
-          check_entry.update_attribute(:status, check_with_post(check_entry))
+          result = check_with_post(check_entry, timestamp_hour)
+          check_entry.update_attribute(:status, result)
         else
           logger.error("Unknown method #{check_entry.verb} #{self.inspect}")
         end
         check_entry
       end
 
-      def check_with_get check_entry
+      def check_with_get(check_entry, timestamp_hour)
         safely do
           response = http_client.get(check_entry.url.to_s)
-          check_body(response, check_entry)
+          check_body(response, check_entry, timestamp_hour)
         end
       end
 
-      def check_with_post check_entry
+      def check_with_post(check_entry, timestamp_hour)
         response = http_client.post check_entry.url.to_s do |req|
           req.headers[:content_type] = 'application/json'
           req.body = JSON.parse(check_entry.params).to_json
         end
-        check_body(response, check_entry)
+        check_body(response, check_entry, timestamp_hour)
       end
 
       private
@@ -37,14 +40,14 @@ module Sentinel
         Sentinel.logger
       end
 
-      def check_body(response, check_entry)
+      def check_body(response, check_entry, timestamp_hour)
         body_status = if check_entry.expected_response == "none"
                         true
                       else
                         check_entry.expected_response == response.body
                       end
-        status_metric(check_entry.id, response.status)
-        response_time_metric(check_entry.id, response.env[:duration])
+        status_metric(check_entry.id, response.status, timestamp_hour)
+        response_time_metric(check_entry.id, response.env[:duration], timestamp_hour)
         Level::Http.service_state(response.status, body_status)
       end
 
@@ -60,7 +63,7 @@ module Sentinel
         JSON.parse(params) rescue params
       end
 
-      def status_metric(check_id, status)
+      def status_metric(check_id, status, timestamp_hour)
         value = Value.new(key: Time.now.min, value: status)
         Metric.find_or_update(
           check_id: check_id,
@@ -70,7 +73,7 @@ module Sentinel
         )
       end
 
-      def response_time_metric(check_id, response_time)
+      def response_time_metric(check_id, response_time, timestamp_hour)
         value = Value.new(key: Time.now.min, value: response_time)
         Metric.find_or_update(
           check_id: check_id,
@@ -87,9 +90,6 @@ module Sentinel
         end
       end
 
-      def timestamp_hour
-        Time.now.strftime("%Y-%m-%dT%H:00:00")
-      end
     end
   end
 end
