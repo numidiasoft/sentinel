@@ -1,0 +1,55 @@
+mongodb:
+  image: mongo:3.0
+  ports:
+    - 27017:27017
+  volumes:
+    - /var/mongodb:/data/db
+  command: "--smallfiles"
+
+rabbitmq:
+  image: rabbitmq:3-management
+  ports:
+    - 5672:5672
+    - 15672:15672
+  hostname: sentinel
+
+api:
+  image: numidiasoft/sentinel-api
+  links:
+    - mongodb
+    - rabbitmq
+  ports:
+    - 9292:9292
+  volumes:
+    - ../../api:/app
+    - /var/.bundle:/.bundle
+
+cron:
+  image: numidiasoft/sentinel-api
+  volumes:
+    - ../../api:/app
+    - /var/.bundle:/.bundle
+  links:
+    - mongodb
+    - rabbitmq
+  command: /cron
+
+front:
+  image: numidiasoft/sentinel-front
+  volumes:
+    - ../../front/:/app
+    - /var/node_modules:/app/node_modules
+    - /var/bower_components:/app/bower_components
+  ports:
+    - 3000:3000
+    - 3001:3001
+
+aggregator:
+  image: numidiasoft/sentinel-api
+  volumes:
+    - ../../api:/app
+    - /var/.bundle:/.bundle
+  links:
+    - mongodb
+    - rabbitmq
+  command: bundle exec ruby ./bin/workers/aggregator
