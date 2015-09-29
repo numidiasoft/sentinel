@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker run --rm -ti --name cron -v  /Users/tarik/projects/sentinel/api/:/app -v /var/.bundle:/.bundle  --link dev_mongodb_1:mongodb --link dev_rabbitmq_1:rabbitmq numidiasoft/sentinel-api:cron /bin/bash
+docker run --rm -ti --name cron -v  /Users/tarik/projects/sentinel/api/:/app -v /var/.bundle:/.bundle  --link sentinel_mongodb_1:mongodb --link sentinel_rabbitmq_1:rabbitmq numidiasoft/sentinel-api:cron /bin/bash
