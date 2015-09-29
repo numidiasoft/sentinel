@@ -17,11 +17,11 @@ module Sentinel
       end
 
       def process(check_entry, timestamp_hour, async:)
-        if async
-          Jobs::Aggregator.enqueue(check_entry.id.to_s, timestamp_hour)
+        if async == true
+          Jobs::Aggregator.enqueue(check_entry.id.to_s, timestamp_hour, Time.now)
         else
           checker = checker(check_entry.protocol)
-          checker.check(check_entry, timestamp_hour)
+          checker.check(check_entry, timestamp_hour, now_date: Time.now)
           check_entry.attributes
         end
       end

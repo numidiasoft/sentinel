@@ -21,11 +21,12 @@ module Sentinel
     index({ timestamp_hour: 1 }, { name: "timestamp_hour_index" })
     index({ created_at: 1 }, { name: "created_at_index" })
 
-    def self.find_or_update(check_id:, type:, timestamp_hour:, value:)
+    def self.find_or_update(check_id:, type:, timestamp_hour:, created_at: Time.now, value:)
       metric = find_or_initialize_by(check_id: check_id, type: type, timestamp_hour: timestamp_hour)
       if metric.new_record?
         metric.num_samples = 1
         metric.total_samples = value.value
+        metric.created_at = created_at
         metric.timestamp_hour = timestamp_hour
         metric.values.push(value)
         metric.save!

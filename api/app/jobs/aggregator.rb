@@ -8,11 +8,11 @@ module Sentinel
                  :exchange => "aggregation"
 
       def work(msg)
-        check_id, timestamp_hour = JSON.parse(msg)
+        check_id, timestamp_hour, enqueue_at = JSON.parse(msg)
         check = Check.where(id: check_id).first
         return reject! if check.nil?
         checker = HealthCheck.checker(check.protocol)
-        checker.check(check, timestamp_hour) ? ack! : reject!
+        checker.check(check, timestamp_hour, now_date: enqueue_at.to_time) ? ack! : reject!
       end
 
       def self.enqueue(*msg)

@@ -43,7 +43,7 @@ module Sentinel
 
         it "should return a status" do
           VCR.use_cassette('http_check_yellow') do
-            status = HttpStatus.check_with_get(http_check_yellow, timestamp_hour)
+            status = HttpStatus.check_with_get(http_check_yellow, timestamp_hour, Time.now)
             expect(status).to be(:yellow)
           end
         end
