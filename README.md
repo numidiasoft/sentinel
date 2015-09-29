@@ -8,27 +8,40 @@ For example: Facebook, twitter..etc.
 
 
 ### Setup
-
+ * Install docker machine from : https://docs.docker.com/machine/install-machine/
+ * Install docker compose  from : https://docs.docker.com/installation/mac/
+ * Create your machine : 
+ 
  ```bash
-  
-  cd api && cp bundle install --path=.bundle
-  cp config/mongoid.yml.example config/mongoid.yml
-  
+   docker-machine create --driver=virtualbox --virtualbox-disk-size 5000 --virtualbox-memory 4024 sentinel-dev
+ ```
+ If you type the command below, the list of started machines will be displayed : 
+ ```bash
+   docker_machine ls
+ ```
+ 
+ * Start all services
+ 
+ ```
+  docker-compose up -d
  ```
  
 ### Open console
-
-  ```bash
-  
-    RACK_ENV=staging bundle exec ./script/console
-    
+  * Configure your shell : 
+ 
   ```
-### Start server
+     eval "$(docker-machine env sentinel-dev)"
+  ```
+  * Connect to the console : 
+ 
+  ```
+   ./script/docker/console
+  ```
+  
+### Display started services : 
 
-```bash
-
-   RACK_ENV=staging bundle exec rackup --quiet
-   
+```
+ docker-compose ps
 ```
 
 ### Workflow
