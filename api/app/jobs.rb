@@ -1,5 +1,6 @@
 module Sentinel
   module Jobs
-    autoload :Aggregator, "./app/jobs/aggregator"
+    autoload :Checker, "./app/jobs/checker"
+    autoload :Cleaner, "./app/jobs/cleaner"
   end
 end

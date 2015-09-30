@@ -20,5 +20,7 @@ Sneakers.configure  :heartbeat => 2,
 
 Sneakers.logger.level = Logger::INFO
 
-Sneakers::Runner.new([ Sentinel::Jobs::Aggregator ]).run
+worker_classes = [ Sentinel::Jobs::Checker,  Sentinel::Jobs::Cleaner ]
+
+Sneakers::Runner.new(worker_classes).run
 

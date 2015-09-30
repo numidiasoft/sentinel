@@ -11,3 +11,7 @@ every 1.minutes do
   command "RACK_ENV=#{ENV['RACK_ENV']} cd /app && bundle exec ruby ./script/check_statues.rb"
 end
 
+every 1.day do
+  command "RACK_ENV=#{ENV['RACK_ENV']} cd /app && bundle exec ruby ./script/cleaner.rb"
+end
+

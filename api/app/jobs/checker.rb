@@ -2,9 +2,9 @@ require "json"
 
 module Sentinel
   module Jobs
-    class Aggregator
+    class Checker
       include ::Sneakers::Worker
-      from_queue :aggregation,
+      from_queue :checker,
                  :exchange => "aggregation"
 
       def work(msg)
