@@ -52,7 +52,6 @@ module Sentinel
       Sentinel.autoload_dir File.expand_path File.join("lib", "healthcheck")
       Sentinel.autoload_dir File.expand_path File.join("lib", "logger")
       Sentinel.autoload_dir File.expand_path File.join("lib", "middleware")
-      Sentinel.autoload_dir File.expand_path File.join("lib", "middleware")
       Sentinel::Configuration.init
     end
 

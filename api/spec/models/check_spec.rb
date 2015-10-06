@@ -4,7 +4,7 @@ describe Sentinel::Check do
 
 
   describe "Validations" do
-    let(:check) { Sentinel::Check.new(name: "socialinbox") }
+    let(:check) { described_class.new(name: "socialinbox") }
 
     specify { expect(check).to validate_presence_of(:name) }
     specify { expect(check).to validate_presence_of(:url) }

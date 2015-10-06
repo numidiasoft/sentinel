@@ -26,7 +26,7 @@ module Sentinel
         end
       end
 
-      def check(check_entry, timestamp_hour)
+      def check(check_entry, timestamp_hour, now_date: Time.now)
         Sentinel.logger
           .error("uninitialized constant Sentinel::#{check_entry.protocol.capitalize}Status")
       end
@@ -42,13 +42,7 @@ module Sentinel
 
       private
       def pages
-        pages = total_number / PER_PAGE
-        pages = pages + 1 if total_number.modulo(PER_PAGE) != 0
-        pages.zero? ? 1 : pages
-      end
-
-      def logger
-        Sentinel.logger
+        Check.pages(per_page: PER_PAGE)
       end
 
       def total_number

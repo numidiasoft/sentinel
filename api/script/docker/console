@@ -1,4 +1,4 @@
 #!/bin/sh
 ENV=$1||'devlopement'
 docker rm console 2> /dev/null
-docker run --rm -ti --name console -v  /Users/tarik/projects/sentinel/api:/app -v /var/.bundle:/.bundle --link sentinel_mongodb_1:mongodb --link sentinel_rabbitmq_1:rabbitmq numidiasoft/sentinel-api bundle exec ./script/console $ENV
+docker run --rm -ti --name console -v  /Users/tarik/projects/sentinel/api:/app -v /var/.api:/.bundle --link sentinel_mongodb_1:mongodb --link sentinel_rabbitmq_1:rabbitmq numidiasoft/sentinel-api bundle exec ./script/console $ENV

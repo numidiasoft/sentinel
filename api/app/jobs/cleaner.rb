@@ -8,15 +8,14 @@ module Sentinel
                  :exchange => "aggregation"
 
       def work(msg)
-        action, since = JSON.parse(msg)
-        if action == "clean"
-          begin
-            Metric.where(:created_at.lte => (since.to_time || 1.days.ago)).delete_all
-            ack!
-          rescue Exception => e
-            reject! and raise e
-          end
-        else
+        check_ids, since = JSON.parse(msg)
+        begin
+          Metric
+            .where(:created_at.lte => (since.to_time || 1.days.ago), :check_id.in => check_ids)
+            .delete
+          ack!
+        rescue Exception => e
+          #TODO send errors to sentry
           reject!
         end
       end

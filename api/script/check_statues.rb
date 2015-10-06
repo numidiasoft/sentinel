@@ -5,5 +5,14 @@ require_relative '../config/application'
 require 'colorize'
 
 module Sentinel
-  Sentinel::HealthCheck.check_all(async: true)
+  module Scripts
+    module Checker
+      extend self
+      def process
+        Sentinel::HealthCheck.check_all(async: true)
+      end
+    end
+  end
 end
+
+Sentinel::Scripts::Checker.process

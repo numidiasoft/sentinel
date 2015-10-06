@@ -13,7 +13,7 @@ module Sentinel
     end
 
     it "publishes message to the queue" do
-      msg = ["clean", 1.day.ago]
+      msg = [[1,2], 1.day.ago]
       expect_any_instance_of(Sneakers::Publisher)
         .to receive(:instance_variable_get).and_return(bunny)
       expect_any_instance_of(Sneakers::Publisher)
@@ -25,14 +25,14 @@ module Sentinel
     end
 
     it "returns reject verb"  do
-      message = ["no_clean", 1.day.ago].to_json
+      message = ["not_array", 1.day.ago].to_json
       result = worker.work(message)
       expect(result).to be(:reject)
     end
 
     it "return ack verb" do
       check = create(:check)
-      message = ["clean", 1.day.ago].to_json
+      message = [[check.id.to_s], 1.day.ago].to_json
       VCR.use_cassette('http_check_yellow') do
         result = worker.work(message)
         expect(result).to be(:ack)
