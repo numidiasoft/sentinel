@@ -25,9 +25,26 @@ module Sentinel
     validates :verb, inclusion: { in: ['GET', 'POST', 'PATCH'] }
     validates :visibility, inclusion: { in: ['private', 'public'] }
 
+    after_save :apply_integrations
+
     belongs_to :user
     has_many :metrics
 
     index({ user_id: 1, visibility: 1, updated_at: 1 }, { unique: false, name: "composite_index" })
+
+    def self.pages(per_page: 50)
+      total_number = Check.count
+      pages = total_number/per_page
+      pages = pages + 1 if total_number.modulo(per_page) != 0
+      pages.zero? ? 1 : pages
+    end
+
+    def apply_integrations
+      status_changes = changes["status"]
+      unless status_changes.nil?
+        message = "Alert: #{self.description}(#{self.id}) passed from #{status_changes.first} to #{status_changes.last}"
+        Jobs::SlackNotifier.enqueue(self.user_id.to_s, message)
+      end
+    end
   end
 end

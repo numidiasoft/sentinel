@@ -30,6 +30,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'bcrypt', '3.1.9', require: 'bcrypt'
 gem 'hashie'
 gem 'sneakers'
+gem 'slack-notifier'
 
 group :development, :test do
   gem 'rb-fsevent'

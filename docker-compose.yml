@@ -47,6 +47,16 @@ aggregator:
     - rabbitmq
   command: bash -c "bundle install --path=/.bundle && bundle exec ruby ./bin/workers/aggregator"
 
+alerts:
+  image: numidiasoft/sentinel-api
+  volumes:
+    - ./api:/app
+    - /var/.alerts:/.bundle
+  links:
+    - mongodb
+    - rabbitmq
+  command: bash -c "bundle install --path=/.bundle && bundle exec ruby ./bin/workers/integration"
+
 front:
   image: numidiasoft/sentinel-front
   volumes:

@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+
+require "sneakers"
+require "sneakers/runner"
+require 'pry'
+Bundler.setup
+require_relative '../../config/application'
+
+configuration = Sentinel::Configuration.load
+
+
+Sneakers.configure  :heartbeat => 2,
+                    :exchange => "alerts",
+                    :exchange_type => :topic,
+                    :prefetch => 10,
+                    :ack => true,
+                    :durable => true
+
+Sneakers.logger.level = Logger::INFO
+
+worker_classes = [ Sentinel::Jobs::SlackNotifier ]
+
+Sneakers::Runner.new(worker_classes).run
