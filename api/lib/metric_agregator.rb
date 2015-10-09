@@ -11,12 +11,16 @@ module Sentinel
       end
 
       def agregate_by_hour(check, type, since)
-        check.metrics.where(:created_at.gte => since, type: type).order_by(:created_at.asc).map do |metric|
-          {
-            :date  => to_iso_8601(metric.created_at),
-            type =>  metric.total_samples
-          }
-        end
+        check.metrics
+          .where(:created_at.gte => since, type: type)
+          .order_by(:created_at.asc)
+          .map do |metric|
+            {
+              :date  => to_iso_8601(metric.created_at),
+              type =>  metric.total_samples,
+              :series =>  type
+            }
+          end
       end
 
       def agregate_by_minute(check, type, since)
