@@ -11,19 +11,23 @@ module Sentinel
       end
 
       it 'creates a new metric' do
-        value = Value.new(key: Time.now.sec, value: 325)
-        metric = Metric.find_or_update(check_id: check.id, type: 'response_time', timestamp_hour: @timestamp_hour, value: value)
-        expect(metric.valid?).to be(true)
-        expect(metric.values.size).to eql(1)
-        expect(metric.values.first).to eql(value)
+        VCR.use_cassette(:new_metric_db_write_points) do
+          value = Value.new(key: Time.now.sec, value: 325)
+          metric = Metric.find_or_update(check_id: check.id, type: 'response_time', timestamp_hour: @timestamp_hour, value: value)
+          expect(metric.valid?).to be(true)
+          expect(metric.values.size).to eql(1)
+          expect(metric.values.first).to eql(value)
+        end
       end
 
       it "loads an existing metric" do
-        metric
-        value = Value.new(key: metric.created_at.sec, value: 325)
-        new_metric = Metric.find_or_update(check_id: check.id, type: 'response_time', timestamp_hour: metric.timestamp_hour, value: value)
-        expect(new_metric.valid?).to eql(true)
-        expect(metric.id).to eql(new_metric.id)
+        VCR.use_cassette(:exist_metric__write_points) do
+          metric
+          value = Value.new(key: metric.created_at.sec, value: 325)
+          new_metric = Metric.find_or_update(check_id: check.id, type: 'response_time', timestamp_hour: metric.timestamp_hour, value: value)
+          expect(new_metric.valid?).to eql(true)
+          expect(metric.id).to eql(new_metric.id)
+        end
       end
     end
   end

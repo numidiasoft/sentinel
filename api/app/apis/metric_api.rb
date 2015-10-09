@@ -8,11 +8,14 @@ module Sentinel
         get do
           check = Check.where(id: params[:id]).first
           error!('Not found', 404) if check.nil?
-          agregation = params[:agregation] || 'minutes'
           type = params[:type] || 'status'
           period = params[:since] || 'day'
-          agregated = MetricAgregator.agregate(check: check, period: period, agregation: agregation, type: type)
-          present agregated
+          time  = MetricAgregator.calculate_since(period)
+          agregated = Influxdb::Base.select(type, select: %w(response_time date))
+            .where(field: :check_id, value: check.id.to_s)
+            .where(field: :time, op: :>, value: Influxdb::Base.format_time(time))
+            .entries
+          return agregated
         end
       end
     end

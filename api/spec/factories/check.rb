@@ -6,5 +6,6 @@ FactoryGirl.define do
     type "auto"
     protocol :http
     verb :GET
+    user
   end
 end

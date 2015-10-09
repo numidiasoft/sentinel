@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://192.168.99.100:8086/write?db=sentinel_test&p=root&precision=s&u=root
+    body:
+      encoding: UTF-8
+      string: response_time response_time=200.0,date="2015-10-09T13:00:42Z",check_id="5617c09239366301c5000004"
+        1444395642
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Encoding:
+      - gzip
+      Request-Id:
+      - 613d5bbf-6e89-11e5-803c-000000000000
+      X-Influxdb-Version:
+      - 0.9.4.1
+      Date:
+      - Fri, 09 Oct 2015 13:26:42 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 09 Oct 2015 13:26:42 GMT
+- request:
+    method: post
+    uri: http://192.168.99.100:8086/write?db=sentinel_test&p=root&precision=s&u=root
+    body:
+      encoding: UTF-8
+      string: response_time response_time=325.0,date="2015-10-09T13:42:42Z",check_id="5617c09239366301c5000004"
+        1444398162
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Encoding:
+      - gzip
+      Request-Id:
+      - 613edbe1-6e89-11e5-803d-000000000000
+      X-Influxdb-Version:
+      - 0.9.4.1
+      Date:
+      - Fri, 09 Oct 2015 13:26:42 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 09 Oct 2015 13:26:42 GMT
+recorded_with: VCR 2.9.3

@@ -71,4 +71,72 @@ http_interactions:
       string: '{"login":"100","id":369826,"avatar_url":"https://avatars.githubusercontent.com/u/369826?v=2","gravatar_id":"dd1153dd2ec85085be092aaf20f1b489","url":"https://api.github.com/users/100","html_url":"https://github.com/100","followers_url":"https://api.github.com/users/100/followers","following_url":"https://api.github.com/users/100/following{/other_user}","gists_url":"https://api.github.com/users/100/gists{/gist_id}","starred_url":"https://api.github.com/users/100/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/100/subscriptions","organizations_url":"https://api.github.com/users/100/orgs","repos_url":"https://api.github.com/users/100/repos","events_url":"https://api.github.com/users/100/events{/privacy}","received_events_url":"https://api.github.com/users/100/received_events","type":"User","site_admin":false,"public_repos":0,"public_gists":0,"followers":0,"following":0,"created_at":"2010-08-19T15:52:44Z","updated_at":"2013-12-15T19:21:11Z"}'
     http_version: 
   recorded_at: Fri, 12 Sep 2014 12:26:56 GMT
+- request:
+    method: post
+    uri: http://192.168.99.100:8086/write?db=sentinel_test&p=root&precision=s&u=root
+    body:
+      encoding: UTF-8
+      string: status status=200.0,date="2015-10-09T13:38:38Z",check_id="5617c35e39366302f2000001"
+        1444397918
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Encoding:
+      - gzip
+      Request-Id:
+      - 0c194ccf-6e8b-11e5-8056-000000000000
+      X-Influxdb-Version:
+      - 0.9.4.1
+      Date:
+      - Fri, 09 Oct 2015 13:38:38 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 09 Oct 2015 13:38:38 GMT
+- request:
+    method: post
+    uri: http://192.168.99.100:8086/write?db=sentinel_test&p=root&precision=s&u=root
+    body:
+      encoding: UTF-8
+      string: response_time response_time=6.88,date="2015-10-09T13:38:38Z",check_id="5617c35e39366302f2000001"
+        1444397918
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Encoding:
+      - gzip
+      Request-Id:
+      - 0c1aff10-6e8b-11e5-8057-000000000000
+      X-Influxdb-Version:
+      - 0.9.4.1
+      Date:
+      - Fri, 09 Oct 2015 13:38:38 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 09 Oct 2015 13:38:38 GMT
 recorded_with: VCR 2.9.3

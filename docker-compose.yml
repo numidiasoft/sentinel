@@ -15,11 +15,19 @@ rabbitmq:
     - /var/lib/rabbitmq:/var/lib/rabbitmq
   hostname: sentinel
 
+influxdb:
+  image: tutum/influxdb
+  ports:
+    - 8083:8083
+    - 8086:8086
+    - 8090
+
 api:
   image: numidiasoft/sentinel-api
   links:
     - mongodb
     - rabbitmq
+    - influxdb
   ports:
     - 9292:9292
   volumes:
@@ -35,6 +43,7 @@ cron:
   links:
     - mongodb
     - rabbitmq
+    - influxdb
   command: /cron
 
 aggregator:
@@ -45,6 +54,7 @@ aggregator:
   links:
     - mongodb
     - rabbitmq
+    - influxdb
   command: bash -c "bundle install --path=/.bundle && bundle exec ruby ./bin/workers/aggregator"
 
 alerts:
@@ -55,6 +65,7 @@ alerts:
   links:
     - mongodb
     - rabbitmq
+    - influxdb
   command: bash -c "bundle install --path=/.bundle && bundle exec ruby ./bin/workers/integration"
 
 front:

@@ -1,13 +1,23 @@
+require "bundler"
+Bundler.setup
+
 require 'rspec'
 require "rack/test"
 require "factory_girl"
+require "bcrypt"
 require 'database_cleaner'
 require 'vcr'
 require "grape"
+require "influxdb"
 
 ENV['RACK_ENV'] = "test"
-require_relative '../config/application.rb'
+
+require_relative '../config/application'
 Dir.glob("./spec/support/*.rb").each { |file| require file }
+
+influxdb_path = $LOAD_PATH.select { |c| c.include?("influxdb") }.first
+Dir["#{influxdb_path}/**/*rb"].reverse.each {|file| require file}
+
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

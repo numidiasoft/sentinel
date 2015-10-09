@@ -5,6 +5,8 @@ module Sentinel
     include Mongoid::Timestamps::Created
     include Mongoid::Timestamps::Updated
 
+    after_save :write_points
+
     field :type, type: String
     field :num_samples, type: Integer
     field :total_samples, type: Integer
@@ -36,6 +38,12 @@ module Sentinel
         metric.save!
       end
       metric
+    end
+
+    def write_points
+      #TODO make it async
+      data = MetricAgregator.payload(self, self.values.last)
+      Influxdb::Base.connection.write_points([data])
     end
   end
 end

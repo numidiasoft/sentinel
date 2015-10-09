@@ -39,6 +39,7 @@ GEM
     builder (3.2.2)
     bunny (2.2.0)
       amq-protocol (>= 2.0.0)
+    cause (0.1)
     chronic (0.10.2)
     coderay (1.1.0)
     coercible (1.0.0)
@@ -75,6 +76,9 @@ GEM
     hashie (3.4.2)
     i18n (0.7.0)
     ice_nine (0.11.1)
+    influxdb (0.2.2)
+      cause
+      json
     json (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -188,6 +192,7 @@ DEPENDENCIES
   grape-roar
   grape_logging
   hashie
+  influxdb
   kaminari
   mongoid
   pry
