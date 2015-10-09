@@ -20,12 +20,19 @@ module Sentinel
 
     private
     def metrics(x, period, aggregation, type)
-      x.report(:metrics) do
-       MetricAgregator.agregate(check: @check,
-                                period: period,
-                                agregation: aggregation,
-                                type: type)
+      x.report("Metrics with Mongo") do
+        MetricAgregator.agregate(check: @check,
+                                 period: period,
+                                 agregation: aggregation,
+                                 type: type)
       end
+
+       x.report("Metrics with influxdb") do
+         Influxdb::Base.select(:status)
+           .where(field: :time, op: :>, value: 'now() - 1d')
+           .where(field: :check_id, value: @check.id.to_s)
+           .entries
+       end
     end
 
   end
