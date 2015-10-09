@@ -11,7 +11,7 @@ module Sentinel
           type = params[:type] || 'status'
           period = params[:since] || 'day'
           time  = MetricAgregator.calculate_since(period)
-          agregated = Influxdb::Base.select(type, select: %w(response_time date))
+          agregated = Influxdb::Base.select(type, select: [:date, type])
             .where(field: :check_id, value: check.id.to_s)
             .where(field: :time, op: :>, value: Influxdb::Base.format_time(time))
             .entries
