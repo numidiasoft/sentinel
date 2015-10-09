@@ -40,6 +40,7 @@ module Sentinel
     end
 
     def apply_integrations
+      return if user.integrations.empty?
       status_changes = changes["status"]
       unless status_changes.nil?
         message = "Alert: #{self.description}(#{self.id}) passed from #{status_changes.first} to #{status_changes.last}"

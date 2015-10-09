@@ -19,6 +19,7 @@ module Sentinel
     validates :last_name, presence: true
 
     has_many :checks
+    has_many :integrations
 
   end
 end
